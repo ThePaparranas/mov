@@ -21,18 +21,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function admin()
+    public function index()
     {
-        return view('admin');
-    }
+        $user = auth()->user();
 
-    /**
-     * Show the front authenticated view.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function home()
-    {
+        if ($user->hasAnyRole(['Dev', 'Admin'])) {
+            return redirect(route('admin::home'));
+        }
+
         return view('home');
     }
 }
