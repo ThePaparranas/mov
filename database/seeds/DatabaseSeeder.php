@@ -14,5 +14,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ImdbListsTableSeeder::class);
         $this->call(RolesSeeder::class);
         $this->call(UsersTableSeeder::class);
+        $this->call(MovieTypesSeeder::class);
+        $this->call(ProvidersSeeder::class);
+        $this->call(ArticleTypesSeeder::class);
     }
 }
