@@ -29,6 +29,6 @@ class HomeController extends Controller
             return redirect(route('admin::home'));
         }
 
-        return view('home');
+        return view('site');
     }
 }

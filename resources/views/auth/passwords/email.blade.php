@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-4">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Reset Password') }}</div>
@@ -17,11 +17,28 @@
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
 
+                        {{-- username: fake field. Works as Spambot Decoy.
+                        MUST be present and empty for authentication --}}
+                        <input type="text"
+                               name="username"
+                               class="fk-field"
+                               id="username"
+                               placeholder="username"
+                               tabindex="-1">
+
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email"
+                                   class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email"
+                                       type="email"
+                                       class="form-control @error('email') is-invalid @enderror"
+                                       name="email"
+                                       value="{{ old('email') }}"
+                                       required
+                                       autocomplete="email"
+                                       autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">

@@ -3,17 +3,22 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
-import router from './routes'
+import Vue from 'vue'
 import Vuex from 'vuex'
+import router from './router'
 import VueRouter from 'vue-router'
+import Warehouse from './store/store'
+
+//import BootstrapVue from 'bootstrap-vue'
+
+// import 'bootstrap/dist/css/bootstrap.css'
+// will replace vue-bootstrap with vuetable (https://github.com/ratiw/vuetable-2)
+//import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'vue-material-design-icons/styles.css'
 
 require('./bootstrap');
 require('animate.css');
 require('babel-polyfill');
-
-window.Vue = require('vue');
 
 /**
  * The following block of code may be used to automatically register your
@@ -28,8 +33,14 @@ window.Vue = require('vue');
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
+//Vue.use(BootstrapVue)
 
 Vue.component('App', require('./components/App.vue').default);
+
+/**
+ * Set up Vuex store
+ */
+let store = new Vuex.Store(Warehouse())
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -38,6 +49,7 @@ Vue.component('App', require('./components/App.vue').default);
  */
 
 const app = new Vue({
-    el: '#app',
-    router
-});
+  el: '#app',
+  router,
+  store
+})

@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Mov\Friends\Friendable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -10,17 +12,21 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property int $id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @property mixed friends_i_am_sender
+ * @property mixed friends_i_am_recipient
+ * @method static User withTimestamps()
+ * @mixin Model
  */
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Friendable;
 
     /**
      * The accessors to append to the model's array form.
      *
      * @var array
      */
-    protected $appends = ['gravatar',];
+    protected $appends = ['gravatar', 'isAdmin',];
 
     /**
      * The attributes that are mass assignable.
@@ -106,5 +112,20 @@ class User extends Authenticatable
     public function getGravatarAttribute(): string
     {
         return 'https://www.gravatar.com/avatar/'.md5($this->email).'?d=mm&s=256';
+    }
+
+    public function getIsAdminAttribute(): bool
+    {
+        return $this->isAdmin();
+    }
+
+    /**
+     * User has admin powers
+     *
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->hasRole('Admin') || $this->hasRole('Dev');
     }
 }

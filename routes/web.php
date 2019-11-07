@@ -1,5 +1,42 @@
 <?php
 
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Front\Api\MovieDataController;
+
+Route::group([
+    'as'         => 'FrontApi::',
+    'prefix'     => 'FrontApi',
+    'middleware' => 'web',
+], function () {
+    Route::get('omdb/{imdbId}', [MovieDataController::class, 'getOmdbData']);
+});
+
+Route::group([
+    'as'         => 'Admin::',
+    'prefix'     => 'admin',
+    'middleware' => 'web',
+], function () {
+    // GUEST
+    Route::group([], function () {
+    });
+
+    // AUTH
+    Route::group([
+        'middleware' => 'auth',
+    ], function () {
+        //
+    });
+
+});
+
+/*Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login'])->name('login');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('request_password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');*/
+Auth::routes();
 Route::any('{all}', function () {
     return view('site');
 })->where(['all' => '.*']);

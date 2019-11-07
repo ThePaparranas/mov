@@ -1,31 +1,35 @@
-import VueRouter from 'vue-router'
 import Home from './pages/home'
+import Admin from './pages/admin'
 import Filmes from './pages/filmes'
 
-let routes = [
-    {
-        path: '/',
-        component: Home,
-        meta: {
-            name: 'Home',
-            menuClass: 'transparent'
-        }
-    },
-    {
-        path: '/filmes',
-        component: Filmes,
-        meta: {
-            name: 'Filmes',
-            menuClass: 'white'
-        }
+const routes = [
+  {
+    path: '/',
+    component: Home,
+    meta: {
+      name: 'Home',
+      menuClass: 'transparent',
+      access: 'user'
     }
+  },
+  {
+    path: '/filmes',
+    component: Filmes,
+    meta: {
+      name: 'Filmes',
+      menuClass: 'white',
+      access: 'user'
+    }
+  },
+  {
+    path: '/admin',
+    component: Admin,
+    meta: {
+      name: 'Admin',
+      menuClass: 'white',
+      access: 'admin'
+    }
+  }
 ]
 
-export default new VueRouter({
-    abstract: true,
-    mode: 'history',
-    routes,
-    scrollBehavior () {
-      return { x: 0, y: 0 }
-    }
-  })
+export default routes

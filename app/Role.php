@@ -21,11 +21,11 @@ class Role extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return void
      */
-    public function users()
+    public function users(): void
     {
-        return $this->belongsToMany(
+        $this->belongsToMany(
             User::class,
             'user_role',
             'role_id',
