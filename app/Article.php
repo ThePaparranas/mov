@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -17,6 +18,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\User $author
+ * @property-read mixed $slug
  * @property-read \App\ArticleType $type
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article newQuery()
@@ -45,6 +47,20 @@ class Article extends Model
         'article_type',
         'image',
     ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'slug',
+    ];
+
+    public function getSlugAttribute(): string
+    {
+        return Str::slug($this->title).'_'.$this->created_at->toDateString();
+    }
 
     public function type(): HasOne
     {

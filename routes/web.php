@@ -11,6 +11,7 @@ Route::group([
 ], function () {
     Route::get('omdb/{imdbId}', [MovieDataController::class, 'getOmdbData']);
     Route::get('news', [NewsController::class, 'index']);
+    Route::get('news/slug/{slug}', [NewsController::class, 'getBySlug']);
     Route::get('news/categories', [NewsTypesController::class, '__invoke']);
 });
 

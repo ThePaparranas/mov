@@ -14276,14 +14276,6 @@ namespace Illuminate\Support {
     class Arr {
          
     }
-
-    /**
-     * 
-     *
-     */ 
-    class Str {
-         
-    }
  
 }
 
@@ -17059,8 +17051,6 @@ namespace  {
     class Session extends \Illuminate\Support\Facades\Session {}
 
     class Storage extends \Illuminate\Support\Facades\Storage {}
-
-    class Str extends \Illuminate\Support\Str {}
 
     class URL extends \Illuminate\Support\Facades\URL {}
 

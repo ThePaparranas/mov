@@ -2,11 +2,13 @@ import Home from './pages/home'
 import News from './pages/News'
 import Admin from './pages/admin'
 import Filmes from './pages/filmes'
+import Snews from './pages/news-article'
 
 const routes = [
   {
     path: '/',
     component: Home,
+    name: 'Home',
     meta: {
       name: 'Home',
       menuClass: 'transparent',
@@ -17,6 +19,7 @@ const routes = [
   {
     path: '/filmes',
     component: Filmes,
+    name: 'Movies',
     meta: {
       name: 'Filmes',
       menuClass: 'white',
@@ -27,6 +30,7 @@ const routes = [
   {
     path: '/news',
     component: News,
+    name: 'News',
     meta: {
       name: 'Notícias',
       menuClass: 'white',
@@ -34,7 +38,18 @@ const routes = [
       isNav: true
     }
   },
-
+  {
+    path: '/news/:slug',
+    component: Snews,
+    name: 'NewsArticle',
+    props: true,
+    meta: {
+      name: 'Notícia',
+      menuClass: 'white',
+      access: 'user',
+      isNav: false
+    }
+  },
   // Admin
   {
     path: '/admin',

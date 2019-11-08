@@ -28,7 +28,7 @@ class ArticleTableSeeder extends Seeder
             $article->title = $faker->sentence;
             $article->content = $faker->paragraphs(5, true);
             $article->article_type = rand(1, $types);
-            $article->image = $faker->imageUrl();
+            $article->image = 'https://picsum.photos/640/480/?'.rand(100, 200);
             $article->save();
         }
     }

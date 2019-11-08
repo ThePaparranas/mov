@@ -21,6 +21,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Article[] $articles
+ * @property-read int|null $articles_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $friends_i_am_recipient
  * @property-read int|null $friends_i_am_recipient_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $friends_i_am_sender
