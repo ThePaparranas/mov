@@ -40,7 +40,7 @@ class ForgotPasswordController extends Controller
      */
     protected function validateEmail(Request $request)
     {
-        $this->validate($request, [ // TODO: why method not found in phpstorm?
+        $this->validate($request, [
             'email' => 'required|email',
             'username' => ['present', 'string', 'nullable', new EmptyString],
         ]);
