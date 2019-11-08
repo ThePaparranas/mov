@@ -2,36 +2,68 @@
     <main>
         <TopNav/>
 
-        <section :class="sectionClass">
+        <section :class="routeName">
             <router-view v-cloak/>
         </section>
 
-        <Premium/>
+        <Premium v-if="!user.isAdmin"/>
 
-        <Footer/>
+        <Footer v-if="!user.isAdmin"/>
     </main>
 </template>
 
 <script>
-    import TopNav from './Nav'
-    import Premium from './Premium'
-    import Footer from './Footer'
+  import TopNav from './Nav'
+  import Footer from './Footer'
+  import Premium from './Premium'
 
-    export default {
-        name: 'App',
+  import { appMethods, authMethods, localSettingsComputed } from '../store/storetools'
 
-        computed: {
-            sectionClass () {
-                return this.$route.meta.name
-            }
-        },
+  export default {
+    beforeMount () {
+      let appSettings = {
+        appName: this.appName,
+        baseDir: this.baseDir
+      }
 
-        components: {
-            TopNav,
-            Premium,
-            Footer
-        }
+      this.setUser(this.user) // authMethods
+      this.setApp(appSettings) // appMethods
+    },
+
+    computed: {
+      routeName () {
+        return this.$route.meta.name
+      }
+    },
+
+    components: {
+      TopNav,
+      Premium,
+      Footer
+    },
+
+    methods: {
+      ...appMethods,
+      ...authMethods
+    },
+
+    name: 'App',
+
+    props: {
+      appName: {
+        required: true,
+        type: String
+      },
+      baseDir: {
+        required: true,
+        type: String
+      },
+      user: {
+        required: true,
+        type: Object
+      }
     }
+  }
 </script>
 
 <style>

@@ -1,34 +1,40 @@
 <?php
 
-Route::any('{all}', function () {
-    return view('site');
-})->where(['all' => '.*']);
+use App\Http\Controllers\Front\Api\NewsController;
+use App\Http\Controllers\Front\Api\MovieDataController;
+use App\Http\Controllers\Front\Api\NewsTypesController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-/* Route::get('/', function () {
-    return view('welcome');
+Route::group([
+    'as'         => 'FrontApi::',
+    'prefix'     => 'FrontApi',
+    'middleware' => 'web',
+], function () {
+    Route::get('omdb/{imdbId}', [MovieDataController::class, 'getOmdbData']);
+    Route::get('news', [NewsController::class, 'index']);
+    Route::get('news/slug/{slug}', [NewsController::class, 'getBySlug']);
+    Route::get('news/categories', [NewsTypesController::class, '__invoke']);
 });
 
-Auth::routes();
+Route::group([
+    'as'         => 'Admin::',
+    'prefix'     => 'admin',
+    'middleware' => 'web',
+], function () {
+    // GUEST
+    Route::group([], function () {
+    });
 
-Route::get('/admin', 'HomeController@admin')->name('admin');
-Route::get('/home', 'HomeController@home')->name('home');
-Route::get('/filmes', 'FilmesController@filmes')->name('filmes');
-Route::get('/filme', 'FilmeController@filme')->name('filme');
-Route::get('/perfil', 'PerfilController@perfil')->name('perfil');
-Route::get('/noticias', 'NoticiasController@noticias')->name('noticias');
-Route::get('/noticia', 'NoticiaController@noticia')->name('noticia');
-Route::get('/forum', 'ForumController@forum')->name('forum');
-Route::get('/topics', 'TopicsController@topics')->name('topics');
-Route::get('/topic', 'TopicController@topic')->name('topic');
-Route::get('/premium', 'PremiumController@premium')->name('premium'); */
+    // AUTH
+    Route::group([
+        'middleware' => 'auth',
+    ], function () {
+        //
+    });
+
+});
+
+Auth::routes(['verify' => true]);
+
+Route::any('{all}', function () {
+    return view('site');
+})->where(['all' => '.*'])->middleware('verified');

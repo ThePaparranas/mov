@@ -15,9 +15,10 @@ class CreateMoviesTable extends Migration
     {
         Schema::create('movies', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('type');
+            $table->integer('uploader')->index();
+            $table->integer('type')->index();
+            $table->integer('provider_id')->index();
             $table->string('imdb_id', 10)->unique()->index();
-            $table->integer('provider_id', 10)->index();
 
             $table->timestamps();
         });
