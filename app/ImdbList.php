@@ -6,21 +6,34 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
+ * App\ImdbList
+ *
  * @property int $id
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
- * @property mixed $updates
- * @property bool $outdated
- * @property string name
- * @property string url
- * @property string $bytes
+ * @property string $name
+ * @property string $url
+ * @property string $description
  * @property int $size
  * @property int $linecount
- * @property mixed $splits
- * @method static ImdbList find($id)
- * @method static ImdbList whereName($list)
- * @method static ImdbList first()
- * @mixin Model
+ * @property string $last_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read string $bytes
+ * @property-read bool $outdated
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\ImdbListsSplit[] $splits
+ * @property-read int|null $splits_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ImdbList newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ImdbList newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ImdbList query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ImdbList whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ImdbList whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ImdbList whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ImdbList whereLastId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ImdbList whereLinecount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ImdbList whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ImdbList whereSize($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ImdbList whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ImdbList whereUrl($value)
+ * @mixin \Eloquent
  */
 class ImdbList extends Model
 {

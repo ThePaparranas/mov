@@ -45,5 +45,4 @@ class ForgotPasswordController extends Controller
             'username' => ['present', 'string', 'nullable', new EmptyString],
         ]);
     }
-
 }

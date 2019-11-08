@@ -1,8 +1,5 @@
 <?php
 
-use App\Http\Controllers\Auth\ForgotPasswordController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Front\Api\MovieDataController;
 
 Route::group([
@@ -36,10 +33,11 @@ Route::post('login', [LoginController::class, 'login'])->name('login');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('request_password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');*/
-Auth::routes();
+Auth::routes(['verify' => true]);
+
 Route::any('{all}', function () {
     return view('site');
-})->where(['all' => '.*']);
+})->where(['all' => '.*'])->middleware('verified');
 
 /*
 |--------------------------------------------------------------------------

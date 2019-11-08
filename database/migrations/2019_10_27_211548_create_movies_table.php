@@ -17,8 +17,8 @@ class CreateMoviesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('uploader')->index();
             $table->integer('type')->index();
+            $table->integer('provider_id')->index();
             $table->string('imdb_id', 10)->unique()->index();
-            $table->integer('provider_id', 10)->index();
 
             $table->timestamps();
         });

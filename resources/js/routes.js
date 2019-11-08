@@ -1,4 +1,5 @@
 import Home from './pages/home'
+import News from './pages/News'
 import Admin from './pages/admin'
 import Filmes from './pages/filmes'
 
@@ -21,6 +22,17 @@ const routes = [
       access: 'user'
     }
   },
+  {
+    path: '/news',
+    component: News,
+    meta: {
+      name: 'Notícias',
+      menuClass: 'white',
+      access: 'user'
+    }
+  },
+
+  // Admin
   {
     path: '/admin',
     component: Admin,
