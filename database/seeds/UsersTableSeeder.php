@@ -34,7 +34,7 @@ class UsersTableSeeder extends Seeder
         $admin->name = 'João Caetano';
         $admin->email = 'thepaparranas@gmail.com';
         $admin->password = bcrypt('champion');
-        $dev->email_verified_at = Carbon::now();
+        $admin->email_verified_at = Carbon::now();
         $admin->save();
         $admin->roles()->attach($user_admin);
 
@@ -42,7 +42,7 @@ class UsersTableSeeder extends Seeder
         $mod->name = 'Bogus Mod';
         $mod->email = 'moderator@example.com';
         $mod->password = bcrypt('secret');
-        $dev->email_verified_at = Carbon::now();
+        $admin->email_verified_at = Carbon::now();
         $mod->save();
         $mod->roles()->attach($user_moderator);
 
@@ -50,7 +50,7 @@ class UsersTableSeeder extends Seeder
         $man->name = 'Fake Manager';
         $man->email = 'manager@example.com';
         $man->password = bcrypt('secret');
-        $dev->email_verified_at = Carbon::now();
+        $admin->email_verified_at = Carbon::now();
         $man->save();
         $man->roles()->attach($user_manager);
 
@@ -58,7 +58,7 @@ class UsersTableSeeder extends Seeder
         $user->name = 'Wannabe Sumtin';
         $user->email = 'user@example.com';
         $user->password = bcrypt('secret');
-        $dev->email_verified_at = Carbon::now();
+        $admin->email_verified_at = Carbon::now();
         $user->save();
         $user->roles()->attach($user_basic);
 
