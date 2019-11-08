@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * App\Article
@@ -15,6 +16,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $image
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\User $author
+ * @property-read \App\ArticleType $type
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article query()
@@ -43,13 +46,13 @@ class Article extends Model
         'image',
     ];
 
-    public function type(): void
+    public function type(): HasOne
     {
-        $this->hasOne(ArticleType::class);
+        return $this->hasOne(ArticleType::class, 'id', 'article_type');
     }
 
-    public function author(): void
+    public function author(): HasOne
     {
-        $this->belongsTo(User::class, 'id', 'author_id');
+        return $this->hasOne(User::class, 'id', 'author_id');
     }
 }

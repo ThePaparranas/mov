@@ -1,7 +1,7 @@
 import { showRequestError } from '../tools/request-errors'
 
-const appHome = '/admin'
-const apiBase = `${appHome}/api`
+const appHome = '/FrontApi'
+const apiBase = `${appHome}`
 
 function createBlob (blob, name = 'log.txt') {
   let downloadUrl = window.URL.createObjectURL(new Blob([blob]))

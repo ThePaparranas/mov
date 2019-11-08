@@ -56,13 +56,13 @@
 
       userRoutes () {
         return filter(routes, function (o) {
-          return o.meta.access === 'user'
+          return o.meta.isNav && o.meta.access === 'user'
         })
       },
 
       adminRoutes () {
         return filter(routes, function(o){
-          return o.meta.access === 'admin'
+          return o.meta.isNav && o.meta.access === 'admin'
         })
       },
 

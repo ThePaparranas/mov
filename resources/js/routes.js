@@ -10,7 +10,8 @@ const routes = [
     meta: {
       name: 'Home',
       menuClass: 'transparent',
-      access: 'user'
+      access: 'user',
+      isNav: true
     }
   },
   {
@@ -19,7 +20,8 @@ const routes = [
     meta: {
       name: 'Filmes',
       menuClass: 'white',
-      access: 'user'
+      access: 'user',
+      isNav: true
     }
   },
   {
@@ -28,7 +30,8 @@ const routes = [
     meta: {
       name: 'Notícias',
       menuClass: 'white',
-      access: 'user'
+      access: 'user',
+      isNav: true
     }
   },
 
@@ -39,7 +42,8 @@ const routes = [
     meta: {
       name: 'Admin',
       menuClass: 'white',
-      access: 'admin'
+      access: 'admin',
+      isNav: true
     }
   }
 ]

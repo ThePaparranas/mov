@@ -28,7 +28,7 @@ class ArticleType extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
+        'article_id', 'name',
     ];
 
     public function articles(): void
