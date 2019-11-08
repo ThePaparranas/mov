@@ -20,7 +20,7 @@ class ArticleTableSeeder extends Seeder
         $faker = Faker::create();
         $users = User::all()->count();
         $types = ArticleType::all()->count();
-        $max = 5;
+        $max = 30;
 
         for ($i = 0; $i <= $max; $i++) {
             $article = new Article();

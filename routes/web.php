@@ -8,6 +8,7 @@ Route::group([
     'middleware' => 'web',
 ], function () {
     Route::get('omdb/{imdbId}', [MovieDataController::class, 'getOmdbData']);
+    //Route::get('news', [NewsController::class, 'index']);
 });
 
 Route::group([
