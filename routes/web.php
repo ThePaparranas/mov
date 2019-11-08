@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Front\Api\NewsController;
 use App\Http\Controllers\Front\Api\MovieDataController;
+use App\Http\Controllers\Front\Api\NewsTypesController;
 
 Route::group([
     'as'         => 'FrontApi::',
@@ -10,6 +11,7 @@ Route::group([
 ], function () {
     Route::get('omdb/{imdbId}', [MovieDataController::class, 'getOmdbData']);
     Route::get('news', [NewsController::class, 'index']);
+    Route::get('news/categories', [NewsTypesController::class, '__invoke']);
 });
 
 Route::group([

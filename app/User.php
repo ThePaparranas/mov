@@ -4,6 +4,8 @@ namespace App;
 
 use App\Mov\Friends\Friendable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -81,10 +83,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function roles()
+    public function roles(): BelongsToMany
     {
         return $this->belongsToMany(
             Role::class,
@@ -92,6 +91,11 @@ class User extends Authenticatable implements MustVerifyEmail
             'user_id',
             'role_id'
         );
+    }
+
+    public function articles(): HasMany
+    {
+        return $this->hasMany(Article::class, 'author_id', 'id');
     }
 
     /**

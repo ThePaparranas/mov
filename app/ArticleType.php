@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * App\ArticleType
@@ -11,6 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Article[] $articles
+ * @property-read int|null $articles_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ArticleType newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ArticleType newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ArticleType query()
@@ -31,8 +34,8 @@ class ArticleType extends Model
         'article_id', 'name',
     ];
 
-    public function articles(): void
+    public function articles(): HasMany
     {
-        $this->belongsToMany(Article::class);
+        return $this->hasMany(Article::class, 'article_type', 'id');
     }
 }
