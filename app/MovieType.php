@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * App\MovieType
@@ -31,4 +32,13 @@ class MovieType extends Model
         'name',
     ];
 
+    /**
+     * Every type can have MANY movies
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function movies(): HasMany
+    {
+        return $this->hasMany(Movie::class, 'type', 'id');
+    }
 }
