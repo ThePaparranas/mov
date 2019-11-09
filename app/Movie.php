@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * App\Movie
@@ -40,13 +41,23 @@ class Movie extends Model
         'provider_id',
     ];
 
-    public function type(): void
+    /**
+     * Every movie has ONE type
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function type(): HasOne
     {
-        $this->hasOne(MovieType::class);
+        return $this->hasOne(MovieType::class);
     }
 
-    public function provider(): void
+    /**
+     * Every movie has ONE provider
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function provider(): HasOne
     {
-        $this->hasOne(Provider::class);
+        return $this->hasOne(Provider::class);
     }
 }
