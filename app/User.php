@@ -85,6 +85,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(
@@ -95,6 +98,11 @@ class User extends Authenticatable implements MustVerifyEmail
         );
     }
 
+    /**
+     * Every user can have MANY articles
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function articles(): HasMany
     {
         return $this->hasMany(Article::class, 'author_id', 'id');
@@ -146,6 +154,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return 'https://www.gravatar.com/avatar/'.md5($this->email).'?d=mm&s=256';
     }
 
+    /**
+     * Defines and appends the isAdmin attribute to the User Model
+     *
+     * @return bool
+     */
     public function getIsAdminAttribute(): bool
     {
         return $this->isAdmin();
