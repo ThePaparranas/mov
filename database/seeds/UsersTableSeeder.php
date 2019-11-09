@@ -1,5 +1,6 @@
 <?php
 
+use App\BannedCommenter;
 use App\Role;
 use App\User;
 use Carbon\Carbon;
@@ -70,5 +71,19 @@ class UsersTableSeeder extends Seeder
         // $user->email_verified_at = Carbon::now();
         $user->save();
         $user->roles()->attach($user_basic);
+
+        // banned
+        $user = new User();
+        $user->name = 'Ban Me';
+        $user->email = 'banme@example.com';
+        $user->password = bcrypt('secret');
+        $user->email_verified_at = Carbon::now();
+        $user->save();
+        $user->roles()->attach($user_basic);
+
+        $ban = new BannedCommenter();
+        $ban->user_id = $user->id;
+        $ban->days = 1;
+        $ban->save();
     }
 }

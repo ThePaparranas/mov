@@ -5,13 +5,19 @@
         </div>
 
         <div v-else>
-            Nope
+            <not-found/>
         </div>
     </div>
 </template>
 
 <script>
+  import notFound from '../components/error404'
+
   export default {
+    components: {
+      notFound
+    },
+
     name: 'Admin'
   }
 </script>
