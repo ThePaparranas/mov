@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Front\Api;
 
 use App\Article;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\FrontApiController as Controller;
@@ -20,7 +19,12 @@ class NewsController extends Controller
         return $this->respond(Article::all()->load(['type', 'author']));
     }
 
-    public function getBySlug($slug)
+    /**
+     * @param string $slug
+     *
+     * @return JsonResponse
+     */
+    public function getBySlug(string $slug): JsonResponse
     {
         $deslugged = $this->deslug($slug);
         $slg = $deslugged['slug'];
@@ -31,8 +35,10 @@ class NewsController extends Controller
                 return $query->where('title', 'like', '%' . $slg . '%');
             })
             ->first();
+
         if (! is_null($nw)) {
             $nw->load(['type', 'author']);
+
             return $this->respond($nw);
         }
 
@@ -105,13 +111,18 @@ class NewsController extends Controller
         //
     }
 
-    protected function deslug($slug): array
+    /**
+     * @param string $slug
+     *
+     * @return array
+     */
+    protected function deslug(string $slug): array
     {
         $exp = explode('_', $slug);
 
         return [
             'slug' => str_replace('-', ' ', $exp[0]),
-            'date' => $exp[1]
+            'date' => $exp[1],
         ];
     }
 }
