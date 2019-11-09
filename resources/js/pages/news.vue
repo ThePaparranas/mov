@@ -3,9 +3,7 @@
         <div class="mt-16 w-full flex flex-row">
             <news-cats :cats="categories" v-on:change="changeFilter($event)"/>
 
-<!--
-            <news-list :filters="filters" :items="news"/>
--->
+            <news-list :filters="filters" :filterIdxs="filterIdxs" :items="news"/>
         </div>
     </div>
 </template>
@@ -29,7 +27,8 @@
       return {
         categories: [],
         news: [],
-        filters: []
+        filters: [],
+        filterIdxs: []
       }
     },
 
@@ -39,7 +38,8 @@
 
     methods: {
       changeFilter (evt) {
-        console.log(evt)
+        this.filters = evt[0]
+        this.filterIdxs = evt[1]
       },
 
       fetchData () {
