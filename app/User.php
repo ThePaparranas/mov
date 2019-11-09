@@ -28,7 +28,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $friends_i_am_sender
  * @property-read int|null $friends_i_am_sender_count
  * @property-read string $gravatar
- * @property-read mixed $is_admin
+ * @property-read bool $is_admin
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Role[] $roles

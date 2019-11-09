@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\User $author
- * @property-read mixed $slug
+ * @property-read string $slug
  * @property-read \App\ArticleType $type
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article newQuery()

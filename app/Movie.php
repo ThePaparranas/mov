@@ -10,11 +10,13 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  *
  * @property int $id
  * @property int $uploader
- * @property int $type
+ * @property \App\MovieType $type
  * @property int $provider_id
  * @property string $imdb_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\MovieDetail $details
+ * @property-read \App\Provider $provider
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Movie newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Movie newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Movie query()
