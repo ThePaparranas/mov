@@ -5,7 +5,6 @@
         <div class="movie-card flex flex-row w-full p-2 bg-gray-200 rounded my-2"
              v-for="item in items" :key="item.id">
             <div class="w-2/12 flex flex-col">
-                <p class="text-center mb-1">{{ item.type.name }}</p>
                 <img :src="item.image" :alt="item.title" class="rounded">
             </div>
 
@@ -14,8 +13,17 @@
                 <p class="w-full text-lg font-bold inline-block text-red">{{ item.title }}</p>
 -->
                 <router-link v-if="item.slug"
-                             :to="{ name: 'NewsArticle', params: { item, slug: item.slug } }"
-                             class="w-full text-lg font-bold inline-block text-red">{{ item.title }}</router-link>
+                     :to="{ name: 'NewsArticle', params: { item, slug: item.slug } }"
+                     class="w-full text-lg font-bold inline-block text-red">{{ item.title }}
+                </router-link>
+                <div class="py-2">
+                    <span class="bg-red-1000 px-3 py-1 text-white inline-block no-grow self-start">{{ item.type.name }}</span>
+                </div>
+
+                <div class="py-2">
+                    <span class="">{{ item.content }}</span>
+                </div>
+
                 <div class="flex flex-1 flex-row items-end content-between justify-between">
                     <p class="flex flex-row items-center justify-around">
                         <span class="">{{ item.author.name }}</span>

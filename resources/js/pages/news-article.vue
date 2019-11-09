@@ -17,7 +17,10 @@
 </template>
 
 <script>
-  import newsApi from '../services/api/newsApi'
+    import newsApi from '../services/api/newsApi'
+    import newsList from '../components/NewsList'
+    import newsCats from '../components/NewsFilter'
+
 
   export default {
     mounted () {
