@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col w-3/4 bg-white rounded p-4 m-2">
-        <span class="text-xl font-bold">Notícias > {{ filterToTxt }}</span>
+        <span class="text-xl font-bold">Notícias > {{ filterToTxt }} ({{ filteredItems.length}})</span>
 
         <div class="movie-card flex flex-row w-full p-2 bg-gray-200 rounded my-2"
              v-for="item in filteredItems"
@@ -34,7 +34,8 @@
   export default {
     data () {
       return {
-        filtered: ''
+        filtered: '',
+        count: 0
       }
     },
 
