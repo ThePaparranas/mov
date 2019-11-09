@@ -1,9 +1,11 @@
 <template>
     <div class="p-6">
         <div class="mt-16 w-full flex flex-row">
-            <news-cats :cats="categories"/>
+            <news-cats :cats="categories" v-on:change="changeFilter($event)"/>
 
+<!--
             <news-list :filters="filters" :items="news"/>
+-->
         </div>
     </div>
 </template>
@@ -36,6 +38,10 @@
     },
 
     methods: {
+      changeFilter (evt) {
+        console.log(evt)
+      },
+
       fetchData () {
         newsApi.categories().then((r) => {
           this.categories = r
