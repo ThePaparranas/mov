@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ProvidersSeeder::class);
         $this->call(ArticleTypesSeeder::class);
         $this->call(ArticleTableSeeder::class);
+        $this->call(BannedCommentersSeeder::class);
     }
 }

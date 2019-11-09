@@ -34,6 +34,11 @@ class ArticleType extends Model
         'article_id', 'name',
     ];
 
+    /**
+     * A type can correspond to many articles
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function articles(): HasMany
     {
         return $this->hasMany(Article::class, 'article_type', 'id');

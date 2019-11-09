@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\User $author
- * @property-read mixed $slug
+ * @property-read string $slug
  * @property-read \App\ArticleType $type
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article newQuery()
@@ -57,16 +57,31 @@ class Article extends Model
         'slug',
     ];
 
+    /**
+     * Define and append a slug to the Article model
+     *
+     * @return string
+     */
     public function getSlugAttribute(): string
     {
         return Str::slug($this->title).'_'.$this->created_at->toDateString();
     }
 
+    /**
+     * Every article has ONE type
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function type(): HasOne
     {
         return $this->hasOne(ArticleType::class, 'id', 'article_type');
     }
 
+    /**
+     * Every article has ONE author
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function author(): HasOne
     {
         return $this->hasOne(User::class, 'id', 'author_id');

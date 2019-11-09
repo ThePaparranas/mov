@@ -3,17 +3,20 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * App\Movie
  *
  * @property int $id
  * @property int $uploader
- * @property int $type
+ * @property \App\MovieType $type
  * @property int $provider_id
  * @property string $imdb_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\MovieDetail $details
+ * @property-read \App\Provider $provider
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Movie newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Movie newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Movie query()
@@ -40,13 +43,33 @@ class Movie extends Model
         'provider_id',
     ];
 
-    public function type(): void
+    /**
+     * Every movie has ONE type
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function type(): HasOne
     {
-        $this->hasOne(MovieType::class);
+        return $this->hasOne(MovieType::class);
     }
 
-    public function provider(): void
+    /**
+     * Every movie has ONE provider
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function provider(): HasOne
     {
-        $this->hasOne(Provider::class);
+        return $this->hasOne(Provider::class);
+    }
+
+    /**
+     * Every movie has ONE details
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function details(): HasOne
+    {
+        return $this->hasOne(MovieDetail::class);
     }
 }

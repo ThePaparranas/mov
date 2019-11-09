@@ -2,13 +2,13 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use App\Mov\Friends\Friendable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * App\User
@@ -23,12 +23,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Article[] $articles
  * @property-read int|null $articles_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\BannedCommenter[] $commentBans
+ * @property-read int|null $comment_bans_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $friends_i_am_recipient
  * @property-read int|null $friends_i_am_recipient_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $friends_i_am_sender
  * @property-read int|null $friends_i_am_sender_count
  * @property-read string $gravatar
- * @property-read mixed $is_admin
+ * @property-read bool $is_admin
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Role[] $roles
@@ -56,7 +58,10 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
-    protected $appends = ['gravatar', 'isAdmin',];
+    protected $appends = [
+        'gravatar',
+        'isAdmin',
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -64,7 +69,9 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -85,6 +92,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(
@@ -95,6 +105,11 @@ class User extends Authenticatable implements MustVerifyEmail
         );
     }
 
+    /**
+     * Every user can have MANY articles
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function articles(): HasMany
     {
         return $this->hasMany(Article::class, 'author_id', 'id');
@@ -146,6 +161,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return 'https://www.gravatar.com/avatar/'.md5($this->email).'?d=mm&s=256';
     }
 
+    /**
+     * Defines and appends the isAdmin attribute to the User Model
+     *
+     * @return bool
+     */
     public function getIsAdminAttribute(): bool
     {
         return $this->isAdmin();
@@ -159,5 +179,103 @@ class User extends Authenticatable implements MustVerifyEmail
     public function isAdmin(): bool
     {
         return $this->hasRole('Admin') || $this->hasRole('Dev');
+    }
+
+    /**
+     * Ban a user from commenting
+     *
+     * @param int $days The Ban interval in Days
+     *
+     * @return $this
+     */
+    public function ban(int $days)
+    {
+        $ban = new BannedCommenter();
+        $ban->user_id = $this->id;
+        $ban->days = $days;
+        $ban->save();
+
+        return $this;
+    }
+
+    /**
+     * Check if a user can comment
+     *
+     * @return bool
+     */
+    public function canComment(): bool
+    {
+        if (! $this->hasVerifiedEmail()) {
+            return false;
+        }
+
+        $bans = $this->commentBans();
+
+        if ($bans->count() === 0) {
+            return true;
+        }
+
+        $latest = $bans->latest()->first();
+
+        return $this->isBanExpired($latest);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function commentBans(): HasMany
+    {
+        return $this->hasMany(BannedCommenter::class);
+    }
+
+    /**
+     * The date A user can start commenting after ban
+     *
+     * @return \Carbon\Carbon|string
+     */
+    public function canCommentAt()
+    {
+        $bans = $this->commentBans();
+
+        if ($bans->count() === 0) {
+            return 'now';
+        }
+
+        $latest = $bans->latest()->first();
+
+        return $this->getExpireDate($latest);
+    }
+
+    /**
+     * @param $latest
+     *
+     * @return bool
+     */
+    protected function isBanExpired($latest): bool
+    {
+        $days = $latest->days;
+
+        if ($days === 0) {
+            return false;
+        }
+
+        $now = Carbon::now();
+
+        return $this->getExpireDate($latest) < $now;
+    }
+
+    /**
+     * @param $latest
+     *
+     * @return Carbon
+     */
+    protected function getExpireDate($latest): Carbon
+    {
+        $days = $latest->days;
+
+        /** @var Carbon $banned */
+        $banned= $latest->created_at;
+
+        return $banned->addDays($days);
     }
 }
