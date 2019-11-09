@@ -60,4 +60,14 @@ class Movie extends Model
     {
         return $this->hasOne(Provider::class);
     }
+
+    /**
+     * Every movie has ONE details
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function details(): HasOne
+    {
+        return $this->hasOne(MovieDetail::class);
+    }
 }
