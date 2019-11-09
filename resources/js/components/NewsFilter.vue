@@ -7,7 +7,7 @@
                 v-for="cat in cats"
                 :key="cat.id">
                 <button :class="bClass(cat.name)"
-                        @click="changeFilter(cat.name)">{{ cat.name }}
+                        @click="changeFilter(cat)">{{ cat.name }}
                     <check v-if="currentFilter.includes(cat.name)"></check></button>
             </li>
         </ul>
@@ -24,7 +24,8 @@
 
     data () {
       return {
-        currentFilter: []
+        currentFilter: [],
+        currentFilterIdx: []
       }
     },
 
@@ -37,18 +38,20 @@
       },
 
       changeFilter (cat) {
-        if (this.currentFilter.includes(cat)) {
-          let idx = this.currentFilter.indexOf(cat)
-          this.currentFilter.splice(idx, 1)
+        if (this.currentFilter.includes(cat.name)) {
+          let fltrIdx = this.currentFilter.indexOf(cat.name)
+          this.currentFilter.splice(fltrIdx, 1)
+          this.currentFilterIdx.splice(fltrIdx, 1)
         } else {
-          this.currentFilter.push(cat)
+          this.currentFilter.push(cat.name)
+          this.currentFilterIdx.push(cat.id.toString())
         }
       }
     },
 
     watch: {
       currentFilter (f) {
-        this.$emit('change', f)
+        this.$emit('change', [f, this.currentFilterIdx])
       }
     },
 
