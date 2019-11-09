@@ -1,5 +1,13 @@
 <template>
-    <div>Admin</div>
+    <div>
+        <div v-if="$store.state.user.isAdmin">
+            Admin
+        </div>
+
+        <div v-else>
+            Nope
+        </div>
+    </div>
 </template>
 
 <script>
