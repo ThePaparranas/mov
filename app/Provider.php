@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * App\Provider
@@ -30,4 +31,14 @@ class Provider extends Model
     protected $fillable = [
         'name',
     ];
+
+    /**
+     * Every provider can have MANY movies
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function movies(): HasMany
+    {
+        return $this->hasMany(Movie::class, 'provider_id', 'id');
+    }
 }
