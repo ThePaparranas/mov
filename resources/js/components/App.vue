@@ -1,69 +1,69 @@
 <template>
-    <main>
-        <TopNav/>
+  <main>
+    <TopNav />
 
-        <section :class="routeName">
-            <router-view v-cloak/>
-        </section>
+    <section :class="routeName">
+      <router-view v-cloak />
+    </section>
 
-        <Premium v-if="!user.isAdmin"/>
+    <Premium v-if="!user.isAdmin" />
 
-        <Footer v-if="!user.isAdmin"/>
-    </main>
+    <Footer v-if="!user.isAdmin" />
+  </main>
 </template>
 
 <script>
-  import TopNav from './Nav'
-  import Footer from './Footer'
-  import Premium from './Premium'
+import TopNav from './Nav'
+import Footer from './Footer'
+import Premium from './Premium'
 
-  import { appMethods, authMethods, localSettingsComputed } from '../store/storetools'
+import { appMethods, authMethods, localSettingsComputed } from '../store/storetools'
 
-  export default {
-    beforeMount () {
-      let appSettings = {
-        appName: this.appName,
-        baseDir: this.baseDir
-      }
+export default {
+  name: 'App',
 
-      this.setUser(this.user) // authMethods
-      this.setApp(appSettings) // appMethods
+  components: {
+    TopNav,
+    Premium,
+    Footer
+  },
+
+  props: {
+    appName: {
+      required: true,
+      type: String
     },
-
-    computed: {
-      routeName () {
-        return this.$route.meta.name
-      }
+    baseDir: {
+      required: true,
+      type: String
     },
-
-    components: {
-      TopNav,
-      Premium,
-      Footer
-    },
-
-    methods: {
-      ...appMethods,
-      ...authMethods
-    },
-
-    name: 'App',
-
-    props: {
-      appName: {
-        required: true,
-        type: String
-      },
-      baseDir: {
-        required: true,
-        type: String
-      },
-      user: {
-        required: true,
-        type: Object
-      }
+    user: {
+      required: true,
+      type: Object
     }
+  },
+
+  computed: {
+    routeName () {
+      return this.$route.meta.name
+    }
+  },
+
+  beforeMount () {
+    const appSettings = {
+      appName: this.appName,
+      baseDir: this.baseDir
+    }
+
+    this.setUser(this.user) // authMethods
+    this.setApp(appSettings) // appMethods
+  },
+
+  methods: {
+    ...appMethods,
+    ...authMethods
   }
+}
 </script>
 
 <style>

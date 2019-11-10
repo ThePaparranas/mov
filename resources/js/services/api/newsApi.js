@@ -16,7 +16,7 @@ const newsApi = {
       .catch(e => showRequestError(e))
   },
 
-  getBySlug(slug) {
+  getBySlug (slug) {
     return http.get(`${newsBaseUri}/slug/${slug}`)
       .then(r => Promise.resolve(r.data))
       .catch(e => showRequestError(e))

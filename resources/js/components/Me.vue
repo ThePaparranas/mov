@@ -1,19 +1,19 @@
 <template>
-    <div>
-        <span v-html="userName"/>
-    </div>
+  <div>
+    <span>{{ userName }}</span>
+  </div>
 </template>
 
 <script>
-  export default {
-    computed: {
-      userName () {
-        return this.$store.state.user.name
-      }
-    },
+export default {
 
-    name: 'Me'
+  name: 'Me',
+  computed: {
+    userName () {
+      return this.$store.state.user.name
+    }
   }
+}
 </script>
 
 <style lang="sass" scoped>

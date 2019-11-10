@@ -9,11 +9,9 @@ import router from './router'
 import VueRouter from 'vue-router'
 import Warehouse from './store/store'
 
-//import BootstrapVue from 'bootstrap-vue'
-
-// import 'bootstrap/dist/css/bootstrap.css'
-// will replace vue-bootstrap with vuetable (https://github.com/ratiw/vuetable-2)
-//import 'bootstrap-vue/dist/bootstrap-vue.css'
+// import BootstrapVue from 'bootstrap-vue'
+import { ModalPlugin, TablePlugin } from 'bootstrap-vue'
+import './bootstrap-vue-custom.scss'
 import 'vue-material-design-icons/styles.css'
 
 require('./bootstrap');
@@ -33,7 +31,9 @@ require('babel-polyfill');
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
-//Vue.use(BootstrapVue)
+// Vue.use(BootstrapVue)
+Vue.use(ModalPlugin)
+Vue.use(TablePlugin)
 
 Vue.component('App', require('./components/App.vue').default);
 
