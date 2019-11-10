@@ -1,6 +1,6 @@
 <template>
-    <nav :class="navClass">
-        <div class="flex flex-no-shrink items-stretch h-12 text-teal-100">
+    <nav :class="navClass" class="fixed">
+        <div class="flex flex-no-shrink items-stretch h-12 text-red-1000">
             <router-link :class="mainMenuClass"
                          v-for="route in userRoutes"
                          :key="Math.random()"
@@ -69,15 +69,15 @@
       navClass () {
         let current = this.$route.meta.menuClass
 
-        return current + ' relative select-none bg-teal-700 lg:flex lg:items-stretch w-full'
+        return current + 'fixed select-none bg-white lg:flex lg:items-stretch w-full border-b-4 border-red-1000'
       },
 
       mainMenuClass () {
-        return 'bg-fade flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-teal-600'
+        return 'bg-fade text-gray-800 hover:text-white flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center hover:bg-red-1000'
       },
 
       userMenuClass () {
-        return 'bg-fade flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-teal-600'
+        return 'bg-fade text-gray-800 hover:text-white flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center hover:bg-red-1000'
       }
     },
 

@@ -31,8 +31,8 @@
 
     methods: {
       bClass (cat) {
-        let baseClass = ' my-2 w-100 hover:bg-blue-500 bg-fade font-semibold hover:text-blue-100 py-2 px-4 border border-blue-600 rounded'
-        let activeClass = this.currentFilter.includes(cat) ? ' bg-blue-500 text-blue-100' : ' text-blue-700 bg-blue-200'
+        let baseClass = ' my-2 w-100 hover:bg-red-1000 bg-fade text-xs hover:text-white py-2 px-4 rounded'
+        let activeClass = this.currentFilter.includes(cat) ? ' bg-red-1000 text-white' : ' bg-gray-200'
 
         return baseClass + activeClass
       },

@@ -1,7 +1,7 @@
 <template>
-  <div class="logout-box hover:bg-teal-700">
+  <div class="logout-box hover:bg-red-1000 text-gray-800 hover:text-white">
     <a
-      class="logout"
+      class="logout text-gray-800 hover:text-white"
       title="Logout"
       href="#"
       @click.prevent="logout()"
@@ -51,11 +51,9 @@ export default {
   .p51
     padding: 0.5rem 0
   .logout
-    color: rgba(255, 255, 255, 0.5)
     display: flex
     align-items: center
     transition: all .3s ease
     &:hover
-      color: red
       text-decoration: none
 </style>

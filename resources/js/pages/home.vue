@@ -9,13 +9,13 @@
                 <img src="img/perfil/cover/ThePaparranas.jpg" class="cover w-full object-cover object-bottom opacity-50">
             </div>
 
-            <div class="flex flex-row p-4">
+<!--            <div class="flex flex-row p-4">
                 <div class="api-test">
                     <pre>
                         {{ imdb }}
                     </pre>
                 </div>
-            </div>
+            </div>-->
 
             <div class="flex flex-row p-4">
                 <div class="flex flex-col w-3/4 p-2">
@@ -71,7 +71,7 @@
                     </div>
 
 
-                    <div class="flex flex-col w-full bg-white rounded p-4">
+                    <div class="flex flex-col w-full bg-white rounded p-4 my-4">
                         <div class="flex flex-row">
                             <div class="flex self-center w-full">
                                 <router-link to="/filmes" class="text-3xl">
