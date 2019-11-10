@@ -4,8 +4,8 @@ const appHome = '/FrontApi'
 const apiBase = `${appHome}`
 
 function createBlob (blob, name = 'log.txt') {
-  let downloadUrl = window.URL.createObjectURL(new Blob([blob]))
-  let downloadLink = document.createElement('a')
+  const downloadUrl = window.URL.createObjectURL(new Blob([blob]))
+  const downloadLink = document.createElement('a')
 
   downloadLink.href = downloadUrl
   downloadLink.setAttribute('download', `laravel-log-${name}`)
@@ -19,8 +19,8 @@ function createBlob (blob, name = 'log.txt') {
 
 function uuid () {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    let r = Math.random() * 16 | 0
-    let v = c === 'x'
+    const r = Math.random() * 16 | 0
+    const v = c === 'x'
       ? r
       : (r & 0x3 | 0x8)
     return v.toString(16)
@@ -29,7 +29,7 @@ function uuid () {
 
 function normalizePayloadMethod (payload, method, force = false) {
   if (force && payload === undefined) {
-    throw new Error(`Dude, we need a fucking payload!`)
+    throw new Error('Dude, we need a fucking payload!')
   }
 
   if (!payload.hasOwnProperty('_method') || payload._method !== method) {

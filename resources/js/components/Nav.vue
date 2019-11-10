@@ -10,13 +10,6 @@
                          :key="Math.random()"
                          :to="route.path"
                          v-if="user.isAdmin">{{ route.meta.name}}</router-link>
-<!--
-            <router-link :class="mainMenuClass" to="/admin" v-if="user.isAdmin">Admin</router-link>
-
-            <router-link :class="mainMenuClass" to="/home">Home</router-link>
-
-            <router-link :class="mainMenuClass" to="/filmes">Filmes</router-link>
--->
 
             <button class="block lg:hidden cursor-pointer ml-auto relative w-12 h-12 p-4">
                 <svg width="20"
@@ -38,39 +31,41 @@
 </template>
 
 <script>
-  import me from './Me'
-  import routes from '../routes'
-  import logout from './Logout.vue'
+import me from './Me'
+import routes from '../routes'
+import logout from './Logout.vue'
 
-  import { filter } from 'lodash'
-  import { userComputed } from '../store/storetools'
+import { filter } from 'lodash'
+import { userComputed } from '../store/storetools'
 
-  export default {
-    components: {
-      logout,
-      me
+export default {
+  name: 'TopNav',
+
+  components: {
+    logout,
+    me
+  },
+
+  computed: {
+    ...userComputed,
+
+    userRoutes () {
+      return filter(routes, function (o) {
+        return o.meta.isNav && o.meta.access === 'user'
+      })
     },
 
-    computed: {
-      ...userComputed,
+    adminRoutes () {
+      return filter(routes, function (o) {
+        return o.meta.isNav && o.meta.access === 'admin'
+      })
+    },
 
-      userRoutes () {
-        return filter(routes, function (o) {
-          return o.meta.isNav && o.meta.access === 'user'
-        })
-      },
+    navClass () {
+      const current = this.$route.meta.menuClass
 
-      adminRoutes () {
-        return filter(routes, function(o){
-          return o.meta.isNav && o.meta.access === 'admin'
-        })
-      },
-
-      navClass () {
-        let current = this.$route.meta.menuClass
-
-        return current + 'fixed select-none bg-white lg:flex lg:items-stretch w-full border-b-4 border-red-1000'
-      },
+      return current + ' relative select-none bg-teal-700 lg:flex lg:items-stretch w-full'
+    },
 
       mainMenuClass () {
         return 'bg-fade text-gray-800 hover:text-white flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center hover:bg-red-1000'
@@ -81,8 +76,11 @@
       }
     },
 
-    name: 'TopNav'
+    userMenuClass () {
+      return 'bg-fade flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-teal-600'
+    }
   }
+}
 </script>
 
 <style lang="sass" scoped>

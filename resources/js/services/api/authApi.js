@@ -4,7 +4,7 @@ import { showRequestError } from './Api'
 const authApi = {
   async logout () {
     try {
-      await http.post(`/logout`)
+      await http.post('/logout')
       return Promise.resolve(true)
     } catch (e) {
       return showRequestError(e)
