@@ -20,9 +20,10 @@
 
 <script>
 import newsApi from '../services/api/newsApi'
+import newsList from '../components/NewsList'
+import newsCats from '../components/NewsFilter'
 
 export default {
-
   name: 'SingleNews',
 
   props: {
