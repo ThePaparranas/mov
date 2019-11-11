@@ -1,5 +1,5 @@
 <template>
-    <nav :class="navClass" class="fixed">
+    <nav :class="navClass" class="">
         <div class="flex flex-no-shrink items-stretch h-12 text-red-1000">
             <router-link :class="mainMenuClass"
                          v-for="route in userRoutes"
@@ -10,6 +10,13 @@
                          :key="Math.random()"
                          :to="route.path"
                          v-if="user.isAdmin">{{ route.meta.name}}</router-link>
+<!--
+            <router-link :class="mainMenuClass" to="/admin" v-if="user.isAdmin">Admin</router-link>
+
+            <router-link :class="mainMenuClass" to="/home">Home</router-link>
+
+            <router-link :class="mainMenuClass" to="/filmes">Filmes</router-link>
+-->
 
             <button class="block lg:hidden cursor-pointer ml-auto relative w-12 h-12 p-4">
                 <svg width="20"
@@ -31,58 +38,55 @@
 </template>
 
 <script>
-import me from './Me'
-import routes from '../routes'
-import logout from './Logout.vue'
+  import me from './Me'
+  import routes from '../routes'
+  import logout from './Logout.vue'
 
-import { filter } from 'lodash'
-import { userComputed } from '../store/storetools'
+  import { filter } from 'lodash'
+  import { userComputed } from '../store/storetools'
 
-export default {
-  name: 'TopNav',
-
-  components: {
-    logout,
-    me
-  },
-
-  computed: {
-    ...userComputed,
-
-    userRoutes () {
-      return filter(routes, function (o) {
-        return o.meta.isNav && o.meta.access === 'user'
-      })
+  export default {
+    components: {
+      logout,
+      me
     },
 
-    adminRoutes () {
-      return filter(routes, function (o) {
-        return o.meta.isNav && o.meta.access === 'admin'
-      })
-    },
+    computed: {
+      ...userComputed,
 
-    navClass () {
-      const current = this.$route.meta.menuClass
+      userRoutes () {
+        return filter(routes, function (o) {
+          return o.meta.isNav && o.meta.access === 'user'
+        })
+      },
 
-      return current + ' relative select-none bg-teal-700 lg:flex lg:items-stretch w-full'
-    },
+      adminRoutes () {
+        return filter(routes, function(o){
+          return o.meta.isNav && o.meta.access === 'admin'
+        })
+      },
+
+      navClass () {
+        let current = this.$route.meta.menuClass
+
+        return current + ' fixed z-50 select-none bg-white lg:flex lg:items-stretch w-full border-b-4 border-red-1000'
+      },
 
       mainMenuClass () {
-        return 'bg-fade text-gray-800 hover:text-white flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center hover:bg-red-1000'
+        return 'bg-fade text-gray-800 flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center bg-white hover:text-red-1000'
       },
 
       userMenuClass () {
-        return 'bg-fade text-gray-800 hover:text-white flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center hover:bg-red-1000'
+        return 'bg-fade text-gray-800 flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center bg-white hover:text-red-1000'
       }
     },
 
-    userMenuClass () {
-      return 'bg-fade flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-white no-underline flex items-center hover:bg-teal-600'
-    }
+    name: 'TopNav'
   }
-}
 </script>
 
 <style lang="sass" scoped>
-
+    .router-link-exact-active
+        color: #e3342f
+        font-weight: bold
 </style>

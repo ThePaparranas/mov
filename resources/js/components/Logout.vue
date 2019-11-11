@@ -1,11 +1,12 @@
 <template>
-  <div class="logout-box hover:bg-red-1000 text-gray-800 hover:text-white">
+  <div class="logout-box">
     <a
-      class="logout text-gray-800 hover:text-white"
+      class="logout"
       title="Logout"
       href="#"
       @click.prevent="logout()"
-    ><span class="d-none d-md-block text-lg"><standBy title="Logout" /></span><span class="d-block d-md-none p51">Logout</span></a>
+    ><span class="d-none d-md-block text-lg"><standBy title="Logout"/></span
+    ><span class="d-block d-md-none p51">Logout</span></a>
   </div>
 </template>
 
@@ -13,6 +14,7 @@
 import authApi from '../services/api/authApi'
 import standBy from 'vue-material-design-icons/PowerStandby'
 
+import { appHome } from '../services/api/Api'
 import { authMethods } from '../store/storetools'
 import { alertConfirm } from '../services/notifications'
 
@@ -46,6 +48,8 @@ export default {
   .logout-box
     display: flex
     align-items: center
+    &:hover
+      color: #000
   .p51
     padding: 0.5rem 0
   .logout
