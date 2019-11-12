@@ -17,7 +17,7 @@ import TopNav from './Nav'
 import Footer from './Footer'
 import Premium from './Premium'
 
-import { appMethods, authMethods, localSettingsComputed } from '../store/storetools'
+import { appMethods, authMethods/* , localSettingsComputed */ } from '../store/storetools'
 
 export default {
   name: 'App',
@@ -65,7 +65,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

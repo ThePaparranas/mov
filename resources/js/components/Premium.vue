@@ -23,7 +23,3 @@ export default {
   name: 'Premium'
 }
 </script>
-
-<style>
-
-</style>
