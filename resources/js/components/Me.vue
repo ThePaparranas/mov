@@ -6,8 +6,8 @@
 
 <script>
 export default {
-
   name: 'Me',
+
   computed: {
     userName () {
       return this.$store.state.user.name
@@ -15,7 +15,3 @@ export default {
   }
 }
 </script>
-
-<style lang="sass" scoped>
-
-</style>
