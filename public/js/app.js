@@ -3099,6 +3099,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ArticlesFilter',
@@ -3109,6 +3112,11 @@ __webpack_require__.r(__webpack_exports__);
     cats: {
       type: Array,
       required: true
+    },
+    title: {
+      required: false,
+      type: String,
+      "default": 'Categorias'
     }
   },
   data: function data() {
@@ -62789,7 +62797,9 @@ var render = function() {
               },
               [
                 _vm._v("\n        " + _vm._s(cat.name) + "\n        "),
-                _vm.currentFilter.includes(cat.name) ? _c("check") : _vm._e()
+                _vm.currentFilter.includes(cat.name)
+                  ? _c("check", { attrs: { title: "Seleccionado" } })
+                  : _vm._e()
               ],
               1
             )
