@@ -4083,10 +4083,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    /* axios.get('/FrontApi/omdb/tt0848228')
-          .then((r) => {
-            this.imdb = JSON.parse(r.data)
-          }) */
+    var _this = this;
+
+    axios.get('/FrontApi/omdb/tt0848228').then(function (r) {
+      _this.imdb = JSON.parse(r.data);
+    });
   }
 });
 
@@ -63464,6 +63465,18 @@ var render = function() {
       { staticClass: "flex flex-col w-full" },
       [
         _c("hero-img", { attrs: { caption: "Bem-vindo!" } }),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex flex-row p-4" }, [
+          _c("div", { staticClass: "api-test" }, [
+            _c("pre", [
+              _vm._v(
+                "                      " +
+                  _vm._s(_vm.imdb) +
+                  "\n                  "
+              )
+            ])
+          ])
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "flex flex-row p-4" }, [
           _c("div", { staticClass: "flex flex-col w-3/4 p-2" }, [

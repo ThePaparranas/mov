@@ -3,13 +3,13 @@
     <div class="flex flex-col w-full">
       <hero-img caption="Bem-vindo!" />
 
-      <!--            <div class="flex flex-row p-4">
-                <div class="api-test">
-                    <pre>
+      <div class="flex flex-row p-4">
+        <div class="api-test">
+          <pre>
                         {{ imdb }}
                     </pre>
-                </div>
-            </div>-->
+        </div>
+      </div>
 
       <div class="flex flex-row p-4">
         <div class="flex flex-col w-3/4 p-2">
@@ -343,10 +343,10 @@ export default {
     }
   },
   created () {
-    /* axios.get('/FrontApi/omdb/tt0848228')
-          .then((r) => {
-            this.imdb = JSON.parse(r.data)
-          }) */
+    axios.get('/FrontApi/omdb/tt0848228')
+      .then((r) => {
+        this.imdb = JSON.parse(r.data)
+      })
   }
 }
 </script>
