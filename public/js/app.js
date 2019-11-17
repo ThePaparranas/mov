@@ -63391,7 +63391,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("hero-img"),
+      _c("hero-img", { attrs: { caption: "Bem-vindo!" } }),
       _vm._v(" "),
       _c(
         "div",
@@ -63448,7 +63448,7 @@ var render = function() {
       "div",
       { staticClass: "flex flex-col w-full" },
       [
-        _c("hero-img"),
+        _c("hero-img", { attrs: { caption: "Bem-vindo!" } }),
         _vm._v(" "),
         _c("div", { staticClass: "flex flex-row p-4" }, [
           _c("div", { staticClass: "flex flex-col w-3/4 p-2" }, [

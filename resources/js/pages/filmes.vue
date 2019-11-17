@@ -1,6 +1,6 @@
 <template>
   <div>
-    <hero-img />
+    <hero-img caption="Bem-vindo!" />
 
     <div class="w-full flex flex-row p-4">
       <SidebarPagin />

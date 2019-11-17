@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="flex flex-col w-full">
-      <hero-img />
+      <hero-img caption="Bem-vindo!" />
 
       <!--            <div class="flex flex-row p-4">
                 <div class="api-test">
