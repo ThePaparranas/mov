@@ -2626,8 +2626,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'HeroImg'
+  name: 'HeroImg',
+  props: {
+    img: {
+      required: false,
+      type: String,
+      "default": 'img/hero/default-cover.jpg'
+    },
+    caption: {
+      required: false,
+      type: String,
+      "default": ''
+    },
+    linkTo: {
+      required: false,
+      type: String,
+      "default": null
+    }
+  }
 });
 
 /***/ }),
@@ -62326,34 +62352,44 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "cover absolute flex w-full z-40 mx-auto" }, [
-        _c(
-          "p",
-          {
-            staticClass:
-              "w-full text-3xl text-white opacity-60 self-center text-center"
-          },
-          [_vm._v("\n      Rick and Morty Season 4\n    ")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "w-full self-center bg-gray-600" }, [
-        _c("img", {
-          staticClass: "cover w-full object-cover object-bottom opacity-50",
-          attrs: { src: "img/perfil/cover/ThePaparranas.jpg" }
-        })
-      ])
+  return _c("div", [
+    _c("div", { staticClass: "cover absolute flex w-full z-40 mx-auto" }, [
+      !_vm.linkTo
+        ? _c(
+            "p",
+            {
+              staticClass:
+                "w-full text-3xl text-white opacity-60 self-center text-center"
+            },
+            [_vm._v("\n      " + _vm._s(_vm.caption) + "\n    ")]
+          )
+        : _c(
+            "p",
+            [
+              _c("router-link", { attrs: { to: _vm.linkTo } }, [
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "w-full text-3xl text-white opacity-60 self-center text-center"
+                  },
+                  [_vm._v(_vm._s(_vm.caption))]
+                )
+              ])
+            ],
+            1
+          )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "w-full self-center bg-gray-600" }, [
+      _c("img", {
+        staticClass: "cover w-full object-cover object-bottom opacity-50",
+        attrs: { src: _vm.img }
+      })
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
