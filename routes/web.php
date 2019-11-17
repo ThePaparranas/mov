@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Front\Api\NewsController;
+use App\Http\Controllers\Front\Api\MoviesController;
 use App\Http\Controllers\Front\Api\MovieDataController;
 use App\Http\Controllers\Front\Api\NewsTypesController;
 
@@ -13,6 +14,7 @@ Route::group([
     Route::get('news', [NewsController::class, 'index']);
     Route::get('news/slug/{slug}', [NewsController::class, 'getBySlug']);
     Route::get('news/categories', [NewsTypesController::class, '__invoke']);
+    Route::get('movies', [MoviesController::class, 'index']);
 });
 
 Route::group([

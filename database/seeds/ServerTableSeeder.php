@@ -16,20 +16,17 @@ class ServerTableSeeder extends Seeder
 
         $server = new Server();
         $server->name = 'MyStream';
-        $server->url('https://mystream.to');
-        $server->description = '';
+        $server->url = 'https://mystream.to';
         $server->save();
 
         $server = new Server();
         $server->name = 'MIXdrop';
-        $server->url('https://mixdrop.co');
-        $server->description = '';
+        $server->url = 'https://mixdrop.co';
         $server->save();
 
         $server = new Server();
         $server->name = 'Vidoza';
-        $server->url('https://vidoza.org');
-        $server->description = '';
+        $server->url = 'https://vidoza.org';
         $server->save();
     }
 }

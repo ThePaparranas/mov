@@ -2943,19 +2943,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'FilmeCard',
   props: {
@@ -3542,6 +3529,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Movies__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Movies */ "./resources/js/components/Movies.vue");
 /* harmony import */ var _components_Hero_img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Hero-img */ "./resources/js/components/Hero-img.vue");
 /* harmony import */ var _components_SidebarPagin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/SidebarPagin */ "./resources/js/components/SidebarPagin.vue");
+/* harmony import */ var _services_api_moviesApi__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/api/moviesApi */ "./resources/js/services/api/moviesApi.js");
 //
 //
 //
@@ -3557,6 +3545,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 
@@ -3569,164 +3559,20 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      movies: [{
-        id: '1',
-        title: 'Avengers: Endgame',
-        year: '2009',
-        poster: '\\img\\video\\poster\\avengers.jpg',
-        genres: [{
-          name: 'Aventura',
-          link: ''
-        }, {
-          name: 'Acção',
-          link: ''
-        }, {
-          name: 'Fantasia',
-          link: ''
-        }],
-        intro: 'Após Thanos eliminar metade das criaturas vivas, os Vingadores têm de lidar com a perda de amigos e entes queridos. Com Tony Stark vagando perdido no espaço sem água e comida, Steve Rogers e Natasha Romanov lideram a resistência contra o titã louco.',
-        cast: [{
-          name: 'Robert Downey Jr.',
-          link: ''
-        }, {
-          name: 'Chris Evans',
-          link: ''
-        }, {
-          name: 'Mark Ruffalo',
-          link: ''
-        }],
-        crew: {
-          directors: [{
-            name: 'Anthony Russo',
-            link: ''
-          }, {
-            name: 'Joe Russo',
-            link: ''
-          }],
-          producers: [{
-            name: '',
-            link: ''
-          }]
-        }
-      }, {
-        id: '2',
-        title: 'Shutter Island',
-        year: '2000',
-        poster: '\\img\\video\\poster\\shutterisland.jpg',
-        genres: [{
-          name: 'Aventura',
-          link: ''
-        }, {
-          name: 'Acção',
-          link: ''
-        }, {
-          name: 'Fantasia',
-          link: ''
-        }],
-        intro: 'Após Thanos eliminar metade das criaturas vivas, os Vingadores têm de lidar com a perda de amigos e entes queridos. Com Tony Stark vagando perdido no espaço sem água e comida, Steve Rogers e Natasha Romanov lideram a resistência contra o titã louco.',
-        cast: [{
-          name: 'Robert Downey Jr.',
-          link: ''
-        }, {
-          name: 'Chris Evans',
-          link: ''
-        }, {
-          name: 'Mark Ruffalo',
-          link: ''
-        }],
-        crew: {
-          directors: [{
-            name: 'Anthony Russo',
-            link: ''
-          }, {
-            name: 'Joe Russo',
-            link: ''
-          }],
-          producers: [{
-            name: '',
-            link: ''
-          }]
-        }
-      }, {
-        id: '3',
-        title: 'Die Hard',
-        year: '2000',
-        poster: '\\img\\video\\poster\\diehard.jpg',
-        genres: [{
-          name: 'Aventura',
-          link: ''
-        }, {
-          name: 'Acção',
-          link: ''
-        }, {
-          name: 'Fantasia',
-          link: ''
-        }],
-        intro: 'Após Thanos eliminar metade das criaturas vivas, os Vingadores têm de lidar com a perda de amigos e entes queridos. Com Tony Stark vagando perdido no espaço sem água e comida, Steve Rogers e Natasha Romanov lideram a resistência contra o titã louco.',
-        cast: [{
-          name: 'Robert Downey Jr.',
-          link: ''
-        }, {
-          name: 'Chris Evans',
-          link: ''
-        }, {
-          name: 'Mark Ruffalo',
-          link: ''
-        }],
-        crew: {
-          directors: [{
-            name: 'Anthony Russo',
-            link: ''
-          }, {
-            name: 'Joe Russo',
-            link: ''
-          }],
-          producers: [{
-            name: '',
-            link: ''
-          }]
-        }
-      }, {
-        id: '4',
-        title: 'Fight Club',
-        year: '1999',
-        poster: '\\img\\video\\poster\\fightclub.jpg',
-        genres: [{
-          name: 'Aventura',
-          link: ''
-        }, {
-          name: 'Acção',
-          link: ''
-        }, {
-          name: 'Fantasia',
-          link: ''
-        }],
-        intro: 'Após Thanos eliminar metade das criaturas vivas, os Vingadores têm de lidar com a perda de amigos e entes queridos. Com Tony Stark vagando perdido no espaço sem água e comida, Steve Rogers e Natasha Romanov lideram a resistência contra o titã louco.',
-        cast: [{
-          name: 'Robert Downey Jr.',
-          link: ''
-        }, {
-          name: 'Chris Evans',
-          link: ''
-        }, {
-          name: 'Mark Ruffalo',
-          link: ''
-        }],
-        crew: {
-          directors: [{
-            name: 'Anthony Russo',
-            link: ''
-          }, {
-            name: 'Joe Russo',
-            link: ''
-          }],
-          producers: [{
-            name: '',
-            link: ''
-          }]
-        }
-      }]
+      movies: []
     };
+  },
+  beforeMount: function beforeMount() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData: function fetchData() {
+      var _this = this;
+
+      _services_api_moviesApi__WEBPACK_IMPORTED_MODULE_3__["default"].index().then(function (r) {
+        _this.movies = r;
+      });
+    }
   }
 });
 
@@ -4081,14 +3927,15 @@ __webpack_require__.r(__webpack_exports__);
     return {
       imdb: ''
     };
-  },
-  created: function created() {
-    var _this = this;
-
-    axios.get('/FrontApi/omdb/tt0848228').then(function (r) {
-      _this.imdb = JSON.parse(r.data);
-    });
   }
+  /* ,
+  created () {
+   axios.get('/FrontApi/omdb/tt0877057')
+     .then((r) => {
+       this.imdb = JSON.parse(r.data)
+     })
+  } */
+
 });
 
 /***/ }),
@@ -62557,125 +62404,107 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("article", [
-    _c(
-      "div",
-      {
-        staticClass:
-          "movie-card flex flex-row w-full p-2 bg-gray-200 rounded my-2"
-      },
-      [
+  return _vm.movie
+    ? _c("article", [
         _c(
           "div",
-          { staticClass: "w-2/12" },
+          {
+            staticClass:
+              "movie-card flex flex-row w-full p-2 bg-gray-200 rounded my-2"
+          },
           [
-            _c("router-link", { attrs: { to: "/filme" } }, [
-              _c("img", {
-                staticClass: "rounded",
-                attrs: { src: _vm.movie.poster }
-              })
-            ])
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "w-8/12 px-2" },
-          [
-            _c("p", {}, [
-              _c(
-                "span",
-                { staticClass: "w-full text-2xl font-bold inline-block" },
-                [
+            _c(
+              "div",
+              { staticClass: "w-2/12" },
+              [
+                _c("router-link", { attrs: { to: "/filme" } }, [
+                  _c("img", {
+                    staticClass: "rounded",
+                    attrs: { src: _vm.movie.details.Poster }
+                  })
+                ])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "w-8/12 px-2" },
+              [
+                _c("p", {}, [
                   _c(
-                    "router-link",
-                    { staticClass: "red-link", attrs: { to: "/filme" } },
+                    "span",
+                    { staticClass: "w-full text-2xl font-bold inline-block" },
                     [
-                      _vm._v(
-                        "\n            " +
-                          _vm._s(_vm.movie.title) +
-                          "\n          "
+                      _c(
+                        "router-link",
+                        { staticClass: "red-link", attrs: { to: "/filme" } },
+                        [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(_vm.movie.details.Title) +
+                              "\n          "
+                          )
+                        ]
                       )
-                    ]
+                    ],
+                    1
                   )
-                ],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _vm._l(_vm.movie.genres, function(genre) {
-              return _c("p", { key: genre.name }, [
-                _c(
-                  "span",
-                  { staticClass: "w-full inline-block" },
-                  [
-                    _c(
-                      "router-link",
-                      { staticClass: "red-link", attrs: { to: genre.link } },
-                      [
-                        _vm._v(
-                          "\n            " + _vm._s(genre.name) + "\n          "
+                ]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(_vm.movie.details.Genre))]),
+                _vm._v(" "),
+                _vm._l(_vm.movie.crew, function(job) {
+                  return _c(
+                    "p",
+                    { key: job.name },
+                    [
+                      _c("span", { staticClass: "font-bold" }, [
+                        _vm._v("\n          Realizadores:\n        ")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(job.directors, function(name) {
+                        return _c("span", { key: name }, [_vm._v(_vm._s(name))])
+                      })
+                    ],
+                    2
+                  )
+                }),
+                _vm._v(" "),
+                _c("p", {}, [
+                  _c(
+                    "span",
+                    [
+                      _vm._v("\n          Elenco: "),
+                      _vm._l(_vm.movie.cast, function(actor) {
+                        return _c(
+                          "span",
+                          { key: actor, staticClass: "font-bold" },
+                          [
+                            _vm._v(
+                              "\n            " + _vm._s(actor) + ",\n          "
+                            )
+                          ]
                         )
-                      ]
-                    ),
-                    _vm._v(",\n        ")
-                  ],
-                  1
-                )
-              ])
-            }),
-            _vm._v(" "),
-            _vm._l(_vm.movie.crew, function(job) {
-              return _c(
-                "p",
-                { key: job.name },
-                [
+                      })
+                    ],
+                    2
+                  )
+                ]),
+                _vm._v(" "),
+                _c("p", {}, [
                   _c("span", { staticClass: "font-bold" }, [
-                    _vm._v("\n          Realizadores:\n        ")
+                    _vm._v("\n          Sinopse:\n        ")
                   ]),
-                  _vm._v(" "),
-                  _vm._l(job.directors, function(name) {
-                    return _c("span", { key: name }, [_vm._v(_vm._s(name))])
-                  })
-                ],
-                2
-              )
-            }),
-            _vm._v(" "),
-            _c("p", {}, [
-              _c(
-                "span",
-                [
-                  _vm._v("\n          Elenco: "),
-                  _vm._l(_vm.movie.cast, function(actor) {
-                    return _c(
-                      "span",
-                      { key: actor, staticClass: "font-bold" },
-                      [
-                        _vm._v(
-                          "\n            " + _vm._s(actor) + ",\n          "
-                        )
-                      ]
-                    )
-                  })
-                ],
-                2
-              )
-            ]),
-            _vm._v(" "),
-            _c("p", {}, [
-              _c("span", { staticClass: "font-bold" }, [
-                _vm._v("\n          Sinopse:\n        ")
-              ]),
-              _vm._v("\n        " + _vm._s(_vm.movie.intro) + "\n      ")
-            ])
-          ],
-          2
+                  _vm._v("\n        " + _vm._s(_vm.movie.intro) + "\n      ")
+                ])
+              ],
+              2
+            )
+          ]
         )
-      ]
-    )
-  ])
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -63465,18 +63294,6 @@ var render = function() {
       { staticClass: "flex flex-col w-full" },
       [
         _c("hero-img", { attrs: { caption: "Bem-vindo!" } }),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex flex-row p-4" }, [
-          _c("div", { staticClass: "api-test" }, [
-            _c("pre", [
-              _vm._v(
-                "                      " +
-                  _vm._s(_vm.imdb) +
-                  "\n                  "
-              )
-            ])
-          ])
-        ]),
         _vm._v(" "),
         _c("div", { staticClass: "flex flex-row p-4" }, [
           _c("div", { staticClass: "flex flex-col w-3/4 p-2" }, [
@@ -81946,6 +81763,34 @@ var authApi = {
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (authApi);
+
+/***/ }),
+
+/***/ "./resources/js/services/api/moviesApi.js":
+/*!************************************************!*\
+  !*** ./resources/js/services/api/moviesApi.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Api */ "./resources/js/services/api/Api.js");
+
+
+var moviesBaseUri = "".concat(_Api__WEBPACK_IMPORTED_MODULE_1__["apiBase"], "/movies");
+var moviesApi = {
+  index: function index() {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(moviesBaseUri).then(function (r) {
+      return Promise.resolve(r.data);
+    })["catch"](function (e) {
+      return Object(_Api__WEBPACK_IMPORTED_MODULE_1__["showRequestError"])(e);
+    });
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (moviesApi);
 
 /***/ }),
 

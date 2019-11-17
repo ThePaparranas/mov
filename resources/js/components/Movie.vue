@@ -1,10 +1,10 @@
 <template>
-  <article>
+  <article v-if="movie">
     <div class="movie-card flex flex-row w-full p-2 bg-gray-200 rounded my-2">
       <div class="w-2/12">
         <router-link to="/filme">
           <img
-            :src="movie.poster"
+            :src="movie.details.Poster"
             class="rounded"
           >
         </router-link>
@@ -17,25 +17,12 @@
               to="/filme"
               class="red-link"
             >
-              {{ movie.title }}
+              {{ movie.details.Title }}
             </router-link>
           </span>
         </p>
 
-        <p
-          v-for="genre in movie.genres"
-          :key="genre.name"
-          class=""
-        >
-          <span class="w-full inline-block">
-            <router-link
-              :to="genre.link"
-              class="red-link"
-            >
-              {{ genre.name }}
-            </router-link>,
-          </span>
-        </p>
+        <p>{{ movie.details.Genre }}</p>
 
         <p
           v-for="job in movie.crew"

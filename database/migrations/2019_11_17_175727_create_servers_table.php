@@ -17,7 +17,6 @@ class CreateServersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('url');
-            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

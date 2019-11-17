@@ -18,7 +18,7 @@ class CreateMoviesTable extends Migration
             $table->string('imdb_id', 10)->unique()->index();
             $table->integer('uploader')->index();
             $table->integer('type')->index();
-            $table->integer('provider_id')->index()->nullable();
+            $table->integer('provider_id')->nullable();
 
             $table->timestamps();
         });
