@@ -20,6 +20,7 @@
           <div class="">
             <span class="bg-red-1000 px-3 py-1 inline-block text-white rounded self-start">{{ item.type.name }}</span>
           </div>
+
           <router-link
             v-if="item.slug"
             :to="{ name: 'NewsArticle', params: { item, slug: item.slug } }"
@@ -36,8 +37,11 @@
               :src="item.author.gravatar"
               :alt="item.author.name"
             >
+
             <span class="">{{ item.author.name }}</span>
+
             <span class="mx-2">a</span>
+
             <span class="text-xs">{{ item.created_at }}</span>
           </p>
         </div>
