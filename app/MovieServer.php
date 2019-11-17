@@ -5,6 +5,16 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * App\MovieServer
+ *
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Server[] $servers
+ * @property-read int|null $servers_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MovieServer newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MovieServer newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MovieServer query()
+ * @mixin \Eloquent
+ */
 class MovieServer extends Model
 {
     /**

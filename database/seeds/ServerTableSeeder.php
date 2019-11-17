@@ -1,5 +1,6 @@
 <?php
 
+use App\Server;
 use Illuminate\Database\Seeder;
 
 class ServerTableSeeder extends Seeder
