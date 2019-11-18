@@ -2916,33 +2916,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'FilmeCard',
   props: {
@@ -3288,93 +3261,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SidebarPagin.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/babel-loader/lib??ref--13!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SidebarPagin.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'SiderbarPagin'
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/error404.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/babel-loader/lib??ref--13!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/error404.vue?vue&type=script&lang=js& ***!
@@ -3528,8 +3414,11 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Movies__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Movies */ "./resources/js/components/Movies.vue");
 /* harmony import */ var _components_Hero_img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Hero-img */ "./resources/js/components/Hero-img.vue");
-/* harmony import */ var _components_SidebarPagin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/SidebarPagin */ "./resources/js/components/SidebarPagin.vue");
+/* harmony import */ var _components_Filter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Filter */ "./resources/js/components/Filter.vue");
 /* harmony import */ var _services_api_moviesApi__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/api/moviesApi */ "./resources/js/services/api/moviesApi.js");
+//
+//
+//
 //
 //
 //
@@ -3553,13 +3442,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Filmes',
   components: {
-    SidebarPagin: _components_SidebarPagin__WEBPACK_IMPORTED_MODULE_2__["default"],
+    genresFilter: _components_Filter__WEBPACK_IMPORTED_MODULE_2__["default"],
     Movies: _components_Movies__WEBPACK_IMPORTED_MODULE_0__["default"],
     heroImg: _components_Hero_img__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
-      movies: []
+      movies: [],
+      genres: []
     };
   },
   beforeMount: function beforeMount() {
@@ -3571,6 +3461,9 @@ __webpack_require__.r(__webpack_exports__);
 
       _services_api_moviesApi__WEBPACK_IMPORTED_MODULE_3__["default"].index().then(function (r) {
         _this.movies = r;
+      });
+      _services_api_moviesApi__WEBPACK_IMPORTED_MODULE_3__["default"].genres().then(function (r) {
+        _this.genres = r;
       });
     }
   }
@@ -62084,7 +61977,9 @@ var render = function() {
         "flex flex-col w-1/4 bg-white rounded p-4 m-2 flex-no-grow shadow-md"
     },
     [
-      _c("span", { staticClass: "text-xl font-bold" }, [_vm._v("Categorias")]),
+      _c("span", { staticClass: "text-xl font-bold" }, [
+        _vm._v(_vm._s(_vm.title))
+      ]),
       _vm._v(" "),
       _c(
         "ul",
@@ -62427,80 +62322,54 @@ var render = function() {
               1
             ),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "w-8/12 px-2" },
-              [
-                _c("p", {}, [
-                  _c(
-                    "span",
-                    { staticClass: "w-full text-2xl font-bold inline-block" },
-                    [
-                      _c(
-                        "router-link",
-                        { staticClass: "red-link", attrs: { to: "/filme" } },
-                        [
-                          _vm._v(
-                            "\n            " +
-                              _vm._s(_vm.movie.details.Title) +
-                              "\n          "
-                          )
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                ]),
-                _vm._v(" "),
-                _c("p", [_vm._v(_vm._s(_vm.movie.details.Genre))]),
-                _vm._v(" "),
-                _vm._l(_vm.movie.crew, function(job) {
-                  return _c(
-                    "p",
-                    { key: job.name },
-                    [
-                      _c("span", { staticClass: "font-bold" }, [
-                        _vm._v("\n          Realizadores:\n        ")
-                      ]),
-                      _vm._v(" "),
-                      _vm._l(job.directors, function(name) {
-                        return _c("span", { key: name }, [_vm._v(_vm._s(name))])
-                      })
-                    ],
-                    2
-                  )
-                }),
-                _vm._v(" "),
-                _c("p", {}, [
-                  _c(
-                    "span",
-                    [
-                      _vm._v("\n          Elenco: "),
-                      _vm._l(_vm.movie.cast, function(actor) {
-                        return _c(
-                          "span",
-                          { key: actor, staticClass: "font-bold" },
-                          [
-                            _vm._v(
-                              "\n            " + _vm._s(actor) + ",\n          "
-                            )
-                          ]
+            _c("div", { staticClass: "w-8/12 px-2" }, [
+              _c("p", {}, [
+                _c(
+                  "span",
+                  { staticClass: "w-full text-2xl font-bold inline-block" },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "red-link", attrs: { to: "/filme" } },
+                      [
+                        _vm._v(
+                          "\n            " +
+                            _vm._s(_vm.movie.details.Title) +
+                            " (" +
+                            _vm._s(_vm.movie.details.Year) +
+                            ")\n          "
                         )
-                      })
-                    ],
-                    2
-                  )
-                ]),
-                _vm._v(" "),
-                _c("p", {}, [
-                  _c("span", { staticClass: "font-bold" }, [
-                    _vm._v("\n          Sinopse:\n        ")
-                  ]),
-                  _vm._v("\n        " + _vm._s(_vm.movie.intro) + "\n      ")
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(_vm._s(_vm.movie.details.Genre) + " "),
+                _c("span", { staticClass: "text-gray-600" }, [
+                  _vm._v("• " + _vm._s(_vm.movie.details.Runtime))
                 ])
-              ],
-              2
-            )
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _c("span", { staticClass: "font-bold" }, [
+                  _vm._v("Realização: ")
+                ]),
+                _vm._v(_vm._s(_vm.movie.details.Director))
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _c("span", { staticClass: "font-bold" }, [_vm._v("Elenco: ")]),
+                _vm._v(_vm._s(_vm.movie.details.Actors))
+              ]),
+              _vm._v(" "),
+              _c("p", [
+                _c("span", { staticClass: "font-bold" }, [_vm._v("Sinopse: ")]),
+                _vm._v(_vm._s(_vm.movie.details.Plot))
+              ])
+            ])
           ]
         )
       ])
@@ -62864,216 +62733,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SidebarPagin.vue?vue&type=template&id=70882aac&":
-/*!***************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SidebarPagin.vue?vue&type=template&id=70882aac& ***!
-  \***************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "flex flex-col w-1/4 bg-white rounded p-4 m-2 flex-no-grow shadow-md"
-      },
-      [
-        _c("span", { staticClass: "text-xl font-bold" }, [_vm._v("Géneros")]),
-        _vm._v(" "),
-        _c("ul", { staticClass: "w-full" }, [
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      Ação\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      Animação\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      Aventura\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      Biografia\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      Comédia\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      Crime\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      Desporto\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      Documentário\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      Drama\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      Fantasia\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      Faroeste\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      Ficção Cientifica\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      Guerra\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      História\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      Mistério\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      Música\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      Policial\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      Religião\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      Romance\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      Suspence\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "bg-gray-200 px-4 py-2 w-full rounded my-2 text-xs"
-            },
-            [_vm._v("\n      Terror\n    ")]
-          )
-        ])
-      ]
-    )
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/error404.vue?vue&type=template&id=60acf90a&":
 /*!***********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/error404.vue?vue&type=template&id=60acf90a& ***!
@@ -63242,7 +62901,9 @@ var render = function() {
         "div",
         { staticClass: "w-full flex flex-row p-4" },
         [
-          _c("SidebarPagin"),
+          _c("genres-filter", {
+            attrs: { cats: _vm.genres, title: "Géneros" }
+          }),
           _vm._v(" "),
           _c(
             "div",
@@ -81076,75 +80737,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/SidebarPagin.vue":
-/*!**************************************************!*\
-  !*** ./resources/js/components/SidebarPagin.vue ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _SidebarPagin_vue_vue_type_template_id_70882aac___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SidebarPagin.vue?vue&type=template&id=70882aac& */ "./resources/js/components/SidebarPagin.vue?vue&type=template&id=70882aac&");
-/* harmony import */ var _SidebarPagin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SidebarPagin.vue?vue&type=script&lang=js& */ "./resources/js/components/SidebarPagin.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _SidebarPagin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _SidebarPagin_vue_vue_type_template_id_70882aac___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _SidebarPagin_vue_vue_type_template_id_70882aac___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/SidebarPagin.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/SidebarPagin.vue?vue&type=script&lang=js&":
-/*!***************************************************************************!*\
-  !*** ./resources/js/components/SidebarPagin.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_13_node_modules_vue_loader_lib_index_js_vue_loader_options_SidebarPagin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/babel-loader/lib??ref--13!../../../node_modules/vue-loader/lib??vue-loader-options!./SidebarPagin.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SidebarPagin.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_13_node_modules_vue_loader_lib_index_js_vue_loader_options_SidebarPagin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/SidebarPagin.vue?vue&type=template&id=70882aac&":
-/*!*********************************************************************************!*\
-  !*** ./resources/js/components/SidebarPagin.vue?vue&type=template&id=70882aac& ***!
-  \*********************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SidebarPagin_vue_vue_type_template_id_70882aac___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./SidebarPagin.vue?vue&type=template&id=70882aac& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SidebarPagin.vue?vue&type=template&id=70882aac&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SidebarPagin_vue_vue_type_template_id_70882aac___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SidebarPagin_vue_vue_type_template_id_70882aac___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
 /***/ "./resources/js/components/error404.vue":
 /*!**********************************************!*\
   !*** ./resources/js/components/error404.vue ***!
@@ -81784,6 +81376,13 @@ var moviesBaseUri = "".concat(_Api__WEBPACK_IMPORTED_MODULE_1__["apiBase"], "/mo
 var moviesApi = {
   index: function index() {
     return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(moviesBaseUri).then(function (r) {
+      return Promise.resolve(r.data);
+    })["catch"](function (e) {
+      return Object(_Api__WEBPACK_IMPORTED_MODULE_1__["showRequestError"])(e);
+    });
+  },
+  genres: function genres() {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(moviesBaseUri + '/genres').then(function (r) {
       return Promise.resolve(r.data);
     })["catch"](function (e) {
       return Object(_Api__WEBPACK_IMPORTED_MODULE_1__["showRequestError"])(e);

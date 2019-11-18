@@ -12,12 +12,14 @@ class MovieDetailsTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($c = 1; $c <9; $c++) {
+        \DB::table('movie_details')->truncate();
+
+        for ($c = 1; $c < 9; $c++) {
             $details = new MovieDetail();
 
             $json = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . $c . '.json');
             $data = json_decode($json, true);
-            $data['movie_id'] = 1;
+            $data['movie_id'] = $c;
             $data['Ratings'] = serialize($data['Ratings']);
 
             $details->fill($data);

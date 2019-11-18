@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front\Api;
 
+use App\Genre;
 use App\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -16,7 +17,16 @@ class MoviesController extends Controller
      */
     public function index(): JsonResponse
     {
-        return $this->respond(Movie::with(['details', 'servers'])->get());
+        return $this->respond(
+            Movie::with(['details', 'servers'])
+                ->get());
+    }
+
+    public function genres(): JsonResponse
+    {
+        return $this->respond(
+            Genre::all()
+        );
     }
 
     /**

@@ -15,6 +15,7 @@ Route::group([
     Route::get('news/slug/{slug}', [NewsController::class, 'getBySlug']);
     Route::get('news/categories', [NewsTypesController::class, '__invoke']);
     Route::get('movies', [MoviesController::class, 'index']);
+    Route::get('movies/genres', [MoviesController::class, 'genres']);
 });
 
 Route::group([

@@ -17,45 +17,18 @@
               to="/filme"
               class="red-link"
             >
-              {{ movie.details.Title }}
+              {{ movie.details.Title }} ({{ movie.details.Year }})
             </router-link>
           </span>
         </p>
 
-        <p>{{ movie.details.Genre }}</p>
+        <p>{{ movie.details.Genre }} <span class="text-gray-600">&#8226; {{ movie.details.Runtime }}</span></p>
 
-        <p
-          v-for="job in movie.crew"
-          :key="job.name"
-          class=""
-        >
-          <span class="font-bold">
-            Realizadores:
-          </span>
-          <span
-            v-for="name in job.directors"
-            :key="name"
-          >{{ name }}</span>
-        </p>
+        <p><span class="font-bold">Realização: </span>{{ movie.details.Director }}</p>
 
-        <p class="">
-          <span>
-            Elenco: <span
-              v-for="actor in movie.cast"
-              :key="actor"
-              class="font-bold"
-            >
-              {{ actor }},
-            </span>
-          </span>
-        </p>
+        <p><span class="font-bold">Elenco: </span>{{ movie.details.Actors }}</p>
 
-        <p class="">
-          <span class="font-bold">
-            Sinopse:
-          </span>
-          {{ movie.intro }}
-        </p>
+        <p><span class="font-bold">Sinopse: </span>{{ movie.details.Plot }}</p>
       </div>
     </div>
   </article>
