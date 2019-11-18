@@ -9,17 +9,17 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property int $movie_id
- * @property string $title
- * @property string $year
- * @property string $rated
- * @property string $released
- * @property string $runtime
- * @property string $genre
- * @property string $director
- * @property string $writer
- * @property string $actors
- * @property string $plot
- * @property string $language
+ * @property string $Title
+ * @property string $Year
+ * @property string $Rated
+ * @property string $Released
+ * @property string $Runtime
+ * @property string $Genre
+ * @property string $Director
+ * @property string $Writer
+ * @property string $Actors
+ * @property string $Plot
+ * @property string $Language
  * @property string $Country
  * @property string $Awards
  * @property string $Poster
@@ -29,10 +29,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $imdbVotes
  * @property string $imdbID
  * @property string $Type
- * @property string $DVD
- * @property string $BoxOffice
- * @property string $Production
- * @property string $Website
+ * @property string|null $totalSeasons
+ * @property string|null $DVD
+ * @property string|null $BoxOffice
+ * @property string|null $Production
+ * @property string|null $Website
  * @property string $Response
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -63,6 +64,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\MovieDetail whereResponse($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\MovieDetail whereRuntime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\MovieDetail whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MovieDetail whereTotalSeasons($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\MovieDetail whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\MovieDetail whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\MovieDetail whereWebsite($value)
@@ -79,17 +81,17 @@ class MovieDetail extends Model
      */
     protected $fillable = [
         'movie_id',
-        'title',
-        'year',
-        'rated',
-        'released',
-        'runtime',
-        'genre',
-        'director',
-        'writer',
-        'actors',
-        'plot',
-        'language',
+        'Title',
+        'Year',
+        'Rated',
+        'Released',
+        'Runtime',
+        'Genre',
+        'Director',
+        'Writer',
+        'Actors',
+        'Plot',
+        'Language',
         'Country',
         'Awards',
         'Poster',
@@ -99,6 +101,7 @@ class MovieDetail extends Model
         'imdbVotes',
         'imdbID',
         'Type',
+        'totalSeasons',
         'DVD',
         'BoxOffice',
         'Production',

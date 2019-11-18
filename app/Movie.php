@@ -4,15 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * App\Movie
  *
  * @property int $id
+ * @property string $imdb_id
  * @property int $uploader
  * @property \App\MovieType $type
- * @property int $provider_id
- * @property string $imdb_id
+ * @property int|null $provider_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\MovieDetail $details
@@ -71,5 +72,10 @@ class Movie extends Model
     public function details(): HasOne
     {
         return $this->hasOne(MovieDetail::class);
+    }
+
+    public function servers(): HasMany
+    {
+        return $this->hasMany(MovieServer::class);
     }
 }

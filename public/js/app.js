@@ -2514,6 +2514,90 @@ function _defineProperty(obj, key, value) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Filter.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/babel-loader/lib??ref--13!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Filter.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_material_design_icons_Check__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-material-design-icons/Check */ "./node_modules/vue-material-design-icons/Check.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'ArticlesFilter',
+  components: {
+    check: vue_material_design_icons_Check__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  props: {
+    cats: {
+      type: Array,
+      required: true
+    },
+    title: {
+      required: false,
+      type: String,
+      "default": 'Filtro'
+    }
+  },
+  data: function data() {
+    return {
+      currentFilter: [],
+      currentFilterIdx: []
+    };
+  },
+  watch: {
+    currentFilter: function currentFilter(f) {
+      this.$emit('change', [f, this.currentFilterIdx]);
+    }
+  },
+  methods: {
+    bClass: function bClass(cat) {
+      var baseClass = ' my-2 w-100 hover:bg-red-1000 bg-fade text-xs hover:text-white py-2 px-4 rounded';
+      var activeClass = this.currentFilter.includes(cat) ? ' bg-red-1000 text-white' : ' bg-gray-200';
+      return baseClass + activeClass;
+    },
+    changeFilter: function changeFilter(cat) {
+      if (this.currentFilter.includes(cat.name)) {
+        var fltrIdx = this.currentFilter.indexOf(cat.name);
+        this.currentFilter.splice(fltrIdx, 1);
+        this.currentFilterIdx.splice(fltrIdx, 1);
+      } else {
+        this.currentFilter.push(cat.name);
+        this.currentFilterIdx.push(cat.id.toString());
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Footer.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/babel-loader/lib??ref--13!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Footer.vue?vue&type=script&lang=js& ***!
@@ -2626,8 +2710,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'HeroImg'
+  name: 'HeroImg',
+  props: {
+    img: {
+      required: false,
+      type: String,
+      "default": 'img/hero/default-cover.jpg'
+    },
+    caption: {
+      required: false,
+      type: String,
+      "default": ''
+    },
+    linkTo: {
+      required: false,
+      type: String,
+      "default": null
+    }
+  }
 });
 
 /***/ }),
@@ -2770,19 +2880,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3041,82 +3138,6 @@ function _defineProperty(obj, key, value) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NewsFilter.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/babel-loader/lib??ref--13!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/NewsFilter.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_material_design_icons_Check__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-material-design-icons/Check */ "./node_modules/vue-material-design-icons/Check.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'ArticlesFilter',
-  components: {
-    check: vue_material_design_icons_Check__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  props: {
-    cats: {
-      type: Array,
-      required: true
-    }
-  },
-  data: function data() {
-    return {
-      currentFilter: [],
-      currentFilterIdx: []
-    };
-  },
-  watch: {
-    currentFilter: function currentFilter(f) {
-      this.$emit('change', [f, this.currentFilterIdx]);
-    }
-  },
-  methods: {
-    bClass: function bClass(cat) {
-      var baseClass = ' my-2 w-100 hover:bg-red-1000 bg-fade text-xs hover:text-white py-2 px-4 rounded';
-      var activeClass = this.currentFilter.includes(cat) ? ' bg-red-1000 text-white' : ' bg-gray-200';
-      return baseClass + activeClass;
-    },
-    changeFilter: function changeFilter(cat) {
-      if (this.currentFilter.includes(cat.name)) {
-        var fltrIdx = this.currentFilter.indexOf(cat.name);
-        this.currentFilter.splice(fltrIdx, 1);
-        this.currentFilterIdx.splice(fltrIdx, 1);
-      } else {
-        this.currentFilter.push(cat.name);
-        this.currentFilterIdx.push(cat.id.toString());
-      }
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NewsList.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/babel-loader/lib??ref--13!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/NewsList.vue?vue&type=script&lang=js& ***!
@@ -3128,6 +3149,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
 //
 //
 //
@@ -3392,10 +3417,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_Hero_img__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Hero-img */ "./resources/js/components/Hero-img.vue");
-/* harmony import */ var _services_api_newsApi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/api/newsApi */ "./resources/js/services/api/newsApi.js");
-/* harmony import */ var _components_NewsList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/NewsList */ "./resources/js/components/NewsList.vue");
-/* harmony import */ var _components_NewsFilter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/NewsFilter */ "./resources/js/components/NewsFilter.vue");
+/* harmony import */ var _components_Filter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Filter */ "./resources/js/components/Filter.vue");
+/* harmony import */ var _components_Hero_img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Hero-img */ "./resources/js/components/Hero-img.vue");
+/* harmony import */ var _services_api_newsApi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/api/newsApi */ "./resources/js/services/api/newsApi.js");
+/* harmony import */ var _components_NewsList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/NewsList */ "./resources/js/components/NewsList.vue");
+//
 //
 //
 //
@@ -3424,9 +3450,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'News',
   components: {
-    newsList: _components_NewsList__WEBPACK_IMPORTED_MODULE_2__["default"],
-    newsCats: _components_NewsFilter__WEBPACK_IMPORTED_MODULE_3__["default"],
-    heroImg: _components_Hero_img__WEBPACK_IMPORTED_MODULE_0__["default"]
+    newsList: _components_NewsList__WEBPACK_IMPORTED_MODULE_3__["default"],
+    newsCats: _components_Filter__WEBPACK_IMPORTED_MODULE_0__["default"],
+    heroImg: _components_Hero_img__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -3447,10 +3473,10 @@ __webpack_require__.r(__webpack_exports__);
     fetchData: function fetchData() {
       var _this = this;
 
-      _services_api_newsApi__WEBPACK_IMPORTED_MODULE_1__["default"].categories().then(function (r) {
+      _services_api_newsApi__WEBPACK_IMPORTED_MODULE_2__["default"].categories().then(function (r) {
         _this.categories = r;
       });
-      _services_api_newsApi__WEBPACK_IMPORTED_MODULE_1__["default"].index().then(function (r) {
+      _services_api_newsApi__WEBPACK_IMPORTED_MODULE_2__["default"].index().then(function (r) {
         _this.news = r;
       });
     }
@@ -3503,6 +3529,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Movies__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Movies */ "./resources/js/components/Movies.vue");
 /* harmony import */ var _components_Hero_img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Hero-img */ "./resources/js/components/Hero-img.vue");
 /* harmony import */ var _components_SidebarPagin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/SidebarPagin */ "./resources/js/components/SidebarPagin.vue");
+/* harmony import */ var _services_api_moviesApi__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/api/moviesApi */ "./resources/js/services/api/moviesApi.js");
 //
 //
 //
@@ -3518,6 +3545,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 
@@ -3530,164 +3559,20 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      movies: [{
-        id: '1',
-        title: 'Avengers: Endgame',
-        year: '2009',
-        poster: '\\img\\video\\poster\\avengers.jpg',
-        genres: [{
-          name: 'Aventura',
-          link: ''
-        }, {
-          name: 'Acção',
-          link: ''
-        }, {
-          name: 'Fantasia',
-          link: ''
-        }],
-        intro: 'Após Thanos eliminar metade das criaturas vivas, os Vingadores têm de lidar com a perda de amigos e entes queridos. Com Tony Stark vagando perdido no espaço sem água e comida, Steve Rogers e Natasha Romanov lideram a resistência contra o titã louco.',
-        cast: [{
-          name: 'Robert Downey Jr.',
-          link: ''
-        }, {
-          name: 'Chris Evans',
-          link: ''
-        }, {
-          name: 'Mark Ruffalo',
-          link: ''
-        }],
-        crew: {
-          directors: [{
-            name: 'Anthony Russo',
-            link: ''
-          }, {
-            name: 'Joe Russo',
-            link: ''
-          }],
-          producers: [{
-            name: '',
-            link: ''
-          }]
-        }
-      }, {
-        id: '2',
-        title: 'Shutter Island',
-        year: '2000',
-        poster: '\\img\\video\\poster\\shutterisland.jpg',
-        genres: [{
-          name: 'Aventura',
-          link: ''
-        }, {
-          name: 'Acção',
-          link: ''
-        }, {
-          name: 'Fantasia',
-          link: ''
-        }],
-        intro: 'Após Thanos eliminar metade das criaturas vivas, os Vingadores têm de lidar com a perda de amigos e entes queridos. Com Tony Stark vagando perdido no espaço sem água e comida, Steve Rogers e Natasha Romanov lideram a resistência contra o titã louco.',
-        cast: [{
-          name: 'Robert Downey Jr.',
-          link: ''
-        }, {
-          name: 'Chris Evans',
-          link: ''
-        }, {
-          name: 'Mark Ruffalo',
-          link: ''
-        }],
-        crew: {
-          directors: [{
-            name: 'Anthony Russo',
-            link: ''
-          }, {
-            name: 'Joe Russo',
-            link: ''
-          }],
-          producers: [{
-            name: '',
-            link: ''
-          }]
-        }
-      }, {
-        id: '3',
-        title: 'Die Hard',
-        year: '2000',
-        poster: '\\img\\video\\poster\\diehard.jpg',
-        genres: [{
-          name: 'Aventura',
-          link: ''
-        }, {
-          name: 'Acção',
-          link: ''
-        }, {
-          name: 'Fantasia',
-          link: ''
-        }],
-        intro: 'Após Thanos eliminar metade das criaturas vivas, os Vingadores têm de lidar com a perda de amigos e entes queridos. Com Tony Stark vagando perdido no espaço sem água e comida, Steve Rogers e Natasha Romanov lideram a resistência contra o titã louco.',
-        cast: [{
-          name: 'Robert Downey Jr.',
-          link: ''
-        }, {
-          name: 'Chris Evans',
-          link: ''
-        }, {
-          name: 'Mark Ruffalo',
-          link: ''
-        }],
-        crew: {
-          directors: [{
-            name: 'Anthony Russo',
-            link: ''
-          }, {
-            name: 'Joe Russo',
-            link: ''
-          }],
-          producers: [{
-            name: '',
-            link: ''
-          }]
-        }
-      }, {
-        id: '4',
-        title: 'Fight Club',
-        year: '1999',
-        poster: '\\img\\video\\poster\\fightclub.jpg',
-        genres: [{
-          name: 'Aventura',
-          link: ''
-        }, {
-          name: 'Acção',
-          link: ''
-        }, {
-          name: 'Fantasia',
-          link: ''
-        }],
-        intro: 'Após Thanos eliminar metade das criaturas vivas, os Vingadores têm de lidar com a perda de amigos e entes queridos. Com Tony Stark vagando perdido no espaço sem água e comida, Steve Rogers e Natasha Romanov lideram a resistência contra o titã louco.',
-        cast: [{
-          name: 'Robert Downey Jr.',
-          link: ''
-        }, {
-          name: 'Chris Evans',
-          link: ''
-        }, {
-          name: 'Mark Ruffalo',
-          link: ''
-        }],
-        crew: {
-          directors: [{
-            name: 'Anthony Russo',
-            link: ''
-          }, {
-            name: 'Joe Russo',
-            link: ''
-          }],
-          producers: [{
-            name: '',
-            link: ''
-          }]
-        }
-      }]
+      movies: []
     };
+  },
+  beforeMount: function beforeMount() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData: function fetchData() {
+      var _this = this;
+
+      _services_api_moviesApi__WEBPACK_IMPORTED_MODULE_3__["default"].index().then(function (r) {
+        _this.movies = r;
+      });
+    }
   }
 });
 
@@ -4042,13 +3927,15 @@ __webpack_require__.r(__webpack_exports__);
     return {
       imdb: ''
     };
-  },
-  created: function created() {
-    /* axios.get('/FrontApi/omdb/tt0848228')
-          .then((r) => {
-            this.imdb = JSON.parse(r.data)
-          }) */
   }
+  /* ,
+  created () {
+   axios.get('/FrontApi/omdb/tt0877057')
+     .then((r) => {
+       this.imdb = JSON.parse(r.data)
+     })
+  } */
+
 });
 
 /***/ }),
@@ -62175,6 +62062,67 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Filter.vue?vue&type=template&id=1dedfda3&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Filter.vue?vue&type=template&id=1dedfda3& ***!
+  \*********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass:
+        "flex flex-col w-1/4 bg-white rounded p-4 m-2 flex-no-grow shadow-md"
+    },
+    [
+      _c("span", { staticClass: "text-xl font-bold" }, [_vm._v("Categorias")]),
+      _vm._v(" "),
+      _c(
+        "ul",
+        { staticClass: "w-full" },
+        _vm._l(_vm.cats, function(cat) {
+          return _c("li", { key: cat.id }, [
+            _c(
+              "button",
+              {
+                class: _vm.bClass(cat.name),
+                on: {
+                  click: function($event) {
+                    return _vm.changeFilter(cat)
+                  }
+                }
+              },
+              [
+                _vm._v("\n        " + _vm._s(cat.name) + "\n        "),
+                _vm.currentFilter.includes(cat.name)
+                  ? _c("check", { attrs: { title: "Seleccionado" } })
+                  : _vm._e()
+              ],
+              1
+            )
+          ])
+        }),
+        0
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Footer.vue?vue&type=template&id=61a7c374&":
 /*!*********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Footer.vue?vue&type=template&id=61a7c374& ***!
@@ -62326,34 +62274,44 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "cover absolute flex w-full z-40 mx-auto" }, [
-        _c(
-          "p",
-          {
-            staticClass:
-              "w-full text-3xl text-white opacity-60 self-center text-center"
-          },
-          [_vm._v("\n      Rick and Morty Season 4\n    ")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "w-full self-center bg-gray-600" }, [
-        _c("img", {
-          staticClass: "cover w-full object-cover object-bottom opacity-50",
-          attrs: { src: "img/perfil/cover/ThePaparranas.jpg" }
-        })
-      ])
+  return _c("div", [
+    _c("div", { staticClass: "cover absolute flex w-full z-40 mx-auto" }, [
+      !_vm.linkTo
+        ? _c(
+            "p",
+            {
+              staticClass:
+                "w-full text-3xl text-white opacity-60 self-center text-center"
+            },
+            [_vm._v("\n      " + _vm._s(_vm.caption) + "\n    ")]
+          )
+        : _c(
+            "p",
+            [
+              _c("router-link", { attrs: { to: _vm.linkTo } }, [
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "w-full text-3xl text-white opacity-60 self-center text-center"
+                  },
+                  [_vm._v(_vm._s(_vm.caption))]
+                )
+              ])
+            ],
+            1
+          )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "w-full self-center bg-gray-600" }, [
+      _c("img", {
+        staticClass: "cover w-full object-cover object-bottom opacity-50",
+        attrs: { src: _vm.img }
+      })
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -62446,125 +62404,107 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("article", [
-    _c(
-      "div",
-      {
-        staticClass:
-          "movie-card flex flex-row w-full p-2 bg-gray-200 rounded my-2"
-      },
-      [
+  return _vm.movie
+    ? _c("article", [
         _c(
           "div",
-          { staticClass: "w-2/12" },
+          {
+            staticClass:
+              "movie-card flex flex-row w-full p-2 bg-gray-200 rounded my-2"
+          },
           [
-            _c("router-link", { attrs: { to: "/filme" } }, [
-              _c("img", {
-                staticClass: "rounded",
-                attrs: { src: _vm.movie.poster }
-              })
-            ])
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "w-8/12 px-2" },
-          [
-            _c("p", {}, [
-              _c(
-                "span",
-                { staticClass: "w-full text-2xl font-bold inline-block" },
-                [
+            _c(
+              "div",
+              { staticClass: "w-2/12" },
+              [
+                _c("router-link", { attrs: { to: "/filme" } }, [
+                  _c("img", {
+                    staticClass: "rounded",
+                    attrs: { src: _vm.movie.details.Poster }
+                  })
+                ])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "w-8/12 px-2" },
+              [
+                _c("p", {}, [
                   _c(
-                    "router-link",
-                    { staticClass: "red-link", attrs: { to: "/filme" } },
+                    "span",
+                    { staticClass: "w-full text-2xl font-bold inline-block" },
                     [
-                      _vm._v(
-                        "\n            " +
-                          _vm._s(_vm.movie.title) +
-                          "\n          "
+                      _c(
+                        "router-link",
+                        { staticClass: "red-link", attrs: { to: "/filme" } },
+                        [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(_vm.movie.details.Title) +
+                              "\n          "
+                          )
+                        ]
                       )
-                    ]
+                    ],
+                    1
                   )
-                ],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _vm._l(_vm.movie.genres, function(genre) {
-              return _c("p", { key: genre.name }, [
-                _c(
-                  "span",
-                  { staticClass: "w-full inline-block" },
-                  [
-                    _c(
-                      "router-link",
-                      { staticClass: "red-link", attrs: { to: genre.link } },
-                      [
-                        _vm._v(
-                          "\n            " + _vm._s(genre.name) + "\n          "
+                ]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(_vm.movie.details.Genre))]),
+                _vm._v(" "),
+                _vm._l(_vm.movie.crew, function(job) {
+                  return _c(
+                    "p",
+                    { key: job.name },
+                    [
+                      _c("span", { staticClass: "font-bold" }, [
+                        _vm._v("\n          Realizadores:\n        ")
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(job.directors, function(name) {
+                        return _c("span", { key: name }, [_vm._v(_vm._s(name))])
+                      })
+                    ],
+                    2
+                  )
+                }),
+                _vm._v(" "),
+                _c("p", {}, [
+                  _c(
+                    "span",
+                    [
+                      _vm._v("\n          Elenco: "),
+                      _vm._l(_vm.movie.cast, function(actor) {
+                        return _c(
+                          "span",
+                          { key: actor, staticClass: "font-bold" },
+                          [
+                            _vm._v(
+                              "\n            " + _vm._s(actor) + ",\n          "
+                            )
+                          ]
                         )
-                      ]
-                    ),
-                    _vm._v(",\n        ")
-                  ],
-                  1
-                )
-              ])
-            }),
-            _vm._v(" "),
-            _vm._l(_vm.movie.crew, function(job) {
-              return _c(
-                "p",
-                { key: job.name },
-                [
+                      })
+                    ],
+                    2
+                  )
+                ]),
+                _vm._v(" "),
+                _c("p", {}, [
                   _c("span", { staticClass: "font-bold" }, [
-                    _vm._v("\n          Realizadores:\n        ")
+                    _vm._v("\n          Sinopse:\n        ")
                   ]),
-                  _vm._v(" "),
-                  _vm._l(job.directors, function(name) {
-                    return _c("span", { key: name }, [_vm._v(_vm._s(name))])
-                  })
-                ],
-                2
-              )
-            }),
-            _vm._v(" "),
-            _c("p", {}, [
-              _c(
-                "span",
-                [
-                  _vm._v("\n          Elenco: "),
-                  _vm._l(_vm.movie.cast, function(actor) {
-                    return _c(
-                      "span",
-                      { key: actor, staticClass: "font-bold" },
-                      [
-                        _vm._v(
-                          "\n            " + _vm._s(actor) + ",\n          "
-                        )
-                      ]
-                    )
-                  })
-                ],
-                2
-              )
-            ]),
-            _vm._v(" "),
-            _c("p", {}, [
-              _c("span", { staticClass: "font-bold" }, [
-                _vm._v("\n          Sinopse:\n        ")
-              ]),
-              _vm._v("\n        " + _vm._s(_vm.movie.intro) + "\n      ")
-            ])
-          ],
-          2
+                  _vm._v("\n        " + _vm._s(_vm.movie.intro) + "\n      ")
+                ])
+              ],
+              2
+            )
+          ]
         )
-      ]
-    )
-  ])
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -62704,65 +62644,6 @@ var render = function() {
       ]
     )
   ])
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NewsFilter.vue?vue&type=template&id=43303756&":
-/*!*************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/NewsFilter.vue?vue&type=template&id=43303756& ***!
-  \*************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass:
-        "flex flex-col w-1/4 bg-white rounded p-4 m-2 flex-no-grow shadow-md"
-    },
-    [
-      _c("span", { staticClass: "text-xl font-bold" }, [_vm._v("Categorias")]),
-      _vm._v(" "),
-      _c(
-        "ul",
-        { staticClass: "w-full" },
-        _vm._l(_vm.cats, function(cat) {
-          return _c("li", { key: cat.id }, [
-            _c(
-              "button",
-              {
-                class: _vm.bClass(cat.name),
-                on: {
-                  click: function($event) {
-                    return _vm.changeFilter(cat)
-                  }
-                }
-              },
-              [
-                _vm._v("\n        " + _vm._s(cat.name) + "\n        "),
-                _vm.currentFilter.includes(cat.name) ? _c("check") : _vm._e()
-              ],
-              1
-            )
-          ])
-        }),
-        0
-      )
-    ]
-  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -63271,7 +63152,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("hero-img"),
+      _c("hero-img", { attrs: { caption: "Notícias" } }),
       _vm._v(" "),
       _c("div", { staticClass: "p-4" }, [
         _c(
@@ -63279,7 +63160,7 @@ var render = function() {
           { staticClass: "w-full flex flex-row" },
           [
             _c("news-cats", {
-              attrs: { cats: _vm.categories },
+              attrs: { cats: _vm.categories, title: "Categorias" },
               on: {
                 change: function($event) {
                   return _vm.changeFilter($event)
@@ -63355,7 +63236,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("hero-img"),
+      _c("hero-img", { attrs: { caption: "Bem-vindo!" } }),
       _vm._v(" "),
       _c(
         "div",
@@ -63412,7 +63293,7 @@ var render = function() {
       "div",
       { staticClass: "flex flex-col w-full" },
       [
-        _c("hero-img"),
+        _c("hero-img", { attrs: { caption: "Bem-vindo!" } }),
         _vm._v(" "),
         _c("div", { staticClass: "flex flex-row p-4" }, [
           _c("div", { staticClass: "flex flex-col w-3/4 p-2" }, [
@@ -80469,6 +80350,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Filter.vue":
+/*!********************************************!*\
+  !*** ./resources/js/components/Filter.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Filter_vue_vue_type_template_id_1dedfda3___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Filter.vue?vue&type=template&id=1dedfda3& */ "./resources/js/components/Filter.vue?vue&type=template&id=1dedfda3&");
+/* harmony import */ var _Filter_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Filter.vue?vue&type=script&lang=js& */ "./resources/js/components/Filter.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Filter_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Filter_vue_vue_type_template_id_1dedfda3___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Filter_vue_vue_type_template_id_1dedfda3___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Filter.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Filter.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Filter.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_13_node_modules_vue_loader_lib_index_js_vue_loader_options_Filter_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/babel-loader/lib??ref--13!../../../node_modules/vue-loader/lib??vue-loader-options!./Filter.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Filter.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_13_node_modules_vue_loader_lib_index_js_vue_loader_options_Filter_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Filter.vue?vue&type=template&id=1dedfda3&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/Filter.vue?vue&type=template&id=1dedfda3& ***!
+  \***************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Filter_vue_vue_type_template_id_1dedfda3___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Filter.vue?vue&type=template&id=1dedfda3& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Filter.vue?vue&type=template&id=1dedfda3&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Filter_vue_vue_type_template_id_1dedfda3___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Filter_vue_vue_type_template_id_1dedfda3___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Footer.vue":
 /*!********************************************!*\
   !*** ./resources/js/components/Footer.vue ***!
@@ -80983,75 +80933,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Nav_vue_vue_type_template_id_7cd4f788_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Nav_vue_vue_type_template_id_7cd4f788_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/NewsFilter.vue":
-/*!************************************************!*\
-  !*** ./resources/js/components/NewsFilter.vue ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _NewsFilter_vue_vue_type_template_id_43303756___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewsFilter.vue?vue&type=template&id=43303756& */ "./resources/js/components/NewsFilter.vue?vue&type=template&id=43303756&");
-/* harmony import */ var _NewsFilter_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewsFilter.vue?vue&type=script&lang=js& */ "./resources/js/components/NewsFilter.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _NewsFilter_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _NewsFilter_vue_vue_type_template_id_43303756___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _NewsFilter_vue_vue_type_template_id_43303756___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/NewsFilter.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/NewsFilter.vue?vue&type=script&lang=js&":
-/*!*************************************************************************!*\
-  !*** ./resources/js/components/NewsFilter.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_13_node_modules_vue_loader_lib_index_js_vue_loader_options_NewsFilter_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/babel-loader/lib??ref--13!../../../node_modules/vue-loader/lib??vue-loader-options!./NewsFilter.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NewsFilter.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_13_node_modules_vue_loader_lib_index_js_vue_loader_options_NewsFilter_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/NewsFilter.vue?vue&type=template&id=43303756&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/NewsFilter.vue?vue&type=template&id=43303756& ***!
-  \*******************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewsFilter_vue_vue_type_template_id_43303756___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./NewsFilter.vue?vue&type=template&id=43303756& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NewsFilter.vue?vue&type=template&id=43303756&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewsFilter_vue_vue_type_template_id_43303756___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewsFilter_vue_vue_type_template_id_43303756___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -81882,6 +81763,34 @@ var authApi = {
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (authApi);
+
+/***/ }),
+
+/***/ "./resources/js/services/api/moviesApi.js":
+/*!************************************************!*\
+  !*** ./resources/js/services/api/moviesApi.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Api */ "./resources/js/services/api/Api.js");
+
+
+var moviesBaseUri = "".concat(_Api__WEBPACK_IMPORTED_MODULE_1__["apiBase"], "/movies");
+var moviesApi = {
+  index: function index() {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(moviesBaseUri).then(function (r) {
+      return Promise.resolve(r.data);
+    })["catch"](function (e) {
+      return Object(_Api__WEBPACK_IMPORTED_MODULE_1__["showRequestError"])(e);
+    });
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (moviesApi);
 
 /***/ }),
 

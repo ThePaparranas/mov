@@ -1,11 +1,12 @@
 <template>
   <div>
-    <hero-img />
+    <hero-img caption="Notícias" />
 
     <div class="p-4">
       <div class="w-full flex flex-row">
         <news-cats
           :cats="categories"
+          title="Categorias"
           @change="changeFilter($event)"
         />
 
@@ -20,10 +21,10 @@
 </template>
 
 <script>
+import newsCats from '../components/Filter'
 import heroImg from '../components/Hero-img'
 import newsApi from '../services/api/newsApi'
 import newsList from '../components/NewsList'
-import newsCats from '../components/NewsFilter'
 
 export default {
   name: 'News',

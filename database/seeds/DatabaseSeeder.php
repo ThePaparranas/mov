@@ -14,10 +14,14 @@ class DatabaseSeeder extends Seeder
         $this->call(ImdbListsTableSeeder::class);
         $this->call(RolesSeeder::class);
         $this->call(UsersTableSeeder::class);
-        $this->call(MovieTypesSeeder::class);
         $this->call(ProvidersSeeder::class);
         $this->call(ArticleTypesSeeder::class);
         $this->call(ArticleTableSeeder::class);
         $this->call(BannedCommentersSeeder::class);
+        $this->call(ServerTableSeeder::class);
+        $this->call(MovieTypesSeeder::class);
+        $this->call(MovieDetailsTableSeeder::class);
+        $this->call(MovieServersTableSeeder::class);
+        $this->call(MoviesTableSeeder::class);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMoviesTable extends Migration
+class CreateMovieServersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateMoviesTable extends Migration
      */
     public function up()
     {
-        Schema::create('movies', function (Blueprint $table) {
+        Schema::create('movie_servers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('imdb_id', 10)->unique()->index();
-            $table->integer('uploader')->index();
-            $table->integer('type')->index();
-            $table->integer('provider_id')->nullable();
-
+            $table->integer('movie_id')->index();
+            $table->integer('server_id');
+            $table->string('url');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateMoviesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('movies');
+        Schema::dropIfExists('movie_servers');
     }
 }

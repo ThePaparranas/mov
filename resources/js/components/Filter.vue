@@ -13,7 +13,10 @@
           @click="changeFilter(cat)"
         >
           {{ cat.name }}
-          <check v-if="currentFilter.includes(cat.name)" />
+          <check
+            v-if="currentFilter.includes(cat.name)"
+            title="Seleccionado"
+          />
         </button>
       </li>
     </ul>
@@ -34,6 +37,12 @@ export default {
     cats: {
       type: Array,
       required: true
+    },
+
+    title: {
+      required: false,
+      type: String,
+      default: 'Filtro'
     }
   },
 
