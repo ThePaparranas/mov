@@ -2,20 +2,18 @@
   <div>
     <hero-img caption="Notícias" />
 
-    <div class="p-4">
-      <div class="w-full flex flex-row">
-        <news-cats
-          :cats="categories"
-          title="Categorias"
-          @change="changeFilter($event)"
-        />
+    <div class="w-full flex flex-row p-4">
+      <news-cats
+        :cats="categories"
+        title="Categorias"
+        @change="changeFilter($event)"
+      />
 
-        <news-list
-          :filters="filters"
-          :filter-idxs="filterIdxs"
-          :items="news"
-        />
-      </div>
+      <news-list
+        :filters="filters"
+        :filter-idxs="filterIdxs"
+        :items="news"
+      />
     </div>
   </div>
 </template>
@@ -25,7 +23,7 @@ import newsCats from '../components/Filter'
 import heroImg from '../components/Hero-img'
 import newsApi from '../services/api/newsApi'
 import newsList from '../components/NewsList'
-
+// flex flex-col w-3/4 bg-white rounded p-4 m-2 shadow-md
 export default {
   name: 'News',
 

@@ -6,13 +6,14 @@
       <genres-filter
         :cats="genres"
         title="Géneros"
+        @change="changeFilter($event)"
       />
 
-      <div class="flex flex-col w-3/4 bg-white rounded p-4 m-2 shadow-md">
-        <span class="text-xl font-bold">Filmes > Todos</span>
-
-        <Movies :movies="movies" />
-      </div>
+      <Movies
+        :filters="filters"
+        :filter-idxs="filterIdxs"
+        :movies="movies"
+      />
     </div>
   </div>
 </template>
@@ -34,8 +35,10 @@ export default {
 
   data () {
     return {
-      movies: [],
-      genres: []
+      filters: [],
+      filterIdxs: [],
+      genres: [],
+      movies: []
     }
   },
 
@@ -44,6 +47,11 @@ export default {
   },
 
   methods: {
+    changeFilter (evt) {
+      this.filters = evt[0]
+      this.filterIdxs = evt[1]
+    },
+
     fetchData () {
       moviesApi.index()
         .then((r) => {

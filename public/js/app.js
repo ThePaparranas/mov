@@ -2938,6 +2938,10 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Movie__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Movie */ "./resources/js/components/Movie.vue");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
 //
 //
 //
@@ -2950,15 +2954,57 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'FilmesCards',
   components: {
     Movie: _Movie__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
+    filters: {
+      type: Array,
+      required: true
+    },
+    filterIdxs: {
+      type: Array,
+      required: true
+    },
     movies: {
       required: true,
       type: Array
+    }
+  },
+  data: function data() {
+    return {
+      filtered: '',
+      count: 0
+    };
+  },
+  computed: {
+    filterToTxt: function filterToTxt() {
+      if (this.filtered === '') {
+        return 'Todos';
+      }
+
+      return this.filters.join(' + ');
+    },
+    filteredItems: function filteredItems() {
+      var _this = this;
+
+      if (!this.filters.length) {
+        return this.movies;
+      }
+
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["filter"])(this.movies, function (o) {
+        return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["some"])(_this.filters, function (el) {
+          return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["includes"])(o.details.Genre, el);
+        });
+      });
+    }
+  },
+  watch: {
+    filters: function filters() {
+      this.filtered = this.filters.join(' + ');
     }
   }
 });
@@ -3327,11 +3373,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
+ // flex flex-col w-3/4 bg-white rounded p-4 m-2 shadow-md
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'News',
@@ -3435,6 +3480,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -3448,14 +3494,20 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      movies: [],
-      genres: []
+      filters: [],
+      filterIdxs: [],
+      genres: [],
+      movies: []
     };
   },
   beforeMount: function beforeMount() {
     this.fetchData();
   },
   methods: {
+    changeFilter: function changeFilter(evt) {
+      this.filters = evt[0];
+      this.filterIdxs = evt[1];
+    },
     fetchData: function fetchData() {
       var _this = this;
 
@@ -62398,17 +62450,29 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "section",
-    { staticClass: "movies" },
-    _vm._l(_vm.movies, function(movie) {
-      return _c(
-        "div",
-        { key: movie.id },
-        [_c("movie", { attrs: { movie: movie } })],
-        1
-      )
-    }),
-    0
+    "div",
+    { staticClass: "flex flex-col w-3/4 bg-white rounded p-4 m-2 shadow-md" },
+    [
+      _c("span", { staticClass: "text-xl font-bold" }, [
+        _vm._v(
+          "Filmes > " +
+            _vm._s(_vm.filterToTxt) +
+            " (" +
+            _vm._s(_vm.filteredItems.length) +
+            ")"
+        )
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.filteredItems, function(item) {
+        return _c(
+          "div",
+          { key: item.id },
+          [_c("movie", { attrs: { movie: item } })],
+          1
+        )
+      })
+    ],
+    2
   )
 }
 var staticRenderFns = []
@@ -62813,31 +62877,29 @@ var render = function() {
     [
       _c("hero-img", { attrs: { caption: "Notícias" } }),
       _vm._v(" "),
-      _c("div", { staticClass: "p-4" }, [
-        _c(
-          "div",
-          { staticClass: "w-full flex flex-row" },
-          [
-            _c("news-cats", {
-              attrs: { cats: _vm.categories, title: "Categorias" },
-              on: {
-                change: function($event) {
-                  return _vm.changeFilter($event)
-                }
+      _c(
+        "div",
+        { staticClass: "w-full flex flex-row p-4" },
+        [
+          _c("news-cats", {
+            attrs: { cats: _vm.categories, title: "Categorias" },
+            on: {
+              change: function($event) {
+                return _vm.changeFilter($event)
               }
-            }),
-            _vm._v(" "),
-            _c("news-list", {
-              attrs: {
-                filters: _vm.filters,
-                "filter-idxs": _vm.filterIdxs,
-                items: _vm.news
-              }
-            })
-          ],
-          1
-        )
-      ])
+            }
+          }),
+          _vm._v(" "),
+          _c("news-list", {
+            attrs: {
+              filters: _vm.filters,
+              "filter-idxs": _vm.filterIdxs,
+              items: _vm.news
+            }
+          })
+        ],
+        1
+      )
     ],
     1
   )
@@ -62902,24 +62964,21 @@ var render = function() {
         { staticClass: "w-full flex flex-row p-4" },
         [
           _c("genres-filter", {
-            attrs: { cats: _vm.genres, title: "Géneros" }
+            attrs: { cats: _vm.genres, title: "Géneros" },
+            on: {
+              change: function($event) {
+                return _vm.changeFilter($event)
+              }
+            }
           }),
           _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "flex flex-col w-3/4 bg-white rounded p-4 m-2 shadow-md"
-            },
-            [
-              _c("span", { staticClass: "text-xl font-bold" }, [
-                _vm._v("Filmes > Todos")
-              ]),
-              _vm._v(" "),
-              _c("Movies", { attrs: { movies: _vm.movies } })
-            ],
-            1
-          )
+          _c("Movies", {
+            attrs: {
+              filters: _vm.filters,
+              "filter-idxs": _vm.filterIdxs,
+              movies: _vm.movies
+            }
+          })
         ],
         1
       )
