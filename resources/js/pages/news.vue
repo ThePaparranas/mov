@@ -23,7 +23,7 @@ import newsCats from '../components/Filter'
 import heroImg from '../components/Hero-img'
 import newsApi from '../services/api/newsApi'
 import newsList from '../components/NewsList'
-// flex flex-col w-3/4 bg-white rounded p-4 m-2 shadow-md
+
 export default {
   name: 'News',
 

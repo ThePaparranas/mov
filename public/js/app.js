@@ -2880,6 +2880,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_material_design_icons_InformationVariant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-material-design-icons/InformationVariant */ "./node_modules/vue-material-design-icons/InformationVariant.vue");
 //
 //
 //
@@ -2916,13 +2917,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'FilmeCard',
+  components: {
+    inf: vue_material_design_icons_InformationVariant__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   props: {
     movie: {
       required: true,
       type: Object
     }
+  },
+  data: function data() {
+    return {
+      modalShow: false
+    };
   }
 });
 
@@ -3376,7 +3399,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // flex flex-col w-3/4 bg-white rounded p-4 m-2 shadow-md
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'News',
@@ -4037,6 +4059,58 @@ __webpack_require__.r(__webpack_exports__);
     title: {
       type: String,
       "default": "Check icon"
+    },
+    decorative: {
+      type: Boolean,
+      "default": false
+    },
+    fillColor: {
+      type: String,
+      "default": "currentColor"
+    },
+    size: {
+      type: Number,
+      "default": 24
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./node_modules/vue-material-design-icons/InformationVariant.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--13!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-material-design-icons/InformationVariant.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "InformationVariantIcon",
+  props: {
+    title: {
+      type: String,
+      "default": "Information Variant icon"
     },
     decorative: {
       type: Boolean,
@@ -61909,6 +61983,68 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./node_modules/vue-material-design-icons/InformationVariant.vue?vue&type=template&id=3b5f7865&functional=true&":
+/*!****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-material-design-icons/InformationVariant.vue?vue&type=template&id=3b5f7865&functional=true& ***!
+  \****************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function(_h, _vm) {
+  var _c = _vm._c
+  return _c(
+    "span",
+    _vm._g(
+      {
+        staticClass: "material-design-icon information-variant-icon",
+        class: [_vm.data.class, _vm.data.staticClass],
+        attrs: {
+          "aria-hidden": _vm.props.decorative,
+          "aria-label": _vm.props.title,
+          role: "img"
+        }
+      },
+      _vm.listeners
+    ),
+    [
+      _c(
+        "svg",
+        {
+          staticClass: "material-design-icon__svg",
+          attrs: {
+            fill: _vm.props.fillColor,
+            width: _vm.props.size,
+            height: _vm.props.size,
+            viewBox: "0 0 24 24"
+          }
+        },
+        [
+          _c(
+            "path",
+            {
+              attrs: {
+                d:
+                  "M13.5,4A1.5,1.5 0 0,0 12,5.5A1.5,1.5 0 0,0 13.5,7A1.5,1.5 0 0,0 15,5.5A1.5,1.5 0 0,0 13.5,4M13.14,8.77C11.95,8.87 8.7,11.46 8.7,11.46C8.5,11.61 8.56,11.6 8.72,11.88C8.88,12.15 8.86,12.17 9.05,12.04C9.25,11.91 9.58,11.7 10.13,11.36C12.25,10 10.47,13.14 9.56,18.43C9.2,21.05 11.56,19.7 12.17,19.3C12.77,18.91 14.38,17.8 14.54,17.69C14.76,17.54 14.6,17.42 14.43,17.17C14.31,17 14.19,17.12 14.19,17.12C13.54,17.55 12.35,18.45 12.19,17.88C12,17.31 13.22,13.4 13.89,10.71C14,10.07 14.3,8.67 13.14,8.77Z"
+              }
+            },
+            [_c("title", [_vm._v(_vm._s(_vm.props.title))])]
+          )
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./node_modules/vue-material-design-icons/PowerStandby.vue?vue&type=template&id=a61affd8&functional=true&":
 /*!**********************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-material-design-icons/PowerStandby.vue?vue&type=template&id=a61affd8&functional=true& ***!
@@ -62352,79 +62488,121 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.movie
-    ? _c("article", [
-        _c(
-          "div",
-          {
-            staticClass:
-              "movie-card flex flex-row w-full p-2 bg-gray-200 rounded my-2"
-          },
-          [
-            _c(
-              "div",
-              { staticClass: "w-2/12" },
-              [
-                _c("router-link", { attrs: { to: "/filme" } }, [
-                  _c("img", {
-                    staticClass: "rounded",
-                    attrs: { src: _vm.movie.details.Poster }
-                  })
-                ])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "w-8/12 px-2" }, [
-              _c("p", {}, [
-                _c(
-                  "span",
-                  { staticClass: "w-full text-2xl font-bold inline-block" },
-                  [
-                    _c(
-                      "router-link",
-                      { staticClass: "red-link", attrs: { to: "/filme" } },
-                      [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(_vm.movie.details.Title) +
-                            " (" +
-                            _vm._s(_vm.movie.details.Year) +
-                            ")\n          "
-                        )
-                      ]
-                    )
-                  ],
-                  1
-                )
-              ]),
+    ? _c(
+        "article",
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "movie-card flex flex-row w-full p-2 bg-gray-200 rounded my-2"
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "w-2/12" },
+                [
+                  _c("router-link", { attrs: { to: "/filme" } }, [
+                    _c("img", {
+                      staticClass: "rounded",
+                      attrs: { src: _vm.movie.details.Poster }
+                    })
+                  ])
+                ],
+                1
+              ),
               _vm._v(" "),
-              _c("p", [
-                _vm._v(_vm._s(_vm.movie.details.Genre) + " "),
-                _c("span", { staticClass: "text-gray-600" }, [
-                  _vm._v("• " + _vm._s(_vm.movie.details.Runtime))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("span", { staticClass: "font-bold" }, [
-                  _vm._v("Realização: ")
+              _c("div", { staticClass: "w-10/12 px-2" }, [
+                _c("p", {}, [
+                  _c(
+                    "span",
+                    { staticClass: "w-full text-2xl font-bold inline-block" },
+                    [
+                      _c(
+                        "router-link",
+                        { staticClass: "red-link", attrs: { to: "/filme" } },
+                        [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(_vm.movie.details.Title) +
+                              " (" +
+                              _vm._s(_vm.movie.details.Year) +
+                              ")\n          "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "float-right text-teal-500 border-teal-500 rounded-full bg-white flex items-center justify-center",
+                          on: {
+                            click: function($event) {
+                              _vm.modalShow = !_vm.modalShow
+                            }
+                          }
+                        },
+                        [_c("inf", { attrs: { title: "Info" } })],
+                        1
+                      )
+                    ],
+                    1
+                  )
                 ]),
-                _vm._v(_vm._s(_vm.movie.details.Director))
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("span", { staticClass: "font-bold" }, [_vm._v("Elenco: ")]),
-                _vm._v(_vm._s(_vm.movie.details.Actors))
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("span", { staticClass: "font-bold" }, [_vm._v("Sinopse: ")]),
-                _vm._v(_vm._s(_vm.movie.details.Plot))
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v(_vm._s(_vm.movie.details.Genre) + " "),
+                  _c("span", { staticClass: "text-gray-600" }, [
+                    _vm._v("• " + _vm._s(_vm.movie.details.Runtime))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("p", [
+                  _c("span", { staticClass: "font-bold" }, [
+                    _vm._v("Realização: ")
+                  ]),
+                  _vm._v(_vm._s(_vm.movie.details.Director))
+                ]),
+                _vm._v(" "),
+                _c("p", [
+                  _c("span", { staticClass: "font-bold" }, [
+                    _vm._v("Elenco: ")
+                  ]),
+                  _vm._v(_vm._s(_vm.movie.details.Actors))
+                ]),
+                _vm._v(" "),
+                _c("p", [
+                  _c("span", { staticClass: "font-bold" }, [
+                    _vm._v("Sinopse: ")
+                  ]),
+                  _vm._v(_vm._s(_vm.movie.details.Plot))
+                ])
               ])
-            ])
-          ]
-        )
-      ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "b-modal",
+            {
+              attrs: { title: _vm.movie.details.Title },
+              model: {
+                value: _vm.modalShow,
+                callback: function($$v) {
+                  _vm.modalShow = $$v
+                },
+                expression: "modalShow"
+              }
+            },
+            [
+              _c("pre", { staticClass: "my-4" }, [
+                _vm._v("      " + _vm._s(_vm.movie.details) + "\n    ")
+              ])
+            ]
+          )
+        ],
+        1
+      )
     : _vm._e()
 }
 var staticRenderFns = []
@@ -63889,6 +64067,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_Check_vue_vue_type_template_id_7146728c_functional_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_Check_vue_vue_type_template_id_7146728c_functional_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-material-design-icons/InformationVariant.vue":
+/*!***********************************************************************!*\
+  !*** ./node_modules/vue-material-design-icons/InformationVariant.vue ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _InformationVariant_vue_vue_type_template_id_3b5f7865_functional_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InformationVariant.vue?vue&type=template&id=3b5f7865&functional=true& */ "./node_modules/vue-material-design-icons/InformationVariant.vue?vue&type=template&id=3b5f7865&functional=true&");
+/* harmony import */ var _InformationVariant_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InformationVariant.vue?vue&type=script&lang=js& */ "./node_modules/vue-material-design-icons/InformationVariant.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _InformationVariant_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _InformationVariant_vue_vue_type_template_id_3b5f7865_functional_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _InformationVariant_vue_vue_type_template_id_3b5f7865_functional_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  true,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "node_modules/vue-material-design-icons/InformationVariant.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./node_modules/vue-material-design-icons/InformationVariant.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/vue-material-design-icons/InformationVariant.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_loader_lib_index_js_ref_13_vue_loader_lib_index_js_vue_loader_options_InformationVariant_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../babel-loader/lib??ref--13!../vue-loader/lib??vue-loader-options!./InformationVariant.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./node_modules/vue-material-design-icons/InformationVariant.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_babel_loader_lib_index_js_ref_13_vue_loader_lib_index_js_vue_loader_options_InformationVariant_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./node_modules/vue-material-design-icons/InformationVariant.vue?vue&type=template&id=3b5f7865&functional=true&":
+/*!**********************************************************************************************************************!*\
+  !*** ./node_modules/vue-material-design-icons/InformationVariant.vue?vue&type=template&id=3b5f7865&functional=true& ***!
+  \**********************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_InformationVariant_vue_vue_type_template_id_3b5f7865_functional_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../vue-loader/lib??vue-loader-options!./InformationVariant.vue?vue&type=template&id=3b5f7865&functional=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./node_modules/vue-material-design-icons/InformationVariant.vue?vue&type=template&id=3b5f7865&functional=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_InformationVariant_vue_vue_type_template_id_3b5f7865_functional_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_InformationVariant_vue_vue_type_template_id_3b5f7865_functional_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
