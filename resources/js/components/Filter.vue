@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col w-1/4 bg-white rounded p-4 m-2 flex-no-grow shadow-md">
-    <span class="text-xl font-bold">Categorias</span>
+    <span class="text-xl font-bold">{{ title }}</span>
 
     <ul class="w-full">
       <li

@@ -2,20 +2,18 @@
   <div>
     <hero-img caption="Notícias" />
 
-    <div class="p-4">
-      <div class="w-full flex flex-row">
-        <news-cats
-          :cats="categories"
-          title="Categorias"
-          @change="changeFilter($event)"
-        />
+    <div class="w-full flex flex-row p-4">
+      <news-cats
+        :cats="categories"
+        title="Categorias"
+        @change="changeFilter($event)"
+      />
 
-        <news-list
-          :filters="filters"
-          :filter-idxs="filterIdxs"
-          :items="news"
-        />
-      </div>
+      <news-list
+        :filters="filters"
+        :filter-idxs="filterIdxs"
+        :items="news"
+      />
     </div>
   </div>
 </template>
