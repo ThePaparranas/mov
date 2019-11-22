@@ -3,9 +3,21 @@ const mutations = {
     state.user = user
   },
 
-  SET_APP (state, setts) {
-    state.appName = setts.appName
-    state.baseDir = setts.baseDir
+  SET_APP (state, obj) {
+    state.appName = obj.appName
+    state.baseDir = obj.baseDir
+  },
+
+  SET_MOVIES (state, movies) {
+    state.movies = movies
+  },
+
+  SET_WORKING (state, boolVal) {
+    state.working = boolVal
+  },
+
+  SET_GENRES (state, arr) {
+    state.genres = arr
   }
 }
 
