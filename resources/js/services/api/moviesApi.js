@@ -4,16 +4,22 @@ import { apiBase, showRequestError } from './Api'
 const moviesBaseUri = `${apiBase}/movies`
 
 const moviesApi = {
-  index () {
-    return http.get(moviesBaseUri)
-      .then(r => Promise.resolve(r.data))
-      .catch(e => showRequestError(e))
+  async index () {
+    try {
+      const r = await http.get(moviesBaseUri)
+      return await Promise.resolve(r.data)
+    } catch (e) {
+      showRequestError(e)
+    }
   },
 
-  genres () {
-    return http.get(moviesBaseUri + '/genres')
-      .then(r => Promise.resolve(r.data))
-      .catch(e => showRequestError(e))
+  async genres () {
+    try {
+      const r = await http.get(moviesBaseUri + '/genres')
+      return await Promise.resolve(r.data)
+    } catch (e) {
+      showRequestError(e)
+    }
   }
 }
 
