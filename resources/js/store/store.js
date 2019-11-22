@@ -14,8 +14,11 @@ export default function () {
       canSaveBtn: false,
       count: false,
       editingName: false,
+      genres: [],
       loaded: false,
       localStorageItems: getLocalStorageItems(),
+      movies: [],
+      news: [],
       requesting: {
         verb: 'idle',
         uri: ''
