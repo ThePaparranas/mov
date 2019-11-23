@@ -15,3 +15,5 @@ class Genre extends Model
         'name',
     ];
 }
+
+// TODO: relations
