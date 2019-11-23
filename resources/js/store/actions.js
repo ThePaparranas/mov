@@ -17,7 +17,7 @@ export const setWorking = ({ commit }, val) => {
 }
 
 export const setMovies = ({ state, commit }) => {
-  if (state.movies.length) {
+  if (state.movies.length || state.working) {
     return
   }
 
