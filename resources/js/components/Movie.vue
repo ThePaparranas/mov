@@ -15,7 +15,7 @@
           <span class="w-full text-2xl font-bold inline-block">
             <router-link
               to="/filme"
-              class="red-link"
+              :class="linkClass"
             >
               {{ movie.details.Title }} ({{ movie.details.Year }})
             </router-link>
@@ -38,17 +38,30 @@
 
     <b-modal
       v-model="modalShow"
+      ok-only
       :title="movie.details.Title"
     >
-      <pre class="my-4">
-        {{ movie.details }}
-      </pre>
+      <div
+        v-if="movie.details"
+        class="my-4"
+      >
+        <p
+          v-for="(value, index) in movie.details"
+          :key="index"
+        >
+          <span
+            v-if="!excludedDetails.includes(index)"
+            class="font-bold"
+          >{{ capital(index) }}: <span class="font-normal">{{ value }}</span></span>
+        </p>
+      </div>
     </b-modal>
   </article>
 </template>
 
 <script>
 import inf from 'vue-material-design-icons/InformationVariant'
+import { startCase } from 'lodash'
 
 export default {
   name: 'FilmeCard',
@@ -66,7 +79,34 @@ export default {
 
   data () {
     return {
-      modalShow: false
+      modalShow: false,
+      excludedDetails: [
+        'id',
+        'movie_id',
+        'Poster',
+        'Ratings', // TODO
+        'Response',
+        'created_at',
+        'updated_at'
+      ]
+    }
+  },
+
+  computed: {
+    linkClass () {
+      let cl = 'red-link'
+
+      if (this.$store.state.working) {
+        cl = 'red-link disabled'
+      }
+
+      return cl
+    }
+  },
+
+  methods: {
+    capital (str) {
+      return startCase(str)
     }
   }
 }

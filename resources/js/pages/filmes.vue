@@ -4,7 +4,7 @@
 
     <div class="w-full flex flex-row p-4">
       <genres-filter
-        :cats="genres"
+        :cats="$store.state.genres"
         title="Géneros"
         @change="changeFilter($event)"
       />
@@ -12,7 +12,7 @@
       <Movies
         :filters="filters"
         :filter-idxs="filterIdxs"
-        :movies="movies"
+        :movies="$store.state.movies"
       />
     </div>
   </div>
@@ -22,7 +22,8 @@
 import Movies from '../components/Movies'
 import heroImg from '../components/Hero-img'
 import genresFilter from '../components/Filter'
-import moviesApi from '../services/api/moviesApi'
+
+import { mapActions } from 'vuex/'
 
 export default {
   name: 'Filmes',
@@ -36,32 +37,21 @@ export default {
   data () {
     return {
       filters: [],
-      filterIdxs: [],
-      genres: [],
-      movies: []
+      filterIdxs: []
     }
   },
 
   beforeMount () {
-    this.fetchData()
+    this.setMovies()
+    this.setGenres()
   },
 
   methods: {
+    ...mapActions(['setMovies', 'setGenres']),
+
     changeFilter (evt) {
       this.filters = evt[0]
       this.filterIdxs = evt[1]
-    },
-
-    fetchData () {
-      moviesApi.index()
-        .then((r) => {
-          this.movies = r
-        })
-
-      moviesApi.genres()
-        .then((r) => {
-          this.genres = r
-        })
     }
   }
 }
