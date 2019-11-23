@@ -2881,6 +2881,20 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_material_design_icons_InformationVariant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-material-design-icons/InformationVariant */ "./node_modules/vue-material-design-icons/InformationVariant.vue");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2931,6 +2945,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'FilmeCard',
   components: {
@@ -2944,8 +2959,26 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      modalShow: false
+      modalShow: false,
+      excludedDetails: ['id', 'movie_id', 'Poster', 'Ratings', // TODO
+      'Response', 'created_at', 'updated_at']
     };
+  },
+  computed: {
+    linkClass: function linkClass() {
+      var cl = 'red-link';
+
+      if (this.$store.state.working) {
+        cl = 'red-link disabled';
+      }
+
+      return cl;
+    }
+  },
+  methods: {
+    capital: function capital(str) {
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["startCase"])(str);
+    }
   }
 });
 
@@ -3482,7 +3515,55 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Movies__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Movies */ "./resources/js/components/Movies.vue");
 /* harmony import */ var _components_Hero_img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Hero-img */ "./resources/js/components/Hero-img.vue");
 /* harmony import */ var _components_Filter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Filter */ "./resources/js/components/Filter.vue");
-/* harmony import */ var _services_api_moviesApi__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/api/moviesApi */ "./resources/js/services/api/moviesApi.js");
+/* harmony import */ var vuex___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex/ */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+} //
 //
 //
 //
@@ -3502,7 +3583,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
+
+
 
 
 
@@ -3517,30 +3599,19 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       filters: [],
-      filterIdxs: [],
-      genres: [],
-      movies: []
+      filterIdxs: []
     };
   },
   beforeMount: function beforeMount() {
-    this.fetchData();
+    this.setMovies();
+    this.setGenres();
   },
-  methods: {
+  methods: _objectSpread({}, Object(vuex___WEBPACK_IMPORTED_MODULE_3__["mapActions"])(['setMovies', 'setGenres']), {
     changeFilter: function changeFilter(evt) {
       this.filters = evt[0];
       this.filterIdxs = evt[1];
-    },
-    fetchData: function fetchData() {
-      var _this = this;
-
-      _services_api_moviesApi__WEBPACK_IMPORTED_MODULE_3__["default"].index().then(function (r) {
-        _this.movies = r;
-      });
-      _services_api_moviesApi__WEBPACK_IMPORTED_MODULE_3__["default"].genres().then(function (r) {
-        _this.genres = r;
-      });
     }
-  }
+  })
 });
 
 /***/ }),
@@ -62520,7 +62591,7 @@ var render = function() {
                     [
                       _c(
                         "router-link",
-                        { staticClass: "red-link", attrs: { to: "/filme" } },
+                        { class: _vm.linkClass, attrs: { to: "/filme" } },
                         [
                           _vm._v(
                             "\n            " +
@@ -62585,7 +62656,7 @@ var render = function() {
           _c(
             "b-modal",
             {
-              attrs: { title: _vm.movie.details.Title },
+              attrs: { "ok-only": "", title: _vm.movie.details.Title },
               model: {
                 value: _vm.modalShow,
                 callback: function($$v) {
@@ -62595,9 +62666,25 @@ var render = function() {
               }
             },
             [
-              _c("pre", { staticClass: "my-4" }, [
-                _vm._v("      " + _vm._s(_vm.movie.details) + "\n    ")
-              ])
+              _vm.movie.details
+                ? _c(
+                    "div",
+                    { staticClass: "my-4" },
+                    _vm._l(_vm.movie.details, function(value, index) {
+                      return _c("p", { key: index }, [
+                        !_vm.excludedDetails.includes(index)
+                          ? _c("span", { staticClass: "font-bold" }, [
+                              _vm._v(_vm._s(_vm.capital(index)) + ": "),
+                              _c("span", { staticClass: "font-normal" }, [
+                                _vm._v(_vm._s(value))
+                              ])
+                            ])
+                          : _vm._e()
+                      ])
+                    }),
+                    0
+                  )
+                : _vm._e()
             ]
           )
         ],
@@ -63142,7 +63229,7 @@ var render = function() {
         { staticClass: "w-full flex flex-row p-4" },
         [
           _c("genres-filter", {
-            attrs: { cats: _vm.genres, title: "Géneros" },
+            attrs: { cats: _vm.$store.state.genres, title: "Géneros" },
             on: {
               change: function($event) {
                 return _vm.changeFilter($event)
@@ -63154,7 +63241,7 @@ var render = function() {
             attrs: {
               filters: _vm.filters,
               "filter-idxs": _vm.filterIdxs,
-              movies: _vm.movies
+              movies: _vm.$store.state.movies
             }
           })
         ],
@@ -81673,26 +81760,75 @@ var authApi = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Api */ "./resources/js/services/api/Api.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Api */ "./resources/js/services/api/Api.js");
 
 
-var moviesBaseUri = "".concat(_Api__WEBPACK_IMPORTED_MODULE_1__["apiBase"], "/movies");
+
+var moviesBaseUri = "".concat(_Api__WEBPACK_IMPORTED_MODULE_2__["apiBase"], "/movies");
 var moviesApi = {
   index: function index() {
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(moviesBaseUri).then(function (r) {
-      return Promise.resolve(r.data);
-    })["catch"](function (e) {
-      return Object(_Api__WEBPACK_IMPORTED_MODULE_1__["showRequestError"])(e);
-    });
+    var r;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function index$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.prev = 0;
+            _context.next = 3;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(moviesBaseUri));
+
+          case 3:
+            r = _context.sent;
+            _context.next = 6;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(Promise.resolve(r.data));
+
+          case 6:
+            return _context.abrupt("return", _context.sent);
+
+          case 9:
+            _context.prev = 9;
+            _context.t0 = _context["catch"](0);
+            Object(_Api__WEBPACK_IMPORTED_MODULE_2__["showRequestError"])(_context.t0);
+
+          case 12:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, null, null, [[0, 9]]);
   },
   genres: function genres() {
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(moviesBaseUri + '/genres').then(function (r) {
-      return Promise.resolve(r.data);
-    })["catch"](function (e) {
-      return Object(_Api__WEBPACK_IMPORTED_MODULE_1__["showRequestError"])(e);
-    });
+    var r;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.async(function genres$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.prev = 0;
+            _context2.next = 3;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(moviesBaseUri + '/genres'));
+
+          case 3:
+            r = _context2.sent;
+            _context2.next = 6;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.awrap(Promise.resolve(r.data));
+
+          case 6:
+            return _context2.abrupt("return", _context2.sent);
+
+          case 9:
+            _context2.prev = 9;
+            _context2.t0 = _context2["catch"](0);
+            Object(_Api__WEBPACK_IMPORTED_MODULE_2__["showRequestError"])(_context2.t0);
+
+          case 12:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, null, null, [[0, 9]]);
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (moviesApi);
@@ -81912,7 +82048,7 @@ var vuexVer = vuex__WEBPACK_IMPORTED_MODULE_1__["default"].version;
 /*!***************************************!*\
   !*** ./resources/js/store/actions.js ***!
   \***************************************/
-/*! exports provided: setUser, unsetUser, setApp */
+/*! exports provided: setUser, unsetUser, setApp, setWorking, setMovies, setGenres */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81920,6 +82056,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setUser", function() { return setUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unsetUser", function() { return unsetUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setApp", function() { return setApp; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setWorking", function() { return setWorking; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setMovies", function() { return setMovies; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setGenres", function() { return setGenres; });
+/* harmony import */ var _services_api_moviesApi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/api/moviesApi */ "./resources/js/services/api/moviesApi.js");
+
 var setUser = function setUser(_ref, user) {
   var commit = _ref.commit;
   commit('SET_USER', user);
@@ -81931,6 +82072,36 @@ var unsetUser = function unsetUser(_ref2) {
 var setApp = function setApp(_ref3, setts) {
   var commit = _ref3.commit;
   commit('SET_APP', setts);
+};
+var setWorking = function setWorking(_ref4, val) {
+  var commit = _ref4.commit;
+  commit('SET_WORKING', val);
+};
+var setMovies = function setMovies(_ref5) {
+  var state = _ref5.state,
+      commit = _ref5.commit;
+
+  if (state.movies.length || state.working) {
+    return;
+  }
+
+  commit('SET_WORKING', true);
+  _services_api_moviesApi__WEBPACK_IMPORTED_MODULE_0__["default"].index().then(function (data) {
+    return commit('SET_MOVIES', data);
+  })["finally"](commit('SET_WORKING', false));
+};
+var setGenres = function setGenres(_ref6) {
+  var state = _ref6.state,
+      commit = _ref6.commit;
+
+  if (state.genres.length) {
+    return;
+  }
+
+  commit('SET_WORKING', true);
+  _services_api_moviesApi__WEBPACK_IMPORTED_MODULE_0__["default"].genres().then(function (data) {
+    return commit('SET_GENRES', data);
+  })["finally"](commit('SET_WORKING', false));
 };
 
 /***/ }),
@@ -81948,9 +82119,18 @@ var mutations = {
   SET_USER: function SET_USER(state, user) {
     state.user = user;
   },
-  SET_APP: function SET_APP(state, setts) {
-    state.appName = setts.appName;
-    state.baseDir = setts.baseDir;
+  SET_APP: function SET_APP(state, obj) {
+    state.appName = obj.appName;
+    state.baseDir = obj.baseDir;
+  },
+  SET_MOVIES: function SET_MOVIES(state, movies) {
+    state.movies = movies;
+  },
+  SET_WORKING: function SET_WORKING(state, boolVal) {
+    state.working = boolVal;
+  },
+  SET_GENRES: function SET_GENRES(state, arr) {
+    state.genres = arr;
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (mutations);
@@ -81987,8 +82167,11 @@ var getLocalStorageItems = function getLocalStorageItems() {
       canSaveBtn: false,
       count: false,
       editingName: false,
+      genres: [],
       loaded: false,
       localStorageItems: getLocalStorageItems(),
+      movies: [],
+      news: [],
       requesting: {
         verb: 'idle',
         uri: ''

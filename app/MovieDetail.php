@@ -108,4 +108,6 @@ class MovieDetail extends Model
         'Website',
         'Response',
     ];
+
+    // TODO: unserialize ratings
 }
