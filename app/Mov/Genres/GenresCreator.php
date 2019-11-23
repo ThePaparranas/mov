@@ -33,6 +33,6 @@ class GenresCreator
             );
         }
 
-        return true;
+        return $vals;
     }
 }
