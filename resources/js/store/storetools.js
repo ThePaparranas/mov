@@ -9,6 +9,10 @@ export const localSettingsComputed = {
   ...mapState({ localSettings: 'localStorageItems' })
 }
 
+export const isWorking = {
+  ...mapState({ working: 'working' })
+}
+
 // Methods
 export const authMethods = {
   ...mapActions(['unsetUser', 'setUser'])
