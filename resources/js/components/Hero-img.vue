@@ -32,7 +32,7 @@ export default {
     img: {
       required: false,
       type: String,
-      default: 'img/hero/default-cover.jpg'
+      default: '/img/hero/default-cover.jpg'
     },
 
     caption: {
