@@ -20,7 +20,6 @@ class MovieDetailsTableSeeder extends Seeder
             $json = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . $c . '.json');
             $data = json_decode($json, true);
             $data['movie_id'] = $c;
-            $data['Ratings'] = serialize($data['Ratings']);
 
             $details->fill($data);
             $details->save();
