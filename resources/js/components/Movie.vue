@@ -53,6 +53,11 @@
             v-if="!excludedDetails.includes(index)"
             class="font-bold"
           >{{ capital(index) }}: <span class="font-normal">{{ value }}</span></span>
+
+          <span
+            v-if="serializedDetails.includes(index)"
+            class="font-bold"
+          >{{ capital(index) }}: <span class="font-normal">{{ value }}</span></span>
         </p>
       </div>
     </b-modal>
@@ -84,10 +89,13 @@ export default {
         'id',
         'movie_id',
         'Poster',
-        'Ratings', // TODO
+        'Ratings',
         'Response',
         'created_at',
         'updated_at'
+      ],
+      serializedDetails: [
+        'Ratings'
       ]
     }
   },
@@ -107,6 +115,10 @@ export default {
   methods: {
     capital (str) {
       return startCase(str)
+    },
+
+    unSerial (str) {
+      return unserialize('str')
     }
   }
 }
