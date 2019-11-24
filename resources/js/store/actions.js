@@ -29,7 +29,7 @@ export const setMovies = ({ state, commit }) => {
 }
 
 export const setGenres = ({ state, commit }) => {
-  if (state.genres.length) {
+  if (state.genres.length || state.working) {
     return
   }
 
