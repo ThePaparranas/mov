@@ -2725,7 +2725,7 @@ __webpack_require__.r(__webpack_exports__);
     img: {
       required: false,
       type: String,
-      "default": 'img/hero/default-cover.jpg'
+      "default": '/img/hero/default-cover.jpg'
     },
     caption: {
       required: false,
@@ -2944,6 +2944,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2960,8 +2965,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       modalShow: false,
-      excludedDetails: ['id', 'movie_id', 'Poster', 'Ratings', // TODO
-      'Response', 'created_at', 'updated_at']
+      excludedDetails: ['id', 'movie_id', 'Poster', 'Ratings', 'Response', 'created_at', 'updated_at'],
+      serializedDetails: ['Ratings']
     };
   },
   computed: {
@@ -2978,6 +2983,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     capital: function capital(str) {
       return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["startCase"])(str);
+    },
+    unSerial: function unSerial(str) {
+      return unserialize('str');
     }
   }
 });
@@ -3174,6 +3182,66 @@ function _defineProperty(obj, key, value) {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3186,6 +3254,11 @@ function _defineProperty(obj, key, value) {
   components: {
     logout: _Logout_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     me: _Me__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      open: false
+    };
   },
   computed: _objectSpread({}, _store_storetools__WEBPACK_IMPORTED_MODULE_4__["userComputed"], {
     userRoutes: function userRoutes() {
@@ -3200,7 +3273,7 @@ function _defineProperty(obj, key, value) {
     },
     navClass: function navClass() {
       var current = this.$route.meta.menuClass;
-      return current + ' fixed z-50 select-none bg-white lg:flex lg:items-stretch w-full border-b-4 border-red-1000';
+      return current + ' w-full fixed z-50 select-none bg-white flex items-center justify-between flex-wrap border-b-4 border-red-1000';
     },
     mainMenuClass: function mainMenuClass() {
       return 'bg-fade text-gray-800 flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center bg-white hover:text-red-1000';
@@ -3208,7 +3281,12 @@ function _defineProperty(obj, key, value) {
     userMenuClass: function userMenuClass() {
       return 'bg-fade text-gray-800 flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center bg-white hover:text-red-1000';
     }
-  })
+  }),
+  methods: {
+    toggle: function toggle() {
+      this.open = !this.open;
+    }
+  }
 });
 
 /***/ }),
@@ -3626,8 +3704,6 @@ function _defineProperty(obj, key, value) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Hero_img__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Hero-img */ "./resources/js/components/Hero-img.vue");
-//
-//
 //
 //
 //
@@ -62679,6 +62755,15 @@ var render = function() {
                                 _vm._v(_vm._s(value))
                               ])
                             ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.serializedDetails.includes(index)
+                          ? _c("span", { staticClass: "font-bold" }, [
+                              _vm._v(_vm._s(_vm.capital(index)) + ": "),
+                              _c("span", { staticClass: "font-normal" }, [
+                                _vm._v(_vm._s(value))
+                              ])
+                            ])
                           : _vm._e()
                       ])
                     }),
@@ -62762,56 +62847,33 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { class: _vm.navClass }, [
-    _c(
-      "div",
-      { staticClass: "flex flex-no-shrink items-stretch h-12 text-red-1000" },
-      [
-        _vm._l(_vm.userRoutes, function(route) {
-          return _c(
-            "router-link",
-            {
-              key: Math.random(),
-              class: _vm.mainMenuClass,
-              attrs: { to: route.path }
-            },
-            [_vm._v("\n      " + _vm._s(route.meta.name) + "\n    ")]
-          )
-        }),
-        _vm._v(" "),
-        _vm._l(_vm.adminRoutes, function(route) {
-          return _vm.user.isAdmin
-            ? _c(
-                "router-link",
-                {
-                  key: Math.random(),
-                  class: _vm.mainMenuClass,
-                  attrs: { to: route.path }
-                },
-                [_vm._v("\n      " + _vm._s(route.meta.name) + "\n    ")]
-              )
-            : _vm._e()
-        }),
-        _vm._v(" "),
+  return _c(
+    "nav",
+    {
+      staticClass:
+        "flex items-center justify-between flex-wrap text-red-1000 py-2"
+    },
+    [
+      _c("div", { staticClass: "block sm:hidden" }, [
         _c(
           "button",
           {
             staticClass:
-              "block lg:hidden cursor-pointer ml-auto relative w-12 h-12 p-4"
+              "flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white",
+            on: { click: _vm.toggle }
           },
           [
             _c(
               "svg",
               {
-                staticClass: "fill-current",
+                staticClass: "fill-current h-3 w-3",
                 attrs: {
-                  width: "20",
-                  height: "20",
-                  xmlns: "http://www.w3.org/2000/svg",
-                  viewBox: "0 0 20 20"
+                  viewBox: "0 0 20 20",
+                  xmlns: "http://www.w3.org/2000/svg"
                 }
               },
               [
+                _c("title", [_vm._v("Menu")]),
                 _c("path", {
                   attrs: { d: "M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" }
                 })
@@ -62819,31 +62881,73 @@ var render = function() {
             )
           ]
         )
-      ],
-      2
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "lg:flex lg:items-stretch lg:flex-no-shrink lg:flex-grow"
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "lg:flex lg:items-stretch lg:justify-end ml-auto" },
-          [
-            _c("me", { class: _vm.userMenuClass }),
-            _vm._v(" "),
-            _c("logout", { class: _vm.userMenuClass })
-          ],
-          1
-        )
-      ]
-    )
-  ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "w-full flex-grow sm:flex sm:items-center sm:w-auto",
+          class: _vm.open ? "block" : "hidden"
+        },
+        [_vm._m(0), _vm._v(" "), _vm._m(1)]
+      )
+    ]
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-sm sm:flex-grow" }, [
+      _c(
+        "a",
+        {
+          staticClass:
+            "no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white mr-4",
+          attrs: { href: "#responsive-header" }
+        },
+        [_vm._v("\n          Docs\n        ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass:
+            "no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white mr-4",
+          attrs: { href: "#responsive-header" }
+        },
+        [_vm._v("\n          Examples\n        ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass:
+            "no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white",
+          attrs: { href: "#responsive-header" }
+        },
+        [_vm._v("\n          Blog\n        ")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "a",
+        {
+          staticClass:
+            "no-underline inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 sm:mt-0",
+          attrs: { href: "#" }
+        },
+        [_vm._v("Download")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -63273,584 +63377,522 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      { staticClass: "flex flex-col w-full" },
-      [
-        _c("hero-img", { attrs: { caption: "Bem-vindo!" } }),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex flex-row p-4" }, [
-          _c("div", { staticClass: "flex flex-col w-3/4 p-2" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "flex flex-col w-full bg-white rounded p-4 shadow-md"
-              },
-              [
-                _c("div", { staticClass: "flex flex-row" }, [
+  return _c(
+    "div",
+    { staticClass: "flex flex-col w-full" },
+    [
+      _c("hero-img", { attrs: { caption: "Bem-vindo!" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex flex-row p-4" }, [
+        _c("div", { staticClass: "flex flex-col w-3/4 p-2" }, [
+          _c(
+            "div",
+            {
+              staticClass: "flex flex-col w-full bg-white rounded p-4 shadow-md"
+            },
+            [
+              _c("div", { staticClass: "flex flex-row" }, [
+                _c(
+                  "div",
+                  { staticClass: "flex self-center w-full" },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "text-3xl", attrs: { to: "/filmes" } },
+                      [_vm._v("\n              Filmes\n            ")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "flex self-center font-bold w-full justify-end"
+                  },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "text-gray-600", attrs: { to: "/filme" } },
+                      [_vm._v("\n              #Aleatórios\n            ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      { staticClass: "pl-4 red-link", attrs: { to: "/filme" } },
+                      [_vm._v("\n              #Recentes\n            ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "pl-4 text-gray-600",
+                        attrs: { to: "/filme" }
+                      },
+                      [_vm._v("\n              #Populares\n            ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "pl-4 text-gray-600",
+                        attrs: { to: "/filme" }
+                      },
+                      [_vm._v("\n              #Avaliação\n            ")]
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex flex-row p-4 bg-gray-200 rounded" },
+                [
                   _c(
                     "div",
-                    { staticClass: "flex self-center w-full" },
+                    { staticClass: "px-2" },
                     [
-                      _c(
-                        "router-link",
-                        { staticClass: "text-3xl", attrs: { to: "/filmes" } },
-                        [_vm._v("\n                Filmes\n              ")]
-                      )
+                      _c("router-link", { attrs: { to: "/filme" } }, [
+                        _c("img", {
+                          staticClass: "rounded",
+                          attrs: { src: "img/video/poster/avengers.jpg" }
+                        })
+                      ])
                     ],
                     1
                   ),
                   _vm._v(" "),
                   _c(
                     "div",
-                    {
-                      staticClass:
-                        "flex self-center font-bold w-full justify-end"
-                    },
+                    { staticClass: "px-2" },
                     [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "text-gray-600",
-                          attrs: { to: "/filme" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                #Aleatórios\n              "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "pl-4 red-link",
-                          attrs: { to: "/filme" }
-                        },
-                        [_vm._v("\n                #Recentes\n              ")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "pl-4 text-gray-600",
-                          attrs: { to: "/filme" }
-                        },
-                        [_vm._v("\n                #Populares\n              ")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "pl-4 text-gray-600",
-                          attrs: { to: "/filme" }
-                        },
-                        [_vm._v("\n                #Avaliação\n              ")]
-                      )
-                    ],
-                    1
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "flex flex-row p-4 bg-gray-200 rounded" },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "px-2" },
-                      [
-                        _c("router-link", { attrs: { to: "/filme" } }, [
-                          _c("img", {
-                            staticClass: "rounded",
-                            attrs: { src: "img/video/poster/avengers.jpg" }
-                          })
-                        ])
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "px-2" },
-                      [
-                        _c("router-link", { attrs: { to: "/filme" } }, [
-                          _c("img", {
-                            staticClass: "rounded",
-                            attrs: { src: "img/video/poster/shutterisland.jpg" }
-                          })
-                        ])
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "px-2" },
-                      [
-                        _c("router-link", { attrs: { to: "/filme" } }, [
-                          _c("img", {
-                            staticClass: "rounded",
-                            attrs: { src: "img/video/poster/fightclub.jpg" }
-                          })
-                        ])
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "px-2" },
-                      [
-                        _c("router-link", { attrs: { to: "/filme" } }, [
-                          _c("img", {
-                            staticClass: "rounded",
-                            attrs: { src: "img/video/poster/diehard.jpg" }
-                          })
-                        ])
-                      ],
-                      1
-                    )
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "flex flex-col w-full bg-white rounded p-4 my-4 shadow-md"
-              },
-              [
-                _c("div", { staticClass: "flex flex-row" }, [
-                  _c(
-                    "div",
-                    { staticClass: "flex self-center w-full" },
-                    [
-                      _c(
-                        "router-link",
-                        { staticClass: "text-3xl", attrs: { to: "/filmes" } },
-                        [_vm._v("\n                Séries\n              ")]
-                      )
+                      _c("router-link", { attrs: { to: "/filme" } }, [
+                        _c("img", {
+                          staticClass: "rounded",
+                          attrs: { src: "img/video/poster/shutterisland.jpg" }
+                        })
+                      ])
                     ],
                     1
                   ),
                   _vm._v(" "),
                   _c(
                     "div",
-                    {
-                      staticClass:
-                        "flex self-center font-bold w-full justify-end"
-                    },
+                    { staticClass: "px-2" },
                     [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "text-gray-600",
-                          attrs: { to: "/filme" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                #Aleatórios\n              "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "pl-4 red-link",
-                          attrs: { to: "/filme" }
-                        },
-                        [_vm._v("\n                #Recentes\n              ")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "pl-4 text-gray-600",
-                          attrs: { to: "/filme" }
-                        },
-                        [_vm._v("\n                #Populares\n              ")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "pl-4 text-gray-600",
-                          attrs: { to: "/filme" }
-                        },
-                        [_vm._v("\n                #Avaliação\n              ")]
-                      )
-                    ],
-                    1
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "flex flex-row p-4 bg-gray-200 rounded" },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "px-2" },
-                      [
-                        _c("router-link", { attrs: { to: "/filme" } }, [
-                          _c("img", {
-                            staticClass: "rounded",
-                            attrs: { src: "img/video/poster/avengers.jpg" }
-                          })
-                        ])
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "px-2" },
-                      [
-                        _c("router-link", { attrs: { to: "/filme" } }, [
-                          _c("img", {
-                            staticClass: "rounded",
-                            attrs: { src: "img/video/poster/shutterisland.jpg" }
-                          })
-                        ])
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "px-2" },
-                      [
-                        _c("router-link", { attrs: { to: "/filme" } }, [
-                          _c("img", {
-                            staticClass: "rounded",
-                            attrs: { src: "img/video/poster/fightclub.jpg" }
-                          })
-                        ])
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "px-2" },
-                      [
-                        _c("router-link", { attrs: { to: "/filme" } }, [
-                          _c("img", {
-                            staticClass: "rounded",
-                            attrs: { src: "img/video/poster/diehard.jpg" }
-                          })
-                        ])
-                      ],
-                      1
-                    )
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "flex flex-col w-full bg-white rounded p-4 shadow-md"
-              },
-              [
-                _c("div", { staticClass: "flex flex-row" }, [
-                  _c(
-                    "div",
-                    { staticClass: "flex self-center w-full" },
-                    [
-                      _c(
-                        "router-link",
-                        { staticClass: "text-3xl", attrs: { to: "/filmes" } },
-                        [_vm._v("\n                Animes\n              ")]
-                      )
+                      _c("router-link", { attrs: { to: "/filme" } }, [
+                        _c("img", {
+                          staticClass: "rounded",
+                          attrs: { src: "img/video/poster/fightclub.jpg" }
+                        })
+                      ])
                     ],
                     1
                   ),
                   _vm._v(" "),
                   _c(
                     "div",
-                    {
-                      staticClass:
-                        "flex self-center font-bold w-full justify-end"
-                    },
+                    { staticClass: "px-2" },
                     [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "text-gray-600",
-                          attrs: { to: "/filme" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                #Aleatórios\n              "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "pl-4 red-link",
-                          attrs: { to: "/filme" }
-                        },
-                        [_vm._v("\n                #Recentes\n              ")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "pl-4 text-gray-600",
-                          attrs: { to: "/filme" }
-                        },
-                        [_vm._v("\n                #Populares\n              ")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "pl-4 text-gray-600",
-                          attrs: { to: "/filme" }
-                        },
-                        [_vm._v("\n                #Avaliação\n              ")]
-                      )
+                      _c("router-link", { attrs: { to: "/filme" } }, [
+                        _c("img", {
+                          staticClass: "rounded",
+                          attrs: { src: "img/video/poster/diehard.jpg" }
+                        })
+                      ])
                     ],
                     1
                   )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "flex flex-row p-4 bg-gray-200 rounded" },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "px-2" },
-                      [
-                        _c("router-link", { attrs: { to: "/filme" } }, [
-                          _c("img", {
-                            staticClass: "rounded",
-                            attrs: { src: "img/video/poster/avengers.jpg" }
-                          })
-                        ])
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "px-2" },
-                      [
-                        _c("router-link", { attrs: { to: "/filme" } }, [
-                          _c("img", {
-                            staticClass: "rounded",
-                            attrs: { src: "img/video/poster/shutterisland.jpg" }
-                          })
-                        ])
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "px-2" },
-                      [
-                        _c("router-link", { attrs: { to: "/filme" } }, [
-                          _c("img", {
-                            staticClass: "rounded",
-                            attrs: { src: "img/video/poster/fightclub.jpg" }
-                          })
-                        ])
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "px-2" },
-                      [
-                        _c("router-link", { attrs: { to: "/filme" } }, [
-                          _c("img", {
-                            staticClass: "rounded",
-                            attrs: { src: "img/video/poster/diehard.jpg" }
-                          })
-                        ])
-                      ],
-                      1
-                    )
-                  ]
-                )
-              ]
-            )
-          ]),
+                ]
+              )
+            ]
+          ),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "w-1/3 bg-white rounded p-4 m-2 shadow-md" },
+            {
+              staticClass:
+                "flex flex-col w-full bg-white rounded p-4 my-4 shadow-md"
+            },
             [
-              _c("p", { staticClass: "text-xl font-bold" }, [
-                _vm._v("\n          Amigos\n        ")
+              _c("div", { staticClass: "flex flex-row" }, [
+                _c(
+                  "div",
+                  { staticClass: "flex self-center w-full" },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "text-3xl", attrs: { to: "/filmes" } },
+                      [_vm._v("\n              Séries\n            ")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "flex self-center font-bold w-full justify-end"
+                  },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "text-gray-600", attrs: { to: "/filme" } },
+                      [_vm._v("\n              #Aleatórios\n            ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      { staticClass: "pl-4 red-link", attrs: { to: "/filme" } },
+                      [_vm._v("\n              #Recentes\n            ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "pl-4 text-gray-600",
+                        attrs: { to: "/filme" }
+                      },
+                      [_vm._v("\n              #Populares\n            ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "pl-4 text-gray-600",
+                        attrs: { to: "/filme" }
+                      },
+                      [_vm._v("\n              #Avaliação\n            ")]
+                    )
+                  ],
+                  1
+                )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "flex flex-col" }, [
+              _c(
+                "div",
+                { staticClass: "flex flex-row p-4 bg-gray-200 rounded" },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "px-2" },
+                    [
+                      _c("router-link", { attrs: { to: "/filme" } }, [
+                        _c("img", {
+                          staticClass: "rounded",
+                          attrs: { src: "img/video/poster/avengers.jpg" }
+                        })
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "px-2" },
+                    [
+                      _c("router-link", { attrs: { to: "/filme" } }, [
+                        _c("img", {
+                          staticClass: "rounded",
+                          attrs: { src: "img/video/poster/shutterisland.jpg" }
+                        })
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "px-2" },
+                    [
+                      _c("router-link", { attrs: { to: "/filme" } }, [
+                        _c("img", {
+                          staticClass: "rounded",
+                          attrs: { src: "img/video/poster/fightclub.jpg" }
+                        })
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "px-2" },
+                    [
+                      _c("router-link", { attrs: { to: "/filme" } }, [
+                        _c("img", {
+                          staticClass: "rounded",
+                          attrs: { src: "img/video/poster/diehard.jpg" }
+                        })
+                      ])
+                    ],
+                    1
+                  )
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "flex flex-col w-full bg-white rounded p-4 shadow-md"
+            },
+            [
+              _c("div", { staticClass: "flex flex-row" }, [
                 _c(
                   "div",
-                  {
-                    staticClass:
-                      "flex flex-row bg-gray-200 w-full p-4 my-2 rounded"
-                  },
+                  { staticClass: "flex self-center w-full" },
                   [
                     _c(
-                      "div",
-                      {},
-                      [
-                        _c(
-                          "router-link",
-                          { staticClass: "red-link", attrs: { to: "/perfil" } },
-                          [
-                            _vm._v(
-                              "\n                ThePaparranas\n              "
-                            )
-                          ]
-                        ),
-                        _vm._v("\n              comentou em\n              "),
-                        _c(
-                          "router-link",
-                          { staticClass: "red-link", attrs: { to: "/filme" } },
-                          [
-                            _vm._v(
-                              "\n                Game Of Thrones S6-E8\n              "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "italic" }, [
-                          _vm._v(
-                            "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n              "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "text-xs" }, [
-                          _vm._v(
-                            "\n                Há 37 minutos\n              "
-                          )
-                        ])
-                      ],
-                      1
+                      "router-link",
+                      { staticClass: "text-3xl", attrs: { to: "/filmes" } },
+                      [_vm._v("\n              Animes\n            ")]
                     )
-                  ]
+                  ],
+                  1
                 ),
                 _vm._v(" "),
                 _c(
                   "div",
                   {
-                    staticClass:
-                      "flex flex-row bg-gray-200 w-full p-4 my-2 rounded"
+                    staticClass: "flex self-center font-bold w-full justify-end"
                   },
                   [
                     _c(
-                      "div",
-                      {},
-                      [
-                        _c(
-                          "router-link",
-                          { staticClass: "red-link", attrs: { to: "/perfil" } },
-                          [
-                            _vm._v(
-                              "\n                ThePaparranas\n              "
-                            )
-                          ]
-                        ),
-                        _vm._v(" comentou em "),
-                        _c(
-                          "router-link",
-                          { staticClass: "red-link", attrs: { to: "/filme" } },
-                          [
-                            _vm._v(
-                              "\n                Game Of Thrones S6-E8\n              "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "italic" }, [
-                          _vm._v(
-                            "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n              "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "text-xs" }, [
-                          _vm._v(
-                            "\n                Há 37 minutos\n              "
-                          )
-                        ])
-                      ],
-                      1
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "flex flex-row bg-gray-200 w-full p-4 my-2 rounded"
-                  },
-                  [
+                      "router-link",
+                      { staticClass: "text-gray-600", attrs: { to: "/filme" } },
+                      [_vm._v("\n              #Aleatórios\n            ")]
+                    ),
+                    _vm._v(" "),
                     _c(
-                      "div",
-                      {},
-                      [
-                        _c(
-                          "router-link",
-                          { staticClass: "red-link", attrs: { to: "/perfil" } },
-                          [
-                            _vm._v(
-                              "\n                ThePaparranas\n              "
-                            )
-                          ]
-                        ),
-                        _vm._v(" comentou em "),
-                        _c(
-                          "router-link",
-                          { staticClass: "red-link", attrs: { to: "/filme" } },
-                          [
-                            _vm._v(
-                              "\n                Game Of Thrones S6-E8\n              "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "italic" }, [
-                          _vm._v(
-                            "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n              "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "text-xs" }, [
-                          _vm._v(
-                            "\n                Há 37 minutos\n              "
-                          )
-                        ])
-                      ],
-                      1
+                      "router-link",
+                      { staticClass: "pl-4 red-link", attrs: { to: "/filme" } },
+                      [_vm._v("\n              #Recentes\n            ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "pl-4 text-gray-600",
+                        attrs: { to: "/filme" }
+                      },
+                      [_vm._v("\n              #Populares\n            ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "pl-4 text-gray-600",
+                        attrs: { to: "/filme" }
+                      },
+                      [_vm._v("\n              #Avaliação\n            ")]
                     )
-                  ]
+                  ],
+                  1
                 )
-              ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex flex-row p-4 bg-gray-200 rounded" },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "px-2" },
+                    [
+                      _c("router-link", { attrs: { to: "/filme" } }, [
+                        _c("img", {
+                          staticClass: "rounded",
+                          attrs: { src: "img/video/poster/avengers.jpg" }
+                        })
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "px-2" },
+                    [
+                      _c("router-link", { attrs: { to: "/filme" } }, [
+                        _c("img", {
+                          staticClass: "rounded",
+                          attrs: { src: "img/video/poster/shutterisland.jpg" }
+                        })
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "px-2" },
+                    [
+                      _c("router-link", { attrs: { to: "/filme" } }, [
+                        _c("img", {
+                          staticClass: "rounded",
+                          attrs: { src: "img/video/poster/fightclub.jpg" }
+                        })
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "px-2" },
+                    [
+                      _c("router-link", { attrs: { to: "/filme" } }, [
+                        _c("img", {
+                          staticClass: "rounded",
+                          attrs: { src: "img/video/poster/diehard.jpg" }
+                        })
+                      ])
+                    ],
+                    1
+                  )
+                ]
+              )
             ]
           )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-1/3 bg-white rounded p-4 m-2 shadow-md" }, [
+          _c("p", { staticClass: "text-xl font-bold" }, [
+            _vm._v("\n        Amigos\n      ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "flex flex-col" }, [
+            _c(
+              "div",
+              {
+                staticClass: "flex flex-row bg-gray-200 w-full p-4 my-2 rounded"
+              },
+              [
+                _c(
+                  "div",
+                  {},
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "red-link", attrs: { to: "/perfil" } },
+                      [_vm._v("\n              ThePaparranas\n            ")]
+                    ),
+                    _vm._v("\n            comentou em\n            "),
+                    _c(
+                      "router-link",
+                      { staticClass: "red-link", attrs: { to: "/filme" } },
+                      [
+                        _vm._v(
+                          "\n              Game Of Thrones S6-E8\n            "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "italic" }, [
+                      _vm._v(
+                        "\n              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-xs" }, [
+                      _vm._v("\n              Há 37 minutos\n            ")
+                    ])
+                  ],
+                  1
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "flex flex-row bg-gray-200 w-full p-4 my-2 rounded"
+              },
+              [
+                _c(
+                  "div",
+                  {},
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "red-link", attrs: { to: "/perfil" } },
+                      [_vm._v("\n              ThePaparranas\n            ")]
+                    ),
+                    _vm._v(" comentou em "),
+                    _c(
+                      "router-link",
+                      { staticClass: "red-link", attrs: { to: "/filme" } },
+                      [
+                        _vm._v(
+                          "\n              Game Of Thrones S6-E8\n            "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "italic" }, [
+                      _vm._v(
+                        "\n              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-xs" }, [
+                      _vm._v("\n              Há 37 minutos\n            ")
+                    ])
+                  ],
+                  1
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "flex flex-row bg-gray-200 w-full p-4 my-2 rounded"
+              },
+              [
+                _c(
+                  "div",
+                  {},
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "red-link", attrs: { to: "/perfil" } },
+                      [_vm._v("\n              ThePaparranas\n            ")]
+                    ),
+                    _vm._v(" comentou em "),
+                    _c(
+                      "router-link",
+                      { staticClass: "red-link", attrs: { to: "/filme" } },
+                      [
+                        _vm._v(
+                          "\n              Game Of Thrones S6-E8\n            "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "italic" }, [
+                      _vm._v(
+                        "\n              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "text-xs" }, [
+                      _vm._v("\n              Há 37 minutos\n            ")
+                    ])
+                  ],
+                  1
+                )
+              ]
+            )
+          ])
         ])
-      ],
-      1
-    )
-  ])
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -82094,7 +82136,7 @@ var setGenres = function setGenres(_ref6) {
   var state = _ref6.state,
       commit = _ref6.commit;
 
-  if (state.genres.length) {
+  if (state.genres.length || state.working) {
     return;
   }
 
@@ -82189,13 +82231,14 @@ var getLocalStorageItems = function getLocalStorageItems() {
 /*!******************************************!*\
   !*** ./resources/js/store/storetools.js ***!
   \******************************************/
-/*! exports provided: userComputed, localSettingsComputed, authMethods, appMethods */
+/*! exports provided: userComputed, localSettingsComputed, isWorking, authMethods, appMethods */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "userComputed", function() { return userComputed; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "localSettingsComputed", function() { return localSettingsComputed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isWorking", function() { return isWorking; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "authMethods", function() { return authMethods; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appMethods", function() { return appMethods; });
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
@@ -82255,6 +82298,9 @@ var userComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["m
 }));
 var localSettingsComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
   localSettings: 'localStorageItems'
+}));
+var isWorking = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
+  working: 'working'
 })); // Methods
 
 var authMethods = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['unsetUser', 'setUser']));

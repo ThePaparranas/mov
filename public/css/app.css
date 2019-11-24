@@ -11479,6 +11479,10 @@ video {
   z-index: auto;
 }
 
+li {
+  list-style: none;
+}
+
 .router-link-exact-active {
   background-color: #319795;
 }
