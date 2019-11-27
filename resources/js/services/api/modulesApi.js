@@ -1,7 +1,7 @@
 import http from 'axios'
-import { apiBase, showRequestError } from './Api'
+import { frontApi, showRequestError } from './Api'
 
-const modulesBaseUri = `${apiBase}/modules`
+const modulesBaseUri = `${frontApi}/modules`
 
 const modulesApi = {
   index () {
@@ -49,13 +49,13 @@ const modulesApi = {
       payload.id = id
     }
 
-    return http.patch(`${apiBase}modules/check`, payload)
+    return http.patch(`${frontApi}modules/check`, payload)
       .then(() => Promise.resolve(true))
       .catch(e => Promise.reject(e.response.data))
   },
 
   reorder (payload) {
-    return http.patch(`${apiBase}modules/reorder`, payload)
+    return http.patch(`${frontApi}modules/reorder`, payload)
       .then(r => Promise.resolve(r.data.modules))
       .catch(e => showRequestError(e))
   }

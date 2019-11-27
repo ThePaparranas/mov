@@ -1,7 +1,7 @@
 import { showRequestError } from '../tools/request-errors'
 
 const appHome = '/FrontApi'
-const apiBase = `${appHome}`
+const frontApi = `${appHome}`
 
 function createBlob (blob, name = 'log.txt') {
   const downloadUrl = window.URL.createObjectURL(new Blob([blob]))
@@ -41,4 +41,4 @@ function normalizePayloadMethod (payload, method, force = false) {
   return payload
 }
 
-export { appHome, showRequestError, apiBase, createBlob, uuid, normalizePayloadMethod }
+export { appHome, showRequestError, frontApi, createBlob, uuid, normalizePayloadMethod }

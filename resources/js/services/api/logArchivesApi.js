@@ -1,10 +1,10 @@
 import http from 'axios'
-import { apiBase, showRequestError } from './Api'
+import { frontApi, showRequestError } from './Api'
 
 const logArchivesApi = {
   async index () {
     try {
-      const r = await http.get(`${apiBase}/log-archives`)
+      const r = await http.get(`${frontApi}/log-archives`)
       return Promise.resolve(r.data.archives)
     } catch (e) {
       return showRequestError(e)
@@ -13,7 +13,7 @@ const logArchivesApi = {
 
   async archive (log) {
     try {
-      await http.patch(`${apiBase}/log-archives/${log}`)
+      await http.patch(`${frontApi}/log-archives/${log}`)
       return Promise.resolve(true)
     } catch (e) {
       return showRequestError(e)
@@ -22,7 +22,7 @@ const logArchivesApi = {
 
   async master () {
     try {
-      await http.post(`${apiBase}/log-archives`)
+      await http.post(`${frontApi}/log-archives`)
       return Promise.resolve(true)
     } catch (e) {
       return showRequestError(e)
@@ -31,7 +31,7 @@ const logArchivesApi = {
 
   async delete (name) {
     try {
-      await http.delete(`${apiBase}/log-archives/${name}`)
+      await http.delete(`${frontApi}/log-archives/${name}`)
       return Promise.resolve(true)
     } catch (e) {
       return showRequestError(e)
@@ -40,7 +40,7 @@ const logArchivesApi = {
 
   async deleteAll () {
     try {
-      await http.delete(`${apiBase}/log-archives/delete-all`)
+      await http.delete(`${frontApi}/log-archives/delete-all`)
       return Promise.resolve(true)
     } catch (e) {
       return showRequestError(e)
@@ -49,7 +49,7 @@ const logArchivesApi = {
 
   async deleteMaster () {
     try {
-      await http.delete(`${apiBase}/log-archives-master`)
+      await http.delete(`${frontApi}/log-archives-master`)
       return Promise.resolve(true)
     } catch (e) {
       return showRequestError(e)
@@ -58,7 +58,7 @@ const logArchivesApi = {
 
   async masterExists () {
     try {
-      const r = await http.get(`${apiBase}/log-archives-master-exists`)
+      const r = await http.get(`${frontApi}/log-archives-master-exists`)
       return Promise.resolve(r.data)
     } catch (e) {
       return showRequestError(e)

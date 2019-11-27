@@ -1,7 +1,7 @@
 import http from 'axios'
-import { apiBase, showRequestError } from './Api'
+import { frontApi, showRequestError } from './Api'
 
-const utilBaseUri = `${apiBase}/util`
+const utilBaseUri = `${frontApi}/util`
 
 const utilApi = {
   async execCacheArtisanCommand (payload) {

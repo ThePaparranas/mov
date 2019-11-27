@@ -1,7 +1,7 @@
 import http from 'axios'
-import { apiBase, showRequestError } from './Api'
+import { frontApi, showRequestError } from './Api'
 
-const mediaBaseUri = `${apiBase}/media`
+const mediaBaseUri = `${frontApi}/media`
 
 const mediaApi = {
   async index () {

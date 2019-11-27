@@ -1,7 +1,7 @@
 import http from 'axios'
-import { apiBase, showRequestError } from './Api'
+import { frontApi, showRequestError } from './Api'
 
-const pagesBaseUri = `${apiBase}/pages`
+const pagesBaseUri = `${frontApi}/pages`
 
 const pagesApi = {
   index () {

@@ -81692,13 +81692,13 @@ var routes = [{
 /*!******************************************!*\
   !*** ./resources/js/services/api/Api.js ***!
   \******************************************/
-/*! exports provided: appHome, showRequestError, apiBase, createBlob, uuid, normalizePayloadMethod */
+/*! exports provided: appHome, showRequestError, frontApi, createBlob, uuid, normalizePayloadMethod */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appHome", function() { return appHome; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "apiBase", function() { return apiBase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "frontApi", function() { return frontApi; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createBlob", function() { return createBlob; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "uuid", function() { return uuid; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "normalizePayloadMethod", function() { return normalizePayloadMethod; });
@@ -81707,7 +81707,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var appHome = '/FrontApi';
-var apiBase = "".concat(appHome);
+var frontApi = "".concat(appHome);
 
 function createBlob(blob) {
   var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'log.txt';
@@ -81735,7 +81735,9 @@ function normalizePayloadMethod(payload, method) {
     throw new Error('Dude, we need a fucking payload!');
   }
 
-  if (!payload.hasOwnProperty('_method') || payload._method !== method) {
+  var hasMethodProp = Object.prototype.hasOwnProperty.call(payload, '_method');
+
+  if (!hasMethodProp || payload._method !== method) {
     payload._method = method;
   }
 
@@ -81810,7 +81812,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var moviesBaseUri = "".concat(_Api__WEBPACK_IMPORTED_MODULE_2__["apiBase"], "/movies");
+var moviesBaseUri = "".concat(_Api__WEBPACK_IMPORTED_MODULE_2__["frontApi"], "/movies");
 var moviesApi = {
   index: function index() {
     var r;
@@ -81891,7 +81893,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Api */ "./resources/js/services/api/Api.js");
 
 
-var newsBaseUri = "".concat(_Api__WEBPACK_IMPORTED_MODULE_1__["apiBase"], "/news");
+var newsBaseUri = "".concat(_Api__WEBPACK_IMPORTED_MODULE_1__["frontApi"], "/news");
 var newsApi = {
   index: function index() {
     return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(newsBaseUri).then(function (r) {

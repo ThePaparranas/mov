@@ -1,7 +1,7 @@
 import http from 'axios'
-import { apiBase, showRequestError } from './Api'
+import { frontApi, showRequestError } from './Api'
 
-const usersApiUri = `${apiBase}/users`
+const usersApiUri = `${frontApi}/users`
 
 const usersApi = {
   async update (id, payload) {

@@ -1,7 +1,7 @@
 import http from 'axios'
-import { apiBase, showRequestError } from './Api'
+import { frontApi, showRequestError } from './Api'
 
-const moviesBaseUri = `${apiBase}/movies`
+const moviesBaseUri = `${frontApi}/movies`
 
 const moviesApi = {
   async index () {
