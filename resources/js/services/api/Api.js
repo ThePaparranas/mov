@@ -32,7 +32,9 @@ function normalizePayloadMethod (payload, method, force = false) {
     throw new Error('Dude, we need a fucking payload!')
   }
 
-  if (!payload.hasOwnProperty('_method') || payload._method !== method) {
+  const hasMethodProp = Object.prototype.hasOwnProperty.call(payload, '_method')
+
+  if (!hasMethodProp || payload._method !== method) {
     payload._method = method
   }
 
