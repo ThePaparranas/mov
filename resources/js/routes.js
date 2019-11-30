@@ -35,7 +35,7 @@ const routes = [
   {
     path: '/news/:slug',
     component: () => import(/* webpackChunkName: "article" */ './views/news-article'),
-    name: 'Article',
+    name: 'NewsArticle',
     props: true,
     meta: {
       name: 'Notícia',
