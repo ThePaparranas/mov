@@ -27,7 +27,7 @@
           {{ route.meta.name }}
         </router-link>
 
-        <template v-if="user.isAdmin">
+        <template v-if="userIsAdmin">
           <router-link
             v-for="route in adminRoutes"
             :key="route.name"
