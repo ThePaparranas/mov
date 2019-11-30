@@ -8,7 +8,7 @@ const routes = [
       menuClass: 'transparent',
       access: 'user',
       isNav: true,
-      description: ''
+      description: 'Filmes, Séries, Animes, Notícias sobre a 7º arte'
     }
   },
   {
@@ -20,7 +20,7 @@ const routes = [
       menuClass: 'white',
       access: 'user',
       isNav: true,
-      description: ''
+      description: 'Os teus filmes favoritos'
     }
   },
   {
@@ -32,7 +32,7 @@ const routes = [
       menuClass: 'white',
       access: 'user',
       isNav: true,
-      description: ''
+      description: 'As últimas notícias sobre a 7ª arte'
     }
   },
   {
@@ -57,7 +57,7 @@ const routes = [
       menuClass: 'white',
       access: 'admin',
       isNav: true,
-      description: ''
+      description: 'Hi boss!'
     }
   }
 ]

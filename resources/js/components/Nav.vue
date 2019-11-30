@@ -21,7 +21,7 @@
         <router-link
           v-for="route in userRoutes"
           :key="route.name"
-          :class="mainMenuClass"
+          class="no-underline block mt-4 sm:inline-block sm:mt-0 hover:text-red-500 mr-4"
           :to="route.path"
         >
           {{ route.meta.name }}
@@ -31,7 +31,7 @@
           <router-link
             v-for="route in adminRoutes"
             :key="route.name"
-            :class="mainMenuClass"
+            class="no-underline block mt-4 sm:inline-block sm:mt-0 hover:text-red-500 mr-4"
             :to="route.path"
           >
             {{ route.meta.name }}
@@ -41,9 +41,9 @@
 
       <div class="flex lg:items-stretch lg:flex-no-shrink lg:flex-grow">
         <div class="flex lg:items-stretch lg:justify-end ml-auto">
-          <me :class="userMenuClass" />
+          <me class="bg-fade text-gray-800 flex-no-grow flex-no-shrink relative py-2 px-4 no-underline flex items-center hover:text-red-1000" />
 
-          <logout :class="userMenuClass" />
+          <logout class="bg-fade text-gray-800 flex-no-grow flex-no-shrink relative py-2 px-4 no-underline flex items-center hover:text-red-1000" />
         </div>
       </div>
     </div>
@@ -88,17 +88,7 @@ export default {
     },
 
     navClass () {
-      const current = this.$route.meta.menuClass
-
-      return current + ' w-full fixed z-50 select-none bg-white flex items-center justify-between flex-wrap border-b-4 border-red-1000'
-    },
-
-    mainMenuClass () {
-      return 'no-underline block mt-4 sm:inline-block sm:mt-0 hover:text-red-500 mr-4'
-    },
-
-    userMenuClass () {
-      return 'bg-fade text-gray-800 flex-no-grow flex-no-shrink relative py-2 px-4 no-underline flex items-center hover:text-red-1000'
+      return this.$route.meta.menuClass + ' w-full fixed z-50 select-none bg-white flex items-center justify-between flex-wrap border-b-4 border-red-1000'
     }
   },
 
@@ -109,9 +99,3 @@ export default {
   }
 }
 </script>
-
-<style lang="sass" scoped>
-    .router-link-exact-active
-        color: #e3342f
-        font-weight: bold
-</style>

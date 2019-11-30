@@ -7,6 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description" content="Filmes, Séries, Animes, Notícias sobre a 7º arte">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 

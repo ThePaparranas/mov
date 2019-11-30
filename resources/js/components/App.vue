@@ -1,5 +1,7 @@
 <template>
   <main>
+    <meta-info />
+
     <TopNav />
 
     <section :class="routeName">
@@ -15,6 +17,7 @@
 <script>
 import TopNav from './Nav'
 import Footer from './Footer'
+import metaInfo from './_head'
 import Premium from './Premium'
 
 import { appMethods, authMethods/* , localSettingsComputed */ } from '../store/storetools'
@@ -23,6 +26,7 @@ export default {
   name: 'App',
 
   components: {
+    metaInfo,
     TopNav,
     Premium,
     Footer
