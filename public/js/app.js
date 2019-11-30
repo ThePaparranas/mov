@@ -2789,7 +2789,6 @@ function _defineProperty(obj, key, value) {
 
 
 
- // import { appHome } from '../services/api/Api'
 
 
 
@@ -2958,60 +2957,6 @@ function _defineProperty(obj, key, value) {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -3030,7 +2975,7 @@ function _defineProperty(obj, key, value) {
       open: false
     };
   },
-  computed: _objectSpread({}, _store_storetools__WEBPACK_IMPORTED_MODULE_4__["userComputed"], {
+  computed: _objectSpread({}, _store_storetools__WEBPACK_IMPORTED_MODULE_4__["userData"], {
     userRoutes: function userRoutes() {
       return Object(lodash__WEBPACK_IMPORTED_MODULE_3__["filter"])(_routes__WEBPACK_IMPORTED_MODULE_1__["default"], function (o) {
         return o.meta.isNav && o.meta.access === 'user';
@@ -3046,10 +2991,10 @@ function _defineProperty(obj, key, value) {
       return current + ' w-full fixed z-50 select-none bg-white flex items-center justify-between flex-wrap border-b-4 border-red-1000';
     },
     mainMenuClass: function mainMenuClass() {
-      return 'bg-fade text-gray-800 flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center bg-white hover:text-red-1000';
+      return 'no-underline block mt-4 sm:inline-block sm:mt-0 hover:text-red-500 mr-4';
     },
     userMenuClass: function userMenuClass() {
-      return 'bg-fade text-gray-800 flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center bg-white hover:text-red-1000';
+      return 'bg-fade text-gray-800 flex-no-grow flex-no-shrink relative py-2 px-4 no-underline flex items-center hover:text-red-1000';
     }
   }),
   methods: {
@@ -61154,11 +61099,10 @@ var render = function() {
       [
         _c(
           "span",
-          { staticClass: "d-none d-md-block text-lg" },
+          { staticClass: "d-none d-md-block" },
           [_c("standBy", { attrs: { title: "Logout" } })],
           1
-        ),
-        _c("span", { staticClass: "d-block d-md-none p51" }, [_vm._v("Logout")])
+        )
       ]
     )
   ])
@@ -61213,7 +61157,7 @@ var render = function() {
     "nav",
     {
       staticClass:
-        "flex items-center justify-between flex-wrap text-red-1000 py-2"
+        "flex items-center justify-between flex-wrap text-red-1000 py-2 px-4"
     },
     [
       _c("div", { staticClass: "block sm:hidden" }, [
@@ -61251,65 +61195,71 @@ var render = function() {
           staticClass: "w-full flex-grow sm:flex sm:items-center sm:w-auto",
           class: _vm.open ? "block" : "hidden"
         },
-        [_vm._m(0), _vm._v(" "), _vm._m(1)]
+        [
+          _c(
+            "div",
+            { staticClass: "sm:flex-grow" },
+            [
+              _vm._l(_vm.userRoutes, function(route) {
+                return _c(
+                  "router-link",
+                  {
+                    key: route.name,
+                    class: _vm.mainMenuClass,
+                    attrs: { to: route.path }
+                  },
+                  [_vm._v("\n        " + _vm._s(route.meta.name) + "\n      ")]
+                )
+              }),
+              _vm._v(" "),
+              _vm.user.isAdmin
+                ? _vm._l(_vm.adminRoutes, function(route) {
+                    return _c(
+                      "router-link",
+                      {
+                        key: route.name,
+                        class: _vm.mainMenuClass,
+                        attrs: { to: route.path }
+                      },
+                      [
+                        _vm._v(
+                          "\n          " +
+                            _vm._s(route.meta.name) +
+                            "\n        "
+                        )
+                      ]
+                    )
+                  })
+                : _vm._e()
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "flex lg:items-stretch lg:flex-no-shrink lg:flex-grow"
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "flex lg:items-stretch lg:justify-end ml-auto" },
+                [
+                  _c("me", { class: _vm.userMenuClass }),
+                  _vm._v(" "),
+                  _c("logout", { class: _vm.userMenuClass })
+                ],
+                1
+              )
+            ]
+          )
+        ]
       )
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-sm sm:flex-grow" }, [
-      _c(
-        "a",
-        {
-          staticClass:
-            "no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white mr-4",
-          attrs: { href: "#responsive-header" }
-        },
-        [_vm._v("\n          Docs\n        ")]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass:
-            "no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white mr-4",
-          attrs: { href: "#responsive-header" }
-        },
-        [_vm._v("\n          Examples\n        ")]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass:
-            "no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white",
-          attrs: { href: "#responsive-header" }
-        },
-        [_vm._v("\n          Blog\n        ")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c(
-        "a",
-        {
-          staticClass:
-            "no-underline inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 sm:mt-0",
-          attrs: { href: "#" }
-        },
-        [_vm._v("Download")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -78136,7 +78086,7 @@ var routes = [{
   component: function component() {
     return __webpack_require__.e(/*! import() | article */ "article").then(__webpack_require__.bind(null, /*! ./views/news-article */ "./resources/js/views/news-article.vue"));
   },
-  name: 'Article',
+  name: 'NewsArticle',
   props: true,
   meta: {
     name: 'Notícia',
@@ -78664,12 +78614,12 @@ var getLocalStorageItems = function getLocalStorageItems() {
 /*!******************************************!*\
   !*** ./resources/js/store/storetools.js ***!
   \******************************************/
-/*! exports provided: userComputed, localSettingsComputed, isWorking, userIsAdmin, authMethods, appMethods */
+/*! exports provided: userData, localSettingsComputed, isWorking, userIsAdmin, authMethods, appMethods */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "userComputed", function() { return userComputed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "userData", function() { return userData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "localSettingsComputed", function() { return localSettingsComputed; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isWorking", function() { return isWorking; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "userIsAdmin", function() { return userIsAdmin; });
@@ -78727,7 +78677,7 @@ function _defineProperty(obj, key, value) {
 
  // Computed
 
-var userComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
+var userData = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
   user: 'user'
 }));
 var localSettingsComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
