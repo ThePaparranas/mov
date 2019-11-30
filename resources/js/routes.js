@@ -7,7 +7,8 @@ const routes = [
       name: 'Home',
       menuClass: 'transparent',
       access: 'user',
-      isNav: true
+      isNav: true,
+      description: ''
     }
   },
   {
@@ -18,7 +19,8 @@ const routes = [
       name: 'Filmes',
       menuClass: 'white',
       access: 'user',
-      isNav: true
+      isNav: true,
+      description: ''
     }
   },
   {
@@ -29,7 +31,8 @@ const routes = [
       name: 'Notícias',
       menuClass: 'white',
       access: 'user',
-      isNav: true
+      isNav: true,
+      description: ''
     }
   },
   {
@@ -41,7 +44,8 @@ const routes = [
       name: 'Notícia',
       menuClass: 'white',
       access: 'user',
-      isNav: false
+      isNav: false,
+      description: ''
     }
   },
   // Admin
@@ -52,7 +56,8 @@ const routes = [
       name: 'Admin',
       menuClass: 'white',
       access: 'admin',
-      isNav: true
+      isNav: true,
+      description: ''
     }
   }
 ]
