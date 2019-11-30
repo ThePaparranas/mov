@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex items-center justify-between flex-wrap text-red-1000 py-2">
+  <nav class="flex items-center justify-between flex-wrap text-red-1000 py-2 px-4">
     <div class="block sm:hidden">
       <button
         class="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white"
@@ -17,91 +17,37 @@
       :class="open ? 'block': 'hidden'"
       class="w-full flex-grow sm:flex sm:items-center sm:w-auto"
     >
-      <div class="text-sm sm:flex-grow">
-        <a
-          href="#responsive-header"
-          class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white mr-4"
+      <div class="sm:flex-grow">
+        <router-link
+          v-for="route in userRoutes"
+          :key="route.name"
+          :class="mainMenuClass"
+          :to="route.path"
         >
-          Docs
-        </a>
-        <a
-          href="#responsive-header"
-          class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white mr-4"
-        >
-          Examples
-        </a>
-        <a
-          href="#responsive-header"
-          class="no-underline block mt-4 sm:inline-block sm:mt-0 text-teal-lighter hover:text-white"
-        >
-          Blog
-        </a>
-      </div>
+          {{ route.meta.name }}
+        </router-link>
 
-      <div>
-        <a
-          href="#"
-          class="no-underline inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 sm:mt-0"
-        >Download</a>
-      </div>
-    </div>
-  </nav>
-<!--   <nav
-    :class="navClass"
-  >
-    <div class="text-red-1000 flex items-center flex-no-shrink">
-      <div class="block md:hidden">
-        <button
-          class="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white"
-          @click="toggle"
-        >
-          <svg
-            class="fill-current h-3 w-3"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          ><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
-        </button>
-      </div>
-
-      <div
-        :class="open ? 'block': 'hidden'"
-        class="w-full flex-grow md:flex md:items-center md:w-auto"
-      >
-        <div class="text-sm md:flex-grow">
+        <template v-if="user.isAdmin">
           <router-link
-            v-for="route in userRoutes"
+            v-for="route in adminRoutes"
             :key="route.name"
             :class="mainMenuClass"
             :to="route.path"
           >
             {{ route.meta.name }}
           </router-link>
+        </template>
+      </div>
+
+      <div class="flex lg:items-stretch lg:flex-no-shrink lg:flex-grow">
+        <div class="flex lg:items-stretch lg:justify-end ml-auto">
+          <me :class="userMenuClass" />
+
+          <logout :class="userMenuClass" />
         </div>
-        <li
-          class="self-center"
-        >
-          <template v-if="user.isAdmin">
-            <router-link
-              v-for="route in adminRoutes"
-              :key="route.name"
-              :class="mainMenuClass"
-              :to="route.path"
-            >
-              {{ route.meta.name }}
-            </router-link>
-          </template>
-        </li>
       </div>
     </div>
-
-    <div class="lg:flex lg:items-stretch lg:flex-no-shrink lg:flex-grow">
-      <div class="lg:flex lg:items-stretch lg:justify-end ml-auto">
-        <me :class="userMenuClass" />
-
-        <logout :class="userMenuClass" />
-      </div>
-    </div>
-  </nav> -->
+  </nav>
 </template>
 
 <script>
@@ -110,7 +56,7 @@ import routes from '../routes'
 import logout from './Logout.vue'
 
 import { filter } from 'lodash'
-import { userComputed } from '../store/storetools'
+import { userData } from '../store/storetools'
 
 export default {
   name: 'TopNav',
@@ -127,7 +73,7 @@ export default {
   },
 
   computed: {
-    ...userComputed,
+    ...userData,
 
     userRoutes () {
       return filter(routes, function (o) {
@@ -148,11 +94,11 @@ export default {
     },
 
     mainMenuClass () {
-      return 'bg-fade text-gray-800 flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center bg-white hover:text-red-1000'
+      return 'no-underline block mt-4 sm:inline-block sm:mt-0 hover:text-red-500 mr-4'
     },
 
     userMenuClass () {
-      return 'bg-fade text-gray-800 flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center bg-white hover:text-red-1000'
+      return 'bg-fade text-gray-800 flex-no-grow flex-no-shrink relative py-2 px-4 no-underline flex items-center hover:text-red-1000'
     }
   },
 
