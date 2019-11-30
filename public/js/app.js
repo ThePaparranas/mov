@@ -61212,7 +61212,7 @@ var render = function() {
                 )
               }),
               _vm._v(" "),
-              _vm.user.isAdmin
+              _vm.userIsAdmin
                 ? _vm._l(_vm.adminRoutes, function(route) {
                     return _c(
                       "router-link",
@@ -78678,7 +78678,10 @@ function _defineProperty(obj, key, value) {
  // Computed
 
 var userData = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
-  user: 'user'
+  user: 'user',
+  userIsAdmin: function userIsAdmin(state) {
+    return state.user.isAdmin;
+  }
 }));
 var localSettingsComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
   localSettings: 'localStorageItems'
