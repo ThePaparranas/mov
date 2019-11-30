@@ -1,4 +1,4 @@
-import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapState, /* mapGetters,  */mapActions } from 'vuex'
 
 // Computed
 export const userData = {
@@ -11,10 +11,6 @@ export const localSettingsComputed = {
 
 export const isWorking = {
   ...mapState({ working: 'working' })
-}
-
-export const userIsAdmin = {
-  ...mapState({ userIsAdmin: state => state.user.isAdmin })
 }
 
 // Methods
