@@ -2,7 +2,7 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 
 // Computed
 export const userData = {
-  ...mapState({ user: 'user' })
+  ...mapState({ user: 'user', userIsAdmin: state => state.user.isAdmin })
 }
 
 export const localSettingsComputed = {
