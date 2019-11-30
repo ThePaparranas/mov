@@ -78663,7 +78663,7 @@ var getLocalStorageItems = function getLocalStorageItems() {
 /*!******************************************!*\
   !*** ./resources/js/store/storetools.js ***!
   \******************************************/
-/*! exports provided: userComputed, localSettingsComputed, isWorking, authMethods, appMethods */
+/*! exports provided: userComputed, localSettingsComputed, isWorking, userIsAdmin, authMethods, appMethods */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -78671,6 +78671,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "userComputed", function() { return userComputed; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "localSettingsComputed", function() { return localSettingsComputed; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isWorking", function() { return isWorking; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "userIsAdmin", function() { return userIsAdmin; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "authMethods", function() { return authMethods; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appMethods", function() { return appMethods; });
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
@@ -78733,6 +78734,11 @@ var localSettingsComputed = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODU
 }));
 var isWorking = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
   working: 'working'
+}));
+var userIsAdmin = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
+  isAdmin: function isAdmin(state) {
+    return state.user.isAdmin;
+  }
 })); // Methods
 
 var authMethods = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['unsetUser', 'setUser']));

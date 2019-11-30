@@ -13,6 +13,10 @@ export const isWorking = {
   ...mapState({ working: 'working' })
 }
 
+export const userIsAdmin = {
+  ...mapState({ isAdmin: state => state.user.isAdmin })
+}
+
 // Methods
 export const authMethods = {
   ...mapActions(['unsetUser', 'setUser'])

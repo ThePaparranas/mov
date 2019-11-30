@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div v-if="$store.state.user.isAdmin">
-      Admin
-    </div>
+    <admin-panel v-if="userIsAdmin" />
 
     <div v-else>
       <not-found />
@@ -11,13 +9,21 @@
 </template>
 
 <script>
-import notFound from '../components/error404'
+import { userIsAdmin } from '../store/storetools'
+
+const notFound = () => import('../components/error404')
+const adminPanel = () => import('../components/admin-panel')
 
 export default {
   name: 'Admin',
 
   components: {
+    adminPanel,
     notFound
+  },
+
+  computed: {
+      ...userIsAdmin
   }
 }
 </script>
