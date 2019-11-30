@@ -1,13 +1,7 @@
-import Home from './pages/home'
-import News from './pages/News'
-import Admin from './pages/admin'
-import Filmes from './pages/filmes'
-import Snews from './pages/news-article'
-
 const routes = [
   {
     path: '/',
-    component: Home,
+    component: () => import(/* webpackChunkName: "home" */ './views/home'),
     name: 'Home',
     meta: {
       name: 'Home',
@@ -18,7 +12,7 @@ const routes = [
   },
   {
     path: '/filmes',
-    component: Filmes,
+    component: () => import(/* webpackChunkName: "filmes" */ './views/filmes'),
     name: 'Movies',
     meta: {
       name: 'Filmes',
@@ -29,7 +23,7 @@ const routes = [
   },
   {
     path: '/news',
-    component: News,
+    component: () => import(/* webpackChunkName: "news" */ './views/news'),
     name: 'News',
     meta: {
       name: 'Notícias',
@@ -40,8 +34,8 @@ const routes = [
   },
   {
     path: '/news/:slug',
-    component: Snews,
-    name: 'NewsArticle',
+    component: () => import(/* webpackChunkName: "article" */ './views/news-article'),
+    name: 'Article',
     props: true,
     meta: {
       name: 'Notícia',
@@ -53,7 +47,7 @@ const routes = [
   // Admin
   {
     path: '/admin',
-    component: Admin,
+    component: () => import(/* webpackChunkName: "admin" */ './views/admin'),
     meta: {
       name: 'Admin',
       menuClass: 'white',

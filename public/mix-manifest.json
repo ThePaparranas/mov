@@ -2,5 +2,11 @@
     "/js/app.js": "/js/app.js",
     "/css/auth.css": "/css/auth.css",
     "/css/app.css": "/css/app.css",
-    "/css/welcome.css": "/css/welcome.css"
+    "/css/welcome.css": "/css/welcome.css",
+    "/home.js": "/home.js",
+    "/admin.js": "/admin.js",
+    "/filmes.js": "/filmes.js",
+    "/filmes~news.js": "/filmes~news.js",
+    "/news.js": "/news.js",
+    "/article.js": "/article.js"
 }
