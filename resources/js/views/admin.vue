@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { userIsAdmin } from '../store/storetools'
+import { userData } from '../store/storetools'
 
 const notFound = () => import('../components/error404')
 const adminPanel = () => import('../components/admin-panel')
@@ -23,7 +23,7 @@ export default {
   },
 
   computed: {
-      ...userIsAdmin
+      ...userData
   }
 }
 </script>
