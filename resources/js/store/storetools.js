@@ -14,7 +14,7 @@ export const isWorking = {
 }
 
 export const userIsAdmin = {
-  ...mapState({ isAdmin: state => state.user.isAdmin })
+  ...mapState({ userIsAdmin: state => state.user.isAdmin })
 }
 
 // Methods

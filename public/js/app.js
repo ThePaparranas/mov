@@ -3011,6 +3011,7 @@ function _defineProperty(obj, key, value) {
 //
 //
 //
+//
 
 
 
@@ -78736,7 +78737,7 @@ var isWorking = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapS
   working: 'working'
 }));
 var userIsAdmin = _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
-  isAdmin: function isAdmin(state) {
+  userIsAdmin: function userIsAdmin(state) {
     return state.user.isAdmin;
   }
 })); // Methods
