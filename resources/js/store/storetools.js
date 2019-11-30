@@ -1,7 +1,7 @@
 import { mapState, mapGetters, mapActions } from 'vuex'
 
 // Computed
-export const userComputed = {
+export const userData = {
   ...mapState({ user: 'user' })
 }
 
