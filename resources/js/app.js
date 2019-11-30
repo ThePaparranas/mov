@@ -7,7 +7,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import router from './router'
 import VueRouter from 'vue-router'
-import Warehouse from './store/store'
+import Storage from './store/store'
 
 // import BootstrapVue from 'bootstrap-vue'
 import { ModalPlugin, TablePlugin } from 'bootstrap-vue'
@@ -40,7 +40,7 @@ Vue.component('App', require('./components/App.vue').default)
 /**
  * Set up Vuex store
  */
-const store = new Vuex.Store(Warehouse())
+const store = new Vuex.Store(Storage())
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
