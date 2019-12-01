@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import kebabCase from 'lodash/snakeCase'
+import kebabCase from 'lodash/kebabCase'
 import startCase from 'lodash/startCase'
 import inf from 'vue-material-design-icons/InformationVariant'
 
