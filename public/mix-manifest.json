@@ -9,5 +9,6 @@
     "/filmes~news.js": "/filmes~news.js",
     "/home.js": "/home.js",
     "/news.js": "/news.js",
-    "/vendors~filmes~news.js": "/vendors~filmes~news.js"
+    "/vendors~filmes~news.js": "/vendors~filmes~news.js",
+    "/vendors~filmes.js": "/vendors~filmes.js"
 }
