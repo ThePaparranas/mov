@@ -13,7 +13,9 @@
 
 <script>
 import Movie from './Movie'
-import { filter, some, includes } from 'lodash'
+import some from 'lodash/some'
+import filter from 'lodash/filter'
+import includes from 'lodash/includes'
 
 export default {
   name: 'FilmesCards',

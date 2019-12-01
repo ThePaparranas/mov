@@ -51,7 +51,8 @@
 </template>
 
 <script>
-import { filter, indexOf } from 'lodash'
+import filter from 'lodash/filter'
+import indexOf from 'lodash/indexOf'
 
 export default {
   name: 'NewsList',

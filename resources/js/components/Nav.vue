@@ -54,8 +54,8 @@
 import me from './Me'
 import routes from '../routes'
 import logout from './Logout.vue'
+import filter from 'lodash/filter'
 
-import { filter } from 'lodash'
 import { userData } from '../store/storetools'
 
 export default {

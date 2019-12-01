@@ -65,8 +65,8 @@
 </template>
 
 <script>
+import startCase from 'lodash/startCase'
 import inf from 'vue-material-design-icons/InformationVariant'
-import { startCase } from 'lodash'
 
 export default {
   name: 'FilmeCard',
