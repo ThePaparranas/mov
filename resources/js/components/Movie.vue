@@ -2,7 +2,7 @@
   <article v-if="movie">
     <div class="movie-card flex flex-row w-full p-2 bg-gray-200 rounded my-2">
       <div class="w-2/12">
-        <router-link to="/filme">
+        <router-link :to="`/filmes/${slug}`">
           <img
             :src="movie.details.Poster"
             class="rounded"
@@ -14,11 +14,12 @@
         <p class="">
           <span class="w-full text-2xl font-bold inline-block">
             <router-link
-              to="/filme"
+              :to="`/filmes/${slug}`"
               :class="linkClass"
             >
               {{ movie.details.Title }} ({{ movie.details.Year }})
             </router-link>
+
             <button
               class="float-right text-teal-500 border-teal-500 rounded-full bg-white flex items-center justify-center"
               @click="modalShow = !modalShow"
@@ -65,6 +66,7 @@
 </template>
 
 <script>
+import kebabCase from 'lodash/snakeCase'
 import startCase from 'lodash/startCase'
 import inf from 'vue-material-design-icons/InformationVariant'
 
@@ -102,13 +104,10 @@ export default {
 
   computed: {
     linkClass () {
-      let cl = 'red-link'
-
-      if (this.$store.state.working) {
-        cl = 'red-link disabled'
-      }
-
-      return cl
+      return 'text-red-1000' + (this.$store.state.working ? ' disabled' : '')
+    },
+    slug () {
+      return kebabCase(this.movie.details.Title) + '-' + this.movie.details.Year
     }
   },
 

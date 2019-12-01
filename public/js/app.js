@@ -73161,6 +73161,19 @@ var routes = [{
     description: 'Os teus filmes favoritos'
   }
 }, {
+  path: '/filmes/:slug',
+  component: function component() {
+    return Promise.all(/*! import() | filmes */[__webpack_require__.e("vendors~filmes"), __webpack_require__.e("filmes")]).then(__webpack_require__.bind(null, /*! ./views/filme */ "./resources/js/views/filme.vue"));
+  },
+  name: 'Movie',
+  meta: {
+    name: 'Filme',
+    menuClass: 'white',
+    access: 'user',
+    isNav: false,
+    description: 'Os teus filmes favoritos'
+  }
+}, {
   path: '/news',
   component: function component() {
     return __webpack_require__.e(/*! import() | news */ "news").then(__webpack_require__.bind(null, /*! ./views/news */ "./resources/js/views/news.vue"));

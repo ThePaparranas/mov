@@ -24,6 +24,18 @@ const routes = [
     }
   },
   {
+    path: '/filmes/:slug',
+    component: () => import(/* webpackChunkName: "filmes" */ './views/filme'),
+    name: 'Movie',
+    meta: {
+      name: 'Filme',
+      menuClass: 'white',
+      access: 'user',
+      isNav: false,
+      description: 'Os teus filmes favoritos'
+    }
+  },
+  {
     path: '/news',
     component: () => import(/* webpackChunkName: "news" */ './views/news'),
     name: 'News',
