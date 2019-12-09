@@ -326,7 +326,7 @@
 
 <script>
 // import axios from 'axios'
-import heroImg from '../components/Hero-img'
+import heroImg from '../../../components/Hero-img'
 
 export default {
   name: 'Home',

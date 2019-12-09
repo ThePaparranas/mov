@@ -1,12 +1,11 @@
 <template>
-  <div class="">
-    Admin
+  <div>
+    Users
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'AdminPanel'
+
 }
 </script>

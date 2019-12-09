@@ -11481,7 +11481,7 @@ li {
   list-style: none;
 }
 
-.router-link-exact-active {
+.router-link-exact-active, .router-link-active {
   font-weight: bold;
 }
 

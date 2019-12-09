@@ -1,6 +1,6 @@
 import mutations from './mutations'
 import * as actions from './actions'
-import { localStorageObjectName } from '../settings/settings'
+import { localStorageObjectName } from '../../settings/settings'
 
 const getLocalStorageItems = () => JSON.parse(localStorage[localStorageObjectName])
 

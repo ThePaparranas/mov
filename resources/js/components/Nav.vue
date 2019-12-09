@@ -23,6 +23,7 @@
           :key="route.name"
           class="no-underline block mt-4 sm:inline-block sm:mt-0 hover:text-red-500 mr-4"
           :to="route.path"
+          exact
         >
           {{ route.meta.name }}
         </router-link>
@@ -52,11 +53,11 @@
 
 <script>
 import me from './Me'
-import routes from '../routes'
+import routes from '../app/router/routes'
 import logout from './Logout.vue'
 import filter from 'lodash/filter'
 
-import { userData } from '../store/storetools'
+import { userData } from '../app/model/storetools'
 
 export default {
   name: 'TopNav',

@@ -19,10 +19,10 @@
 </template>
 
 <script>
-import newsCats from '../components/Filter'
-import heroImg from '../components/Hero-img'
-import newsApi from '../services/api/newsApi'
-import newsList from '../components/NewsList'
+import newsCats from '../../../components/Filter'
+import heroImg from '../../../components/Hero-img'
+import newsApi from '../../../app/connector/api/newsApi'
+import newsList from '../../../components/NewsList'
 
 export default {
   name: 'News',

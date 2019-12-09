@@ -1,4 +1,4 @@
-import moviesApi from '../services/api/moviesApi'
+import moviesApi from '../connector/api/moviesApi'
 
 export const setUser = ({ commit }, user) => {
   commit('SET_USER', user)

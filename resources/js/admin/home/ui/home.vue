@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import { userData } from '../store/storetools'
+import { userData } from '../../../app/model/storetools'
 
-const notFound = () => import('../components/error404')
-const adminPanel = () => import('../components/admin-panel')
+const notFound = () => import('../../../components/error404')
+const adminPanel = () => import('../../../components/admin-panel')
 
 export default {
   name: 'Admin',

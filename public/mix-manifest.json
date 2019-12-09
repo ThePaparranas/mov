@@ -6,9 +6,10 @@
     "/admin.js": "/admin.js",
     "/article.js": "/article.js",
     "/filmes.js": "/filmes.js",
-    "/filmes~news.js": "/filmes~news.js",
     "/home.js": "/home.js",
     "/news.js": "/news.js",
-    "/vendors~filmes~news.js": "/vendors~filmes~news.js",
-    "/vendors~filmes.js": "/vendors~filmes.js"
+    "/users.js": "/users.js",
+    "/vendors~filmes.js": "/vendors~filmes.js",
+    "/front.js": "/front.js",
+    "/vendors~front.js": "/vendors~front.js"
 }

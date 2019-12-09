@@ -1,12 +1,9 @@
 <template>
-  <div class="">
-    Admin
-  </div>
+  <div>Admin Body</div>
 </template>
 
 <script>
-
 export default {
-  name: 'AdminPanel'
+  name: 'AdminBody'
 }
 </script>

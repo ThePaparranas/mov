@@ -61,8 +61,8 @@
 </template>
 
 <script>
-import heroImg from '../components/Hero-img'
-import newsApi from '../services/api/newsApi'
+import heroImg from '../../../components/Hero-img'
+import newsApi from '../../../app/connector/api/newsApi'
 // import newsList from '../components/NewsList'
 // import newsCats from '../components/NewsFilter'
 

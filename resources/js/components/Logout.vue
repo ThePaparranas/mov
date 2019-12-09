@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import authApi from '../services/api/authApi'
+import authApi from '../app/connector/api/authApi'
 import standBy from 'vue-material-design-icons/PowerStandby'
 
-import { authMethods } from '../store/storetools'
-import { alertConfirm } from '../services/notifications'
+import { authMethods } from '../app/model/storetools'
+import { alertConfirm } from '../app/services/notifications'
 
 export default {
   name: 'Logout',

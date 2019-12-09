@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import Movies from '../components/Movies'
-import heroImg from '../components/Hero-img'
-import genresFilter from '../components/Filter'
+import Movies from '../../../components/Movies'
+import heroImg from '../../../components/Hero-img'
+import genresFilter from '../../../components/Filter'
 
 import { mapActions } from 'vuex/'
 
