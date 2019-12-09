@@ -73712,6 +73712,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mutations */ "./resources/js/app/model/mutations.js");
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./actions */ "./resources/js/app/model/actions.js");
 /* harmony import */ var _settings_settings__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../settings/settings */ "./resources/js/settings/settings.js");
+/* harmony import */ var _front_news_model_news__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../front/news/model/news */ "./resources/js/front/news/model/news.js");
+/* harmony import */ var _front_movies_model_movies__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../front/movies/model/movies */ "./resources/js/front/movies/model/movies.js");
+
+
 
 
 
@@ -73730,11 +73734,11 @@ var getLocalStorageItems = function getLocalStorageItems() {
       canSaveBtn: false,
       count: false,
       editingName: false,
-      genres: [],
+      genres: _front_movies_model_movies__WEBPACK_IMPORTED_MODULE_4__["genres"],
       loaded: false,
       localStorageItems: getLocalStorageItems(),
-      movies: [],
-      news: [],
+      movies: _front_movies_model_movies__WEBPACK_IMPORTED_MODULE_4__["movies"],
+      news: _front_news_model_news__WEBPACK_IMPORTED_MODULE_3__["default"],
       requesting: {
         verb: 'idle',
         uri: ''
@@ -74660,6 +74664,37 @@ component.options.__file = "resources/js/components/renderless/_head.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_13_node_modules_vue_loader_lib_index_js_vue_loader_options_head_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/babel-loader/lib??ref--13!../../../../node_modules/vue-loader/lib??vue-loader-options!./_head.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/renderless/_head.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_babel_loader_lib_index_js_ref_13_node_modules_vue_loader_lib_index_js_vue_loader_options_head_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/front/movies/model/movies.js":
+/*!***************************************************!*\
+  !*** ./resources/js/front/movies/model/movies.js ***!
+  \***************************************************/
+/*! exports provided: movies, genres */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "movies", function() { return movies; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "genres", function() { return genres; });
+var movies = [];
+var genres = [];
+
+
+/***/ }),
+
+/***/ "./resources/js/front/news/model/news.js":
+/*!***********************************************!*\
+  !*** ./resources/js/front/news/model/news.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var news = [];
+/* harmony default export */ __webpack_exports__["default"] = (news);
 
 /***/ }),
 
