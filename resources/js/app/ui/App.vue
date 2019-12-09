@@ -23,7 +23,7 @@
 <script>
 import topNav from '../../components/Nav'
 import phooter from '../../components/Footer'
-import metaInfo from '../../components/_head'
+import metaInfo from '../../components/renderless/_head'
 import premium from '../../components/Premium'
 
 import adminNav from '../../components/AdminSidebar'
