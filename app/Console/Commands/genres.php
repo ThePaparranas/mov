@@ -33,11 +33,14 @@ class genres extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
-        GenresCreator::create();
+        $genres = GenresCreator::create();
+        $imploded = implode(', ', $genres);
+        $count = count($genres);
+
+        $this->info("{$count} genres successfully added to DB:");
+        $this->info($imploded);
     }
 }

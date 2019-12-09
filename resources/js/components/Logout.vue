@@ -5,17 +5,16 @@
       title="Logout"
       href="#"
       @click.prevent="logout()"
-    ><span class="d-none d-md-block text-lg"><standBy title="Logout" /></span><span class="d-block d-md-none p51">Logout</span></a>
+    ><span class="d-none d-md-block"><standBy title="Logout" /></span></a>
   </div>
 </template>
 
 <script>
-import authApi from '../services/api/authApi'
+import authApi from '../app/connector/api/authApi'
 import standBy from 'vue-material-design-icons/PowerStandby'
 
-// import { appHome } from '../services/api/Api'
-import { authMethods } from '../store/storetools'
-import { alertConfirm } from '../services/notifications'
+import { authMethods } from '../app/model/storetools'
+import { alertConfirm } from '../app/services/notifications'
 
 export default {
   name: 'Logout',

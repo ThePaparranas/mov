@@ -1,43 +1,51 @@
 <template>
-  <nav
-    :class="navClass"
-    class=""
-  >
-    <div class="flex flex-no-shrink items-stretch h-12 text-red-1000">
-      <router-link
-        v-for="route in userRoutes"
-        :key="Math.random()"
-        :class="mainMenuClass"
-        :to="route.path"
+  <nav class="flex items-center justify-between flex-wrap text-red-1000 py-2 px-4">
+    <div class="block sm:hidden">
+      <button
+        class="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white"
+        @click="toggle"
       >
-        {{ route.meta.name }}
-      </router-link>
-      <router-link
-        v-for="route in adminRoutes"
-        v-if="user.isAdmin"
-        :key="Math.random()"
-        :class="mainMenuClass"
-        :to="route.path"
-      >
-        {{ route.meta.name }}
-      </router-link>
-
-      <button class="block lg:hidden cursor-pointer ml-auto relative w-12 h-12 p-4">
         <svg
-          width="20"
-          height="20"
-          class="fill-current"
-          xmlns="http://www.w3.org/2000/svg"
+          class="fill-current h-3 w-3"
           viewBox="0 0 20 20"
-        ><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
+          xmlns="http://www.w3.org/2000/svg"
+        ><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
       </button>
     </div>
 
-    <div class="lg:flex lg:items-stretch lg:flex-no-shrink lg:flex-grow">
-      <div class="lg:flex lg:items-stretch lg:justify-end ml-auto">
-        <me :class="userMenuClass" />
+    <div
+      :class="open ? 'block': 'hidden'"
+      class="w-full flex-grow sm:flex sm:items-center sm:w-auto"
+    >
+      <div class="sm:flex-grow">
+        <router-link
+          v-for="route in userRoutes"
+          :key="route.name"
+          class="no-underline block mt-4 sm:inline-block sm:mt-0 hover:text-red-500 mr-4"
+          :to="route.path"
+          exact
+        >
+          {{ route.meta.name }}
+        </router-link>
 
-        <logout :class="userMenuClass" />
+        <template v-if="userIsAdmin">
+          <router-link
+            v-for="route in adminRoutes"
+            :key="route.name"
+            class="no-underline block mt-4 sm:inline-block sm:mt-0 hover:text-red-500 mr-4"
+            :to="route.path"
+          >
+            {{ route.meta.name }}
+          </router-link>
+        </template>
+      </div>
+
+      <div class="flex lg:items-stretch lg:flex-no-shrink lg:flex-grow">
+        <div class="flex lg:items-stretch lg:justify-end ml-auto">
+          <me class="bg-fade text-gray-800 flex-no-grow flex-no-shrink relative py-2 px-4 no-underline flex items-center hover:text-red-1000" />
+
+          <logout class="bg-fade text-gray-800 flex-no-grow flex-no-shrink relative py-2 px-4 no-underline flex items-center hover:text-red-1000" />
+        </div>
       </div>
     </div>
   </nav>
@@ -45,11 +53,11 @@
 
 <script>
 import me from './Me'
-import routes from '../routes'
+import routes from '../app/router/routes'
 import logout from './Logout.vue'
+import filter from 'lodash/filter'
 
-import { filter } from 'lodash'
-import { userComputed } from '../store/storetools'
+import { userData } from '../app/model/storetools'
 
 export default {
   name: 'TopNav',
@@ -59,8 +67,14 @@ export default {
     me
   },
 
+  data () {
+    return {
+      open: false
+    }
+  },
+
   computed: {
-    ...userComputed,
+    ...userData,
 
     userRoutes () {
       return filter(routes, function (o) {
@@ -75,24 +89,14 @@ export default {
     },
 
     navClass () {
-      const current = this.$route.meta.menuClass
+      return this.$route.meta.menuClass + ' w-full fixed z-50 select-none bg-white flex items-center justify-between flex-wrap border-b-4 border-red-1000'
+    }
+  },
 
-      return current + ' fixed z-50 select-none bg-white lg:flex lg:items-stretch w-full border-b-4 border-red-1000'
-    },
-
-    mainMenuClass () {
-      return 'bg-fade text-gray-800 flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center bg-white hover:text-red-1000'
-    },
-
-    userMenuClass () {
-      return 'bg-fade text-gray-800 flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal no-underline flex items-center bg-white hover:text-red-1000'
+  methods: {
+    toggle () {
+      this.open = !this.open
     }
   }
 }
 </script>
-
-<style lang="sass" scoped>
-    .router-link-exact-active
-        color: #e3342f
-        font-weight: bold
-</style>

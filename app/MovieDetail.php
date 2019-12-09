@@ -108,4 +108,14 @@ class MovieDetail extends Model
         'Website',
         'Response',
     ];
+
+    public function setRatingsAttribute($value)
+    {
+        $this->attributes['Ratings'] = serialize($value);
+    }
+
+    public function getRatingsAttribute()
+    {
+        return json_encode(unserialize($this->Ratings));
+    }
 }

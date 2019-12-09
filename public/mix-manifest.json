@@ -2,5 +2,14 @@
     "/js/app.js": "/js/app.js",
     "/css/auth.css": "/css/auth.css",
     "/css/app.css": "/css/app.css",
-    "/css/welcome.css": "/css/welcome.css"
+    "/css/welcome.css": "/css/welcome.css",
+    "/admin.js": "/admin.js",
+    "/article.js": "/article.js",
+    "/filmes.js": "/filmes.js",
+    "/home.js": "/home.js",
+    "/news.js": "/news.js",
+    "/users.js": "/users.js",
+    "/vendors~filmes.js": "/vendors~filmes.js",
+    "/front.js": "/front.js",
+    "/vendors~front.js": "/vendors~front.js"
 }
